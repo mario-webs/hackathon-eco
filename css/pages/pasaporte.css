@@ -1,0 +1,397 @@
+/* Pasaporte: qué guarda, línea de tiempo y simulador */
+
+.passport-what {
+  display: grid;
+  gap: var(--s-7);
+}
+
+.passport-what__list {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--c-line-strong);
+}
+
+@media (min-width: 64rem) {
+  .passport-what {
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--s-6) var(--s-9);
+    align-items: start;
+  }
+
+  .passport-what__note {
+    grid-column: 2;
+  }
+}
+
+/* Cada fila es un campo del registro del pasaporte */
+.passport-what__list li {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: var(--s-1) var(--s-5);
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.passport-what__key {
+  grid-row: span 2;
+  align-self: start;
+  justify-self: start;
+  padding: 0.25rem 0.55rem;
+  font-family: var(--f-data);
+  font-size: 0.8125rem;
+  color: var(--c-accent-ink);
+  background: var(--c-accent-soft);
+  border-radius: 6px;
+}
+
+.passport-what__list h3 {
+  font-size: var(--fs-h4);
+}
+
+.passport-what__list p {
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+}
+
+/* ---------- Línea de tiempo ---------- */
+.timeline {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--c-line-dark);
+}
+
+@media (min-width: 60rem) {
+  .timeline {
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 0;
+  }
+}
+
+.timeline li {
+  position: relative;
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--c-line-dark);
+}
+
+@media (min-width: 60rem) {
+  .timeline li {
+    padding: var(--s-6) var(--s-5) 0 0;
+    border-bottom: 0;
+    border-top: 2px solid var(--c-graphite-3);
+  }
+
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 1px;
+    background: var(--c-accent-bright);
+  }
+
+  .timeline li:first-child {
+    border-top-color: var(--c-accent-bright);
+  }
+}
+
+.timeline__date {
+  font-family: var(--f-display);
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--c-accent-bright);
+}
+
+.timeline__what {
+  color: var(--c-on-dark-2);
+  max-width: 34ch;
+}
+
+.timeline__what strong {
+  color: var(--c-ink);
+}
+
+
+.timeline__src {
+  margin-top: var(--s-6);
+  font-size: var(--fs-xs);
+  color: var(--c-on-dark-2);
+}
+
+/* ---------- Simulador ---------- */
+.sim {
+  display: grid;
+  gap: var(--s-6);
+  align-items: start;
+}
+
+@media (min-width: 60rem) {
+  .sim {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--s-8);
+  }
+}
+
+html:not(.js) .sim__pick {
+  display: none;
+}
+
+.sim__pick legend {
+  font-weight: 500;
+  margin-bottom: var(--s-3);
+}
+
+.sim__options {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.sim__opt {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.sim__opt input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.sim__opt span {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border: 1.5px solid var(--c-line-strong);
+  border-radius: var(--r-sm);
+  background: var(--c-white);
+  transition: border-color var(--d-2) var(--ease-out), background-color var(--d-2) var(--ease-out),
+    transform var(--d-1) var(--ease-out);
+}
+
+.sim__opt small {
+  font-family: var(--f-text);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+}
+
+.sim__opt input:hover + span {
+  border-color: var(--c-ink-3);
+}
+
+.sim__opt input:active + span {
+  transform: scale(0.99);
+}
+
+.sim__opt input:checked + span {
+  border-color: var(--c-ink);
+  background: var(--c-accent-soft);
+  font-weight: 500;
+}
+
+.sim__opt input:checked + span small {
+  color: var(--c-ink-2);
+}
+
+.sim__opt input:focus-visible + span {
+  box-shadow: var(--focus);
+}
+
+.sim__scan {
+  margin-top: var(--s-5);
+  width: 100%;
+}
+
+.sim__scan:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.sim__out {
+  display: grid;
+  gap: var(--s-5);
+}
+
+@media (min-width: 40rem) {
+  .sim__out {
+    grid-template-columns: 9rem 1fr;
+    align-items: start;
+  }
+}
+
+.sim__qr {
+  position: relative;
+  width: 9rem;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+}
+
+.sim__qr .qr {
+  width: 100%;
+  padding: var(--s-3);
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--r-sm);
+  background: var(--c-white);
+  color: var(--c-ink);
+  transition: opacity var(--d-3) var(--ease-out);
+}
+
+.sim__qr[data-has="no"] .qr {
+  opacity: 0.12;
+}
+
+.sim__qr[data-has="no"]::after {
+  content: "Sin QR";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--f-text);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.sim__beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--c-accent-ink);
+  opacity: 0;
+}
+
+.sim__qr.is-scanning .sim__beam {
+  animation: beam 750ms var(--ease-in-out);
+}
+
+@keyframes beam {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(8.8rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(8.8rem);
+  }
+}
+
+.sim__card {
+  box-shadow: var(--sh-2);
+  transition: opacity var(--d-3) var(--ease-out);
+}
+
+.sim__card.is-pending {
+  opacity: 0.45;
+}
+
+.sim__title {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--s-4);
+}
+
+.sim__soh {
+  margin-top: var(--s-5);
+}
+
+.sim__soh-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.sim__soh-head .data {
+  color: var(--c-ink);
+  font-weight: 500;
+}
+
+.sim__meter {
+  position: relative;
+  height: 0.875rem;
+  margin-top: var(--s-2);
+  border-radius: 3px;
+  background: var(--c-paper-3);
+  overflow: hidden;
+}
+
+/* 20 celdas: huecos dibujados por encima del relleno */
+.sim__meter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 calc(5% - 2px), var(--c-white) calc(5% - 2px) 5%);
+}
+
+.sim__meter i {
+  display: block;
+  height: 100%;
+  background: var(--meter, var(--c-accent-ink));
+  transform-origin: left;
+  transform: scaleX(calc(var(--v) / 100));
+  transition: transform var(--d-4) var(--ease-out);
+}
+
+.sim__card[data-level="weak"] .sim__meter i {
+  --meter: var(--c-amber);
+}
+
+.sim__card[data-level="bad"] .sim__meter i {
+  --meter: var(--c-red);
+}
+
+.sim__dest {
+  margin-top: var(--s-5);
+  padding: var(--s-4);
+  border-radius: var(--r-sm);
+  background: var(--c-accent-soft);
+}
+
+.sim__card[data-level="weak"] .sim__dest {
+  background: var(--c-amber-soft);
+}
+
+.sim__card[data-level="bad"] .sim__dest {
+  background: var(--c-red-soft);
+}
+
+.sim__card[data-level="none"] .sim__dest {
+  background: var(--c-paper-2);
+}
+
+.sim__dest-label {
+  font-family: var(--f-text);
+  font-variation-settings: normal;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--c-ink-2);
+}
+
+.sim__dest-name {
+  font-family: var(--f-display);
+  font-size: var(--fs-h4);
+  font-weight: 500;
+}
+
+.sim__dest-why {
+  margin-top: var(--s-2);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}

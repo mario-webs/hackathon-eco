@@ -1,0 +1,242 @@
+/* Impacto: pilares, 4R, ODS, objetivos SMART y KPIs */
+
+.pillars {
+  display: grid;
+  gap: var(--s-5);
+}
+
+@media (min-width: 48rem) {
+  .pillars {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillar {
+  display: grid;
+  gap: var(--s-4);
+  align-content: start;
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--c-line-strong);
+}
+
+.pillar h3 {
+  font-size: var(--fs-h3);
+}
+
+.pillar p {
+  color: var(--c-ink-2);
+}
+
+/* 4R: una secuencia, en este orden */
+.four-r {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--s-5);
+}
+
+@media (min-width: 48rem) {
+  .four-r {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+}
+
+.four-r li {
+  position: relative;
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  padding: var(--s-4) var(--s-5) 0 0;
+  border-top: 1px solid var(--c-line-strong);
+}
+
+.four-r__n {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-top: calc(-1 * var(--s-4) - 1.125rem - 1px);
+  margin-bottom: var(--s-2);
+  font-family: var(--f-data);
+  font-size: 0.875rem;
+  color: var(--c-on-accent);
+  background: var(--c-accent);
+  border-radius: 50%;
+}
+
+.four-r li:last-child .four-r__n {
+  color: var(--c-ink);
+  background: var(--c-white-2);
+  box-shadow: inset 0 0 0 1px var(--c-red);
+}
+
+/* Flecha de orden entre pasos */
+@media (min-width: 48rem) {
+  .four-r li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: 1.25rem;
+    width: 9px;
+    height: 9px;
+    border-top: 1px solid var(--c-ink-3);
+    border-right: 1px solid var(--c-ink-3);
+    transform: rotate(45deg);
+  }
+}
+
+.four-r h3 {
+  font-size: var(--fs-h3);
+}
+
+.four-r p {
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  max-width: 28ch;
+}
+
+.concepts {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-8);
+}
+
+@media (min-width: 48rem) {
+  .concepts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .concepts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.concepts dt {
+  font-weight: 500;
+  color: var(--c-ink);
+}
+
+.concepts dd {
+  margin-top: var(--s-1);
+  font-size: var(--fs-sm);
+  color: var(--c-on-dark-2);
+}
+
+/* ODS: cuadros con los colores oficiales de la ONU */
+.ods {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--s-4);
+}
+
+@media (min-width: 48rem) {
+  .ods {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ods li {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: var(--s-4);
+  align-items: start;
+  padding: var(--s-4);
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--r-md);
+  background: var(--c-white);
+}
+
+.ods__n {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: var(--r-sm);
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.ods--7 .ods__n {
+  background: #fcc30b;
+  color: var(--c-ink);
+}
+
+.ods--9 .ods__n {
+  background: #fd6925;
+  color: var(--c-ink);
+}
+
+.ods--12 .ods__n {
+  background: #bf8b2e;
+  color: var(--c-ink);
+}
+
+.ods--13 .ods__n {
+  background: #3f7e44;
+}
+
+.ods h3 {
+  font-size: var(--fs-h4);
+}
+
+.ods p {
+  margin-top: var(--s-2);
+  color: var(--c-ink-2);
+}
+
+/* Objetivos SMART */
+.smart {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--c-line-strong);
+}
+
+.smart li {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--c-line);
+}
+
+@media (min-width: 48rem) {
+  .smart li {
+    grid-template-columns: 9rem 1fr;
+    align-items: baseline;
+  }
+}
+
+.smart .tag {
+  justify-self: start;
+}
+
+.smart__goal {
+  font-size: var(--fs-lg);
+  max-width: 60ch;
+}
+
+.smart__goal b {
+  font-weight: 500;
+  padding: 0 0.25em;
+  border-radius: var(--r-cell);
+  background: var(--c-accent-soft);
+  color: var(--c-accent-ink);
+}
+
+.kpi-title {
+  margin-top: var(--s-9);
+  margin-bottom: var(--s-5);
+}
+
+.kpi-note {
+  margin-top: var(--s-5);
+  max-width: var(--measure);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}

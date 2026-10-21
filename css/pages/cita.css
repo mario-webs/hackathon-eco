@@ -1,0 +1,225 @@
+/* Cita: formulario, resumen de errores, confirmación y baterías aceptadas */
+
+.booking {
+  display: grid;
+  gap: var(--s-8);
+  align-items: start;
+}
+
+@media (min-width: 64rem) {
+  .booking {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: var(--s-9);
+  }
+
+  .booking__side {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+}
+
+.form {
+  display: grid;
+  gap: var(--s-7);
+}
+
+.form__group {
+  display: grid;
+  gap: var(--s-5);
+}
+
+.form__legend {
+  width: 100%;
+  padding-bottom: var(--s-3);
+  margin-bottom: var(--s-2);
+  border-bottom: 1px solid var(--c-line-strong);
+  font-family: var(--f-display);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.form__row {
+  display: grid;
+  gap: var(--s-5);
+}
+
+@media (min-width: 40rem) {
+  .form__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form .field {
+  max-width: 34rem;
+}
+
+.form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.form__submit {
+  min-width: 12rem;
+}
+
+.damage-warning p {
+  margin-top: var(--s-1);
+}
+
+.error-summary {
+  margin-bottom: var(--s-6);
+  padding: var(--s-5);
+  border: 2px solid var(--c-red-ink);
+  border-radius: var(--r-md);
+  background: var(--c-red-soft);
+}
+
+.error-summary h3 {
+  font-size: var(--fs-h4);
+  color: var(--c-red-ink);
+}
+
+.error-summary ul {
+  margin-top: var(--s-3);
+  padding-left: var(--s-5);
+  display: grid;
+  gap: var(--s-1);
+}
+
+.error-summary a {
+  color: var(--c-red-ink);
+  font-weight: 550;
+}
+
+/* Confirmación */
+.confirm {
+  display: grid;
+  gap: var(--s-5);
+  padding: var(--s-6);
+  border-radius: var(--r-lg);
+  background: var(--c-white);
+  border: 1px solid var(--c-line-strong);
+  box-shadow: var(--sh-2);
+}
+
+.confirm[hidden] {
+  display: none;
+}
+
+.confirm__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--s-4);
+  align-items: start;
+}
+
+.confirm__head .icon {
+  color: var(--c-accent-ink);
+}
+
+.confirm h3 {
+  font-size: var(--fs-h3);
+}
+
+.confirm__head p {
+  margin-top: var(--s-2);
+  color: var(--c-ink-2);
+}
+
+.motion .confirm:not([hidden]) {
+  animation: confirm-in var(--d-4) var(--ease-out);
+}
+
+@keyframes confirm-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+.confirm__warn {
+  margin-top: var(--s-3);
+  padding: var(--s-3);
+  border-radius: var(--r-sm);
+  background: var(--c-red-soft);
+  color: var(--c-red-ink);
+  font-size: var(--fs-sm);
+  font-weight: 550;
+}
+
+.confirm .btn {
+  justify-self: start;
+}
+
+/* Aceptadas */
+.booking__side {
+  display: grid;
+  gap: var(--s-6);
+  padding: var(--s-6);
+  border-radius: var(--r-lg);
+  background: var(--c-graphite);
+  color: var(--c-on-dark);
+}
+
+.booking__side h2 {
+  font-size: var(--fs-h3);
+  color: var(--c-ink);
+}
+
+.booking__side :focus-visible {
+  box-shadow: var(--focus-dark);
+}
+
+.accepted {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-2);
+}
+
+.accepted li {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  border: 1px solid var(--c-line-dark);
+  border-radius: var(--r-sm);
+  font-weight: 550;
+  font-size: var(--fs-sm);
+}
+
+.accepted .icon {
+  color: var(--c-accent-bright);
+}
+
+.accepted__notes {
+  color: var(--c-on-dark-2);
+  font-size: var(--fs-sm);
+}
+
+.accepted__notes li::before {
+  background: var(--c-accent-bright);
+}
+
+.accepted__steps {
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--c-line-dark);
+}
+
+.accepted__steps h3 {
+  font-size: var(--fs-h4);
+  color: var(--c-ink);
+}
+
+.accepted__steps p {
+  margin-top: var(--s-2);
+  color: var(--c-on-dark-2);
+  font-size: var(--fs-sm);
+}
+
+.accepted__steps a {
+  color: var(--c-accent-bright);
+}

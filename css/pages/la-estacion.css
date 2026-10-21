@@ -1,0 +1,224 @@
+/* La estación: plano isométrico, seguridad y personal */
+
+.plan-grid {
+  display: grid;
+  gap: var(--s-7);
+  align-items: start;
+}
+
+@media (min-width: 64rem) {
+  .plan-grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--s-8);
+  }
+
+  .plan-figure {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+}
+
+.plan-figure {
+  margin: 0;
+}
+
+/* El plano es el mismo que el de la portada (estilos en components.css) */
+.plan-figure .token {
+  display: none;
+}
+
+.plan-figure .plan {
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--r-md);
+}
+
+.plan-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  margin-top: var(--s-4);
+  font-family: var(--f-text);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+}
+
+.plan-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.plan-legend i {
+  width: 1.5rem;
+  border-top: 2.5px dotted var(--c-accent-ink);
+}
+
+.plan-legend .plan-legend__alt {
+  border-top-color: var(--c-ink-3);
+}
+
+/* Lista de zonas */
+.zones {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--c-line-strong);
+}
+
+.zones li {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: var(--s-4);
+  padding: var(--s-4) var(--s-3);
+  border-bottom: 1px solid var(--c-line);
+  border-radius: var(--r-sm);
+  transition: background-color var(--d-2) var(--ease-out);
+}
+
+.zones li:hover,
+.zones li.is-on {
+  background: var(--c-white);
+}
+
+.zones__n {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--r-cell);
+  background: var(--c-ink);
+  color: var(--c-on-accent);
+  font-size: var(--fs-sm);
+}
+
+.zones__item--safety .zones__n {
+  background: var(--c-amber-ink);
+}
+
+.zones h3 {
+  font-size: var(--fs-h4);
+}
+
+.zones p {
+  margin-top: var(--s-1);
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+}
+
+/* ---------- Seguridad: campo ámbar ---------- */
+.safety {
+  background: var(--c-graphite);
+  color: var(--c-on-dark);
+}
+
+.safety h2,
+.safety h3 {
+  color: var(--c-ink);
+}
+
+.safety .icon {
+  color: var(--c-amber);
+}
+
+.safety__head {
+  display: grid;
+  gap: var(--s-5);
+  margin-bottom: var(--s-8);
+  max-width: 52rem;
+}
+
+@media (min-width: 48rem) {
+  .safety__head {
+    grid-template-columns: auto 1fr;
+    gap: var(--s-6);
+  }
+}
+
+.safety__icon {
+  width: 4rem;
+  height: 4rem;
+  stroke-width: 1.4;
+}
+
+.safety .lead {
+  color: var(--c-on-dark-2);
+}
+
+.safety__list {
+  list-style: none;
+  padding: 0;
+  counter-reset: medida;
+  border-top: 1px solid var(--c-amber);
+}
+
+.safety__list li {
+  counter-increment: medida;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: var(--s-1) var(--s-4);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--c-line-dark);
+}
+
+.safety__list li::before {
+  content: counter(medida, decimal-leading-zero);
+  grid-row: span 2;
+  font-family: var(--f-data);
+  font-size: 0.8125rem;
+  color: var(--c-amber-ink);
+  padding-top: 0.35rem;
+}
+
+@media (min-width: 48rem) {
+  .safety__list li {
+    grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 1.3fr);
+    align-items: baseline;
+  }
+
+  .safety__list li::before {
+    grid-row: auto;
+  }
+}
+
+.safety__list h3 {
+  font-size: var(--fs-h4);
+}
+
+.safety__list p {
+  color: var(--c-on-dark-2);
+  font-size: var(--fs-sm);
+}
+
+/* ---------- Personal ---------- */
+.staff {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--s-5);
+}
+
+@media (min-width: 48rem) {
+  .staff {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.staff li {
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  padding-top: var(--s-5);
+  border-top: 3px solid var(--c-ink);
+}
+
+.staff li:nth-child(2) {
+  border-top-color: var(--c-accent-ink);
+}
+
+.staff h3 {
+  font-size: var(--fs-h4);
+}
+
+.staff p {
+  color: var(--c-ink-2);
+}

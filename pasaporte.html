@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pasaporte de batería · Estación SegundaVida</title>
+  <meta name="description" content="Qué es el pasaporte digital de baterías, las fechas del Reglamento (UE) 2023/1542 y un simulador de escaneo.">
+  <meta name="theme-color" content="#0a0d0c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    document.documentElement.classList.add("js");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("motion");
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/pasaporte.css">
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/scroll.js"></script>
+  <script defer src="js/passport-sim.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header" data-header>
+    <div class="site-header__bar">
+      <a class="brand" href="index.html" aria-label="Estación SegundaVida, inicio"><svg class="brand__mark" viewBox="0 0 38 22" aria-hidden="true" focusable="false"><rect x="1" y="1" width="32" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="34" y="7" width="3" height="8" rx="1" fill="currentColor"/><rect x="4.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="11.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="18.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="25.5" y="4.5" width="4.5" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity=".6"/></svg><span class="brand__name"><small>Estación</small>SegundaVida</span></a>
+      <nav class="site-links" aria-label="Secciones">
+        <ul>
+          <li><a href="index.html#proceso">El proceso</a></li>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="la-estacion.html">La estación</a></li>
+          <li><a href="pasaporte.html" aria-current="page">Pasaporte</a></li>
+          <li><a href="impacto.html">Impacto</a></li>
+          <li><a href="proyecto.html">Proyecto</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__end">
+        <span class="charge" title="Progreso de lectura" aria-hidden="true"><span class="charge__body"><span class="charge__fill"></span></span><span class="charge__tip"></span><span class="charge__n" data-charge-n>0 %</span></span>
+        <a class="pill pill--accent" href="cita.html"><span class="pill__long">Pedir cita</span><span class="pill__short">Cita</span><i class="pill__dot" aria-hidden="true"></i></a>
+        <button class="pill menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menú<span class="pill__dots" aria-hidden="true"><i></i><i></i></span></button>
+      </div>
+    </div>
+    <nav class="site-menu" id="site-menu" aria-label="Principal">
+      <div class="menu-card" style="--i:0">
+        <p class="menu-card__head"><span>Páginas</span><span>teclas 1–8</span></p>
+        <ol class="menu-list">
+          <li><a href="index.html"><kbd>1</kbd><span>Inicio</span></a></li>
+          <li><a href="index.html#proceso"><kbd>2</kbd><span>El proceso en 3D</span></a></li>
+          <li><a href="como-funciona.html"><kbd>3</kbd><span>Cómo funciona</span></a></li>
+          <li><a href="la-estacion.html"><kbd>4</kbd><span>La estación</span></a></li>
+          <li><a href="pasaporte.html" aria-current="page"><kbd>5</kbd><span>Pasaporte de batería</span></a></li>
+          <li><a href="impacto.html"><kbd>6</kbd><span>Impacto</span></a></li>
+          <li><a href="proyecto.html"><kbd>7</kbd><span>El proyecto</span></a></li>
+          <li><a href="cita.html"><kbd>8</kbd><span>Pedir cita</span></a></li>
+        </ol>
+      </div>
+      <div class="menu-card menu-card--search" style="--i:1">
+        <button class="menu-search" type="button" data-palette-open><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><span>Buscar en la web</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+      </div>
+      <div class="menu-card menu-card--note" style="--i:2">
+        <strong>Propuesta académica</strong>
+        JOYFE Centro Profesional · La estación aún no existe.
+      </div>
+    </nav>
+  </header>
+  <dialog class="palette" id="palette" aria-label="Buscar en la web">
+    <form method="dialog" class="palette__box">
+      <div class="palette__field"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><input type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Buscar páginas y secciones" placeholder="Buscar páginas y secciones…" autocomplete="off" spellcheck="false" data-palette-input><kbd>Esc</kbd></div>
+      <ul class="palette__list" id="palette-list" role="listbox" aria-label="Resultados" data-palette-list></ul>
+      <p class="palette__foot" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> moverse</span><span><kbd>↵</kbd> abrir</span><span><kbd>Esc</kbd> cerrar</span></p>
+    </form>
+  </dialog>
+
+  <main id="main" tabindex="-1">
+    <header class="page-hero">
+      <div class="container page-hero__grid">
+        <div>
+          <h1>El DNI digital de cada batería</h1>
+          <p class="lead">El pasaporte de batería es un registro digital con código QR. Al escanearlo se ve qué batería es, su historial, su estado y las instrucciones para desmontarla, repararla, reutilizarla o reciclarla.</p>
+        </div>
+        <dl class="facts" aria-label="Resumen">
+          <div><dt>Obligatorio desde</dt><dd class="data">18 feb 2027</dd></div>
+          <div><dt>Norma</dt><dd class="data">2023/1542</dd></div>
+          <div><dt>Umbral</dt><dd class="data">&gt; 2 kWh</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="que-title">
+      <div class="container passport-what">
+        <div class="stack">
+          <h2 id="que-title">Qué guarda el pasaporte</h2>
+          <p class="lead">La estación lo lee nada más recibir la batería. Con esa información sabe qué tiene delante y cómo tratarla.</p>
+        </div>
+        <ul class="passport-what__list">
+          <li data-reveal>
+            <code class="passport-what__key">identificación</code>
+            <h3>Qué batería es</h3>
+            <p>Su identificación y sus datos de fabricación.</p>
+          </li>
+          <li data-reveal style="--i:1">
+            <code class="passport-what__key">historial</code>
+            <h3>Su historial</h3>
+            <p>Lo que le ha pasado a lo largo de su vida.</p>
+          </li>
+          <li data-reveal style="--i:2">
+            <code class="passport-what__key">estado</code>
+            <h3>Su estado</h3>
+            <p>Cuánta capacidad conserva.</p>
+          </li>
+          <li data-reveal style="--i:3">
+            <code class="passport-what__key">tratamiento</code>
+            <h3>Cómo tratarla</h3>
+            <p>Instrucciones para desmontarla, repararla, reutilizarla o reciclarla.</p>
+          </li>
+        </ul>
+        <p class="notice passport-what__note" data-reveal>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7H6a3 3 0 0 0 0 6h3M15 7h3a3 3 0 0 1 0 6h-3M8 10h8"/></svg>
+          <span><strong>Segunda vida, pasaporte nuevo</strong>Cuando una batería se reutiliza en otro uso, el reglamento exige un pasaporte nuevo vinculado al anterior.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--dark timeline-section on-dark" aria-labelledby="fechas-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="fechas-title">Lo que marca el Reglamento (UE) 2023/1542</h2>
+          <p class="lead">Fechas concretas que obligan a cambiar cómo se gestionan las baterías.</p>
+        </div>
+        <ol class="timeline">
+          <li data-reveal>
+            <p class="timeline__date data">18 feb 2027</p>
+            <p class="timeline__what">Toda batería de coche eléctrico y de vehículo ligero (bici, patinete) de más de 2&nbsp;kWh necesita un pasaporte digital con código QR.</p>
+          </li>
+          <li data-reveal style="--i:1">
+            <p class="timeline__date data">Finales de 2027</p>
+            <p class="timeline__what">Hay que recuperar al menos el <strong class="data">50 %</strong> del litio de las baterías recicladas.</p>
+          </li>
+          <li data-reveal style="--i:2">
+            <p class="timeline__date data">Finales de 2028</p>
+            <p class="timeline__what">Objetivo de recogida del <strong class="data">51 %</strong> de las baterías de vehículos ligeros.</p>
+          </li>
+          <li data-reveal style="--i:3">
+            <p class="timeline__date data">Finales de 2031</p>
+            <p class="timeline__what">Recuperación de litio del <strong class="data">80 %</strong> y recogida de baterías de vehículos ligeros del <strong class="data">61 %</strong>.</p>
+          </li>
+        </ol>
+        <p class="timeline__src">Fuentes: <a href="https://www.smartgridsinfo.es/2023/07/12/consejo-europeo-aprueba-reglamento-sostenibilidad-economia-circular-baterias" rel="noopener">Smartgrids Info</a>, <a href="https://www.energias-renovables.com/almacenamiento/pasaporte-digital-para-las-bater-as-nueva-20250920/" rel="noopener">Energías Renovables</a>.</p>
+      </div>
+    </section>
+
+    <section class="section sim-section" id="simulador" aria-labelledby="sim-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="sim-title">Simulador de pasaporte</h2>
+          <p class="lead">Elige una batería de ejemplo y escanea su QR para ver su ficha, su estado de salud y su destino probable. Así funcionaría el escaneo previo desde la web, antes de ir a la estación.</p>
+          <p class="notice notice--demo">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+            <span><strong>Datos ficticios</strong>Las baterías, cifras y fichas de este simulador son inventadas para la demostración.</span>
+          </p>
+        </div>
+
+        <div class="sim" data-sim>
+          <fieldset class="sim__pick">
+            <legend>Batería de ejemplo</legend>
+            <div class="sim__options">
+              <label class="sim__opt"><input type="radio" name="sim" value="coche" checked><span><b>Coche eléctrico</b><small>con pasaporte</small></span></label>
+              <label class="sim__opt"><input type="radio" name="sim" value="moto"><span><b>Moto eléctrica</b><small>con pasaporte</small></span></label>
+              <label class="sim__opt"><input type="radio" name="sim" value="golpeada"><span><b>Coche, golpeada</b><small>con pasaporte</small></span></label>
+              <label class="sim__opt"><input type="radio" name="sim" value="antigua"><span><b>Patinete de 2022</b><small>sin pasaporte</small></span></label>
+            </div>
+            <button class="btn btn--ink sim__scan" type="button" data-sim-scan>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/></svg>
+              Escanear QR
+            </button>
+          </fieldset>
+
+          <div class="sim__out">
+            <div class="sim__qr" aria-hidden="true">
+              <svg class="qr" viewBox="0 0 29 29"><use href="#qr-shape"/></svg>
+              <span class="sim__beam"></span>
+            </div>
+            <article class="plate sim__card" aria-live="polite" data-sim-card>
+              <header class="plate__head"><span data-f="id">Pasaporte · SV-DEMO-0001</span><span class="tag tag--demo">Ficticio</span></header>
+              <div class="plate__body">
+                <h3 class="sim__title" data-f="title">Coche eléctrico</h3>
+                <dl class="spec sim__spec">
+                  <div><dt>Año de fabricación</dt><dd class="data" data-f="year">2028</dd></div>
+                  <div><dt>Química</dt><dd class="data" data-f="chem">NMC</dd></div>
+                  <div><dt>Capacidad nominal</dt><dd class="data" data-f="cap">52 kWh</dd></div>
+                  <div><dt>Estado físico</dt><dd data-f="phys">Sin daños visibles</dd></div>
+                  <div><dt>Celdas con fallo</dt><dd class="data" data-f="cells">0</dd></div>
+                </dl>
+                <div class="sim__soh">
+                  <div class="sim__soh-head"><span>Estado de salud (SoH)</span><span class="data" data-f="soh">81 %</span></div>
+                  <div class="sim__meter" aria-hidden="true"><i data-f="meter" style="--v:81"></i></div>
+                </div>
+                <div class="sim__dest" data-f="destbox">
+                  <p class="sim__dest-name"><span class="sim__dest-label">Destino probable:</span> <span data-f="dest">Reutilizar · armario de segunda vida</span></p>
+                  <p class="sim__dest-why" data-f="why">Conserva buena parte de su capacidad y todas sus celdas están sanas. Se montaría en un armario de almacenamiento con un pasaporte nuevo vinculado al anterior.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <svg width="0" height="0" class="visually-hidden" aria-hidden="true"><defs><path id="qr-shape" fill="currentColor" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM22 0h7v7h-7zm1 1v5h5V1zm1 1h3v3h-3zM0 22h7v7H0zm1 1v5h5v-5zm1 1h3v3H2zM9 0h1v2H9zm2 1h2v1h-2zm3 0h1v3h-1zm2-1h2v1h-2zm1 2h1v2h-1zm2 0h1v1h-1zM9 3h2v1H9zm3 1h1v2h-1zm-3 2h1v1H9zm2 0h1v1h-1zm5 0h3v1h-3zM0 9h2v1H0zm3 0h3v1H3zm5 0h4v1H8zm6 0h1v2h-1zm3 0h2v1h-2zm4 0h3v1h-3zm4 0h3v2h-3zM1 11h1v2H1zm3 0h2v1H4zm4 0h1v3H8zm3 0h2v1h-2zm6 0h1v1h-1zm3 0h3v1h-3zm-17 2h2v1H3zm8 0h3v2h-3zm5 0h2v1h-2zm4 0h1v3h-1zm3 0h2v1h-2zm-23 2h2v1H0zm4 0h3v1H4zm11 0h1v2h-1zm3 1h2v1h-2zm6-1h4v1h-4zM2 17h1v2H2zm3 0h3v1H5zm5 0h4v1h-4zm6 1h2v2h-2zm4-1h1v1h-1zm3 1h3v1h-3zM9 19h1v3H9zm3 1h3v1h-3zm8 0h2v2h-2zm4 1h3v1h-3zM11 22h1v2h-1zm3 0h2v1h-2zm4 0h1v3h-1zm2 2h3v1h-3zm4 1h1v3h-1zm2-1h2v2h-2zM9 25h2v1H9zm4 0h3v1h-3zm-3 2h1v2h-1zm3 0h2v2h-2zm5 0h4v1h-4zm4 1h1v1h-1z"/></defs></svg>
+    </section>
+
+    <section class="section section--tight next-page" aria-label="Siguiente">
+      <div class="container next-page__inner">
+        <p>Siguiente: <a class="link-arrow" href="impacto.html">El impacto de la estación
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+        <a class="btn btn--charge" href="cita.html">Pedir cita</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="brand" href="index.html" aria-label="Estación SegundaVida, inicio"><svg class="brand__mark" viewBox="0 0 38 22" aria-hidden="true" focusable="false"><rect x="1" y="1" width="32" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="34" y="7" width="3" height="8" rx="1" fill="currentColor"/><rect x="4.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="11.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="18.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="25.5" y="4.5" width="4.5" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity=".6"/></svg><span class="brand__name"><small>Estación</small>SegundaVida</span></a>
+          <p class="site-footer__note">Proyecto académico de JOYFE Centro Profesional, módulo de Sostenibilidad aplicada al sistema productivo. Es una propuesta: no se ha probado en la realidad.</p>
+        </div>
+        <nav aria-label="Páginas del sitio">
+          <h2>Páginas</h2>
+          <ul class="list">
+            <li><a href="como-funciona.html">Cómo funciona</a></li>
+            <li><a href="la-estacion.html">La estación</a></li>
+            <li><a href="pasaporte.html">Pasaporte de batería</a></li>
+            <li><a href="impacto.html">Impacto</a></li>
+            <li><a href="proyecto.html">El proyecto</a></li>
+            <li><a href="cita.html">Pedir cita</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Fuentes</h2>
+          <ul class="list">
+            <li><a href="https://www.smartgridsinfo.es/2023/07/12/consejo-europeo-aprueba-reglamento-sostenibilidad-economia-circular-baterias" rel="noopener">Smartgrids Info · Reglamento europeo de baterías</a></li>
+            <li><a href="https://www.energias-renovables.com/almacenamiento/pasaporte-digital-para-las-bater-as-nueva-20250920/" rel="noopener">Energías Renovables · Pasaporte digital desde 2027</a></li>
+            <li><a href="https://www.repsol.es/particulares/asesoramiento-consumo/pasaporte-bateria-coche-electrico/" rel="noopener">Repsol · Pasaporte de batería</a></li>
+            <li><a href="https://evkx.net/es/dictionary/battery-passport" rel="noopener">EVKX · Pasaporte y segunda vida</a></li>
+            <li><a href="https://www.cuatrecasas.com/es/spain/publico/art/reglamento-union-europea-pilas-baterias" rel="noopener">Cuatrecasas · Reglamento UE de pilas y baterías</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>Las cifras de objetivos son estimaciones para el primer año. Los contadores y fichas marcados como demostración usan datos ficticios.</p>
+        <p>Estación SegundaVida · 2026</p>
+      </div>
+    </div>
+    <p class="site-footer__word" aria-hidden="true">Segunda<span>Vida</span></p>
+  </footer>
+</body>
+</html>

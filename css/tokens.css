@@ -1,0 +1,106 @@
+/* Tokens de diseño · Estación SegundaVida
+   Mundo: noche de planta. Fondo casi negro, texto claro, un verde eléctrico
+   para acción, ruta y estado sano; ámbar y rojo solo para seguridad y daño.
+   Los nombres heredados (paper = fondo, ink = texto, white = panel elevado)
+   se mantienen para que todas las páginas compartan el mismo vocabulario. */
+
+:root {
+  color-scheme: dark;
+
+  /* Superficies */
+  --c-paper: #0a0d0c;
+  --c-paper-2: #0e1311;
+  --c-paper-3: #25302b;
+  --c-white: #121916;
+  --c-white-2: #18211d;
+  --c-graphite: #060807;
+  --c-graphite-2: #101513;
+  --c-graphite-3: #1c2521;
+
+  /* Texto */
+  --c-ink: #eef2ee;
+  --c-ink-2: #b3bdb7;
+  --c-ink-3: #8b968f;
+  --c-on-dark: #eef2ee;
+  --c-on-dark-2: #a9b3ad;
+  --c-line: rgba(238, 242, 238, 0.09);
+  --c-line-strong: rgba(238, 242, 238, 0.18);
+  --c-line-dark: rgba(238, 242, 238, 0.1);
+
+  /* Acento: verde eléctrico. Acción principal, ruta activa, estado sano. */
+  --c-accent: #3ddc84;
+  --c-accent-hover: #6be8a3;
+  --c-accent-ink: #5fe39b;
+  --c-accent-soft: rgba(61, 220, 132, 0.12);
+  --c-accent-bright: #3ddc84;
+  --c-on-accent: #03140a;
+
+  /* Seguridad: solo para seguridad, cuarentena, daño y errores */
+  --c-amber: #f2a93b;
+  --c-amber-soft: rgba(242, 169, 59, 0.12);
+  --c-amber-ink: #f6bd68;
+  --c-red: #ff5a4e;
+  --c-red-soft: rgba(255, 90, 78, 0.12);
+  --c-red-ink: #ff877d;
+
+  /* Estado de salud (SoH) */
+  --soh-ok: var(--c-accent);
+  --soh-weak: var(--c-amber);
+  --soh-bad: var(--c-red);
+
+  /* Tipografía */
+  --f-display: "Host Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-text: "Host Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: clamp(1.125rem, 1.02rem + 0.4vw, 1.3125rem);
+  --fs-h4: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
+  --fs-h3: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --fs-h2: clamp(2.125rem, 1.4rem + 2.8vw, 4rem);
+  --fs-h1: clamp(2.75rem, 1.6rem + 4.4vw, 5.75rem);
+
+  --lh-tight: 1;
+  --lh-snug: 1.18;
+  --lh-text: 1.6;
+
+  /* Espaciado (base 4) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --section-y: clamp(5rem, 3rem + 7vw, 11rem);
+  --gutter: clamp(1rem, 0.5rem + 2.4vw, 2.5rem);
+  --container: 86rem;
+  --measure: 66ch;
+  --header-h: 4.5rem;
+
+  /* Radios: píldoras para acciones, paneles redondeados */
+  --r-cell: 4px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+
+  /* Sombras: siempre con desplazamiento y desenfoque */
+  --sh-2: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+  --sh-3: 0 2px 8px rgba(0, 0, 0, 0.45), 0 32px 64px -20px rgba(0, 0, 0, 0.75);
+
+  /* Movimiento */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --d-1: 160ms;
+  --d-2: 200ms;
+  --d-3: 320ms;
+  --d-4: 640ms;
+
+  --focus: 0 0 0 2px var(--c-paper), 0 0 0 4px var(--c-accent);
+  --focus-dark: var(--focus);
+}

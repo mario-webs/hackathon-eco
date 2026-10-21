@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impacto · Estación SegundaVida</title>
+  <meta name="description" content="Sostenibilidad de la estación: tres pilares, las 4R, los ODS 7, 9, 12 y 13, objetivos SMART e indicadores.">
+  <meta name="theme-color" content="#0a0d0c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    document.documentElement.classList.add("js");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("motion");
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/impacto.css">
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/scroll.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header" data-header>
+    <div class="site-header__bar">
+      <a class="brand" href="index.html" aria-label="Estación SegundaVida, inicio"><svg class="brand__mark" viewBox="0 0 38 22" aria-hidden="true" focusable="false"><rect x="1" y="1" width="32" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="34" y="7" width="3" height="8" rx="1" fill="currentColor"/><rect x="4.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="11.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="18.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="25.5" y="4.5" width="4.5" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity=".6"/></svg><span class="brand__name"><small>Estación</small>SegundaVida</span></a>
+      <nav class="site-links" aria-label="Secciones">
+        <ul>
+          <li><a href="index.html#proceso">El proceso</a></li>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="la-estacion.html">La estación</a></li>
+          <li><a href="pasaporte.html">Pasaporte</a></li>
+          <li><a href="impacto.html" aria-current="page">Impacto</a></li>
+          <li><a href="proyecto.html">Proyecto</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__end">
+        <span class="charge" title="Progreso de lectura" aria-hidden="true"><span class="charge__body"><span class="charge__fill"></span></span><span class="charge__tip"></span><span class="charge__n" data-charge-n>0 %</span></span>
+        <a class="pill pill--accent" href="cita.html"><span class="pill__long">Pedir cita</span><span class="pill__short">Cita</span><i class="pill__dot" aria-hidden="true"></i></a>
+        <button class="pill menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menú<span class="pill__dots" aria-hidden="true"><i></i><i></i></span></button>
+      </div>
+    </div>
+    <nav class="site-menu" id="site-menu" aria-label="Principal">
+      <div class="menu-card" style="--i:0">
+        <p class="menu-card__head"><span>Páginas</span><span>teclas 1–8</span></p>
+        <ol class="menu-list">
+          <li><a href="index.html"><kbd>1</kbd><span>Inicio</span></a></li>
+          <li><a href="index.html#proceso"><kbd>2</kbd><span>El proceso en 3D</span></a></li>
+          <li><a href="como-funciona.html"><kbd>3</kbd><span>Cómo funciona</span></a></li>
+          <li><a href="la-estacion.html"><kbd>4</kbd><span>La estación</span></a></li>
+          <li><a href="pasaporte.html"><kbd>5</kbd><span>Pasaporte de batería</span></a></li>
+          <li><a href="impacto.html" aria-current="page"><kbd>6</kbd><span>Impacto</span></a></li>
+          <li><a href="proyecto.html"><kbd>7</kbd><span>El proyecto</span></a></li>
+          <li><a href="cita.html"><kbd>8</kbd><span>Pedir cita</span></a></li>
+        </ol>
+      </div>
+      <div class="menu-card menu-card--search" style="--i:1">
+        <button class="menu-search" type="button" data-palette-open><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><span>Buscar en la web</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+      </div>
+      <div class="menu-card menu-card--note" style="--i:2">
+        <strong>Propuesta académica</strong>
+        JOYFE Centro Profesional · La estación aún no existe.
+      </div>
+    </nav>
+  </header>
+  <dialog class="palette" id="palette" aria-label="Buscar en la web">
+    <form method="dialog" class="palette__box">
+      <div class="palette__field"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><input type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Buscar páginas y secciones" placeholder="Buscar páginas y secciones…" autocomplete="off" spellcheck="false" data-palette-input><kbd>Esc</kbd></div>
+      <ul class="palette__list" id="palette-list" role="listbox" aria-label="Resultados" data-palette-list></ul>
+      <p class="palette__foot" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> moverse</span><span><kbd>↵</kbd> abrir</span><span><kbd>Esc</kbd> cerrar</span></p>
+    </form>
+  </dialog>
+
+  <main id="main" tabindex="-1">
+    <header class="page-hero">
+      <div class="container page-hero__grid">
+        <div>
+          <h1>Por qué es sostenible</h1>
+          <p class="lead">La estación cumple los tres pilares de la sostenibilidad, aplica las 4R y se conecta con cuatro Objetivos de Desarrollo Sostenible. Las metas del primer año son una propuesta, no resultados.</p>
+        </div>
+        <figure class="page-hero__img"><img src="assets/img/solar.jpg" alt="Placas solares bajo un cielo azul" width="1400" height="933"><figcaption>Imagen ilustrativa</figcaption></figure>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="pilares-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="pilares-title">Tres pilares</h2>
+        </div>
+        <div class="pillars">
+          <article class="pillar pillar--env" data-reveal>
+            <h3>Ambiental</h3>
+            <p>Evita fabricar baterías nuevas para almacenar energía, reduce residuos peligrosos y recupera materiales escasos.</p>
+          </article>
+          <article class="pillar pillar--soc" data-reveal style="--i:1">
+            <h3>Social</h3>
+            <p>Crea empleo cualificado, forma a alumnos de FP y reduce el riesgo de incendios por baterías mal tiradas.</p>
+          </article>
+          <article class="pillar pillar--eco" data-reveal style="--i:2">
+            <h3>Económico</h3>
+            <p>Vende segundas vidas y reparaciones más baratas que lo nuevo y cobra por un servicio que las empresas necesitan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="r-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="r-title">Las 4R, aplicadas</h2>
+          <p class="lead">Se aplican en este orden, y reciclar es siempre la última opción.</p>
+        </div>
+        <ol class="four-r">
+          <li data-reveal><span class="four-r__n" aria-hidden="true">1</span><h3>Reducir</h3><p>Cada batería reutilizada es una batería nueva que no hay que fabricar.</p></li>
+          <li data-reveal style="--i:1"><span class="four-r__n" aria-hidden="true">2</span><h3>Reutilizar</h3><p>La batería pasa de mover un vehículo a guardar energía.</p></li>
+          <li data-reveal style="--i:2"><span class="four-r__n" aria-hidden="true">3</span><h3>Reparar</h3><p>Se cambian solo las celdas dañadas, no la batería entera.</p></li>
+          <li data-reveal style="--i:3"><span class="four-r__n" aria-hidden="true">4</span><h3>Reciclar</h3><p>Solo al final, y con el material ya clasificado.</p></li>
+        </ol>
+        <dl class="concepts">
+          <div><dt>Economía circular</dt><dd>El material se mantiene en uso el mayor tiempo posible.</dd></div>
+          <div><dt>Ciclo de vida, de la cuna a la tumba</dt><dd>La estación alarga la fase de uso y cuida el final.</dd></div>
+          <div><dt>Innovación y transformación digital</dt><dd>El pasaporte digital y el diagnóstico.</dd></div>
+          <div><dt>Implementación de normativas</dt><dd>Cumple el Reglamento europeo de baterías.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ods-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="ods-title">Objetivos de Desarrollo Sostenible</h2>
+        </div>
+        <ul class="ods">
+          <li class="ods--7" data-reveal><span class="ods__n">7</span><div><h3>Energía asequible y no contaminante</h3><p>Almacenamiento barato para aprovechar la energía solar.</p></div></li>
+          <li class="ods--9" data-reveal style="--i:1"><span class="ods__n">9</span><div><h3>Industria, innovación e infraestructura</h3><p>Nueva infraestructura y tecnología de diagnóstico.</p></div></li>
+          <li class="ods--12" data-reveal style="--i:2"><span class="ods__n">12</span><div><h3>Producción y consumo responsables</h3><p>Reutilizar, reparar y reciclar en vez de tirar.</p></div></li>
+          <li class="ods--13" data-reveal style="--i:3"><span class="ods__n">13</span><div><h3>Acción por el clima</h3><p>Menos emisiones de fabricar baterías nuevas.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="smart-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="smart-title">Objetivos para el primer año</h2>
+          <p class="lead">Siguen el formato SMART: específicos, medibles, alcanzables, relevantes y con plazo. Son una propuesta y se pueden ajustar.</p>
+        </div>
+        <ul class="smart">
+          <li data-reveal><span class="tag tag--plain">Ambiental</span><p class="smart__goal"><b class="data">≥ 30 %</b> de las baterías recibidas con segunda vida o reparación, en lugar de ir directas a reciclaje.</p></li>
+          <li data-reveal style="--i:1"><span class="tag tag--plain">Ambiental</span><p class="smart__goal"><b class="data">0</b> incidentes de incendio o fuga durante el año.</p></li>
+          <li data-reveal style="--i:2"><span class="tag tag--plain">Social</span><p class="smart__goal"><b class="data">4</b> alumnos de FP formados en prácticas y <b class="data">6</b> visitas de colegios.</p></li>
+          <li data-reveal style="--i:3"><span class="tag tag--plain">Económico</span><p class="smart__goal"><b class="data">70 %</b> de los costes cubiertos con ingresos propios al final del primer año.</p></li>
+          <li data-reveal style="--i:4"><span class="tag tag--plain">Servicio</span><p class="smart__goal">Respuesta al cliente con el destino de su batería en <b class="data">&lt; 7 días</b>.</p></li>
+        </ul>
+
+        <h3 class="kpi-title" id="kpi-title">Indicadores (KPIs)</h3>
+        <div class="table-wrap" data-reveal>
+          <table class="table table--stack" aria-labelledby="kpi-title">
+            <thead>
+              <tr><th scope="col">Indicador</th><th scope="col">Unidad</th><th scope="col">Objetivo año 1</th><th scope="col">Frecuencia</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Baterías recibidas</th><td data-label="Unidad">unidades / mes</td><td data-label="Objetivo año 1">Se fija tras los 3 primeros meses</td><td data-label="Frecuencia">Mensual</td></tr>
+              <tr><th scope="row">Baterías con segunda vida o reparadas</th><td data-label="Unidad">% del total recibido</td><td data-label="Objetivo año 1" class="data">≥ 30 %</td><td data-label="Frecuencia">Mensual</td></tr>
+              <tr><th scope="row">Capacidad reutilizada</th><td data-label="Unidad">kWh / año</td><td data-label="Objetivo año 1">Se fija tras los 3 primeros meses</td><td data-label="Frecuencia">Trimestral</td></tr>
+              <tr><th scope="row">Materiales enviados a reciclaje</th><td data-label="Unidad">kg / mes</td><td data-label="Objetivo año 1">Seguimiento</td><td data-label="Frecuencia">Mensual</td></tr>
+              <tr><th scope="row">Incidentes de seguridad</th><td data-label="Unidad">número / año</td><td data-label="Objetivo año 1" class="data">0</td><td data-label="Frecuencia">Continuo</td></tr>
+              <tr><th scope="row">Personas formadas</th><td data-label="Unidad">número / año</td><td data-label="Objetivo año 1">4 alumnos + personal</td><td data-label="Frecuencia">Anual</td></tr>
+              <tr><th scope="row">Tiempo de respuesta</th><td data-label="Unidad">días</td><td data-label="Objetivo año 1" class="data">&lt; 7</td><td data-label="Frecuencia">Mensual</td></tr>
+              <tr><th scope="row">Cobertura de costes</th><td data-label="Unidad">% de costes cubiertos</td><td data-label="Objetivo año 1" class="data">≥ 70 %</td><td data-label="Frecuencia">Trimestral</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="kpi-note">Cada indicador necesita un valor inicial, un valor objetivo y un plazo. El seguimiento se hace en un cuadro de mando visual y, si un indicador se desvía, se aplica una acción correctora.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight next-page" aria-label="Siguiente">
+      <div class="container next-page__inner">
+        <p>Siguiente: <a class="link-arrow" href="proyecto.html">Grupos de interés, financiación y riesgos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+        <a class="btn btn--charge" href="cita.html">Pedir cita</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="brand" href="index.html" aria-label="Estación SegundaVida, inicio"><svg class="brand__mark" viewBox="0 0 38 22" aria-hidden="true" focusable="false"><rect x="1" y="1" width="32" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="34" y="7" width="3" height="8" rx="1" fill="currentColor"/><rect x="4.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="11.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="18.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="25.5" y="4.5" width="4.5" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity=".6"/></svg><span class="brand__name"><small>Estación</small>SegundaVida</span></a>
+          <p class="site-footer__note">Proyecto académico de JOYFE Centro Profesional, módulo de Sostenibilidad aplicada al sistema productivo. Es una propuesta: no se ha probado en la realidad.</p>
+        </div>
+        <nav aria-label="Páginas del sitio">
+          <h2>Páginas</h2>
+          <ul class="list">
+            <li><a href="como-funciona.html">Cómo funciona</a></li>
+            <li><a href="la-estacion.html">La estación</a></li>
+            <li><a href="pasaporte.html">Pasaporte de batería</a></li>
+            <li><a href="impacto.html">Impacto</a></li>
+            <li><a href="proyecto.html">El proyecto</a></li>
+            <li><a href="cita.html">Pedir cita</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Fuentes</h2>
+          <ul class="list">
+            <li><a href="https://www.smartgridsinfo.es/2023/07/12/consejo-europeo-aprueba-reglamento-sostenibilidad-economia-circular-baterias" rel="noopener">Smartgrids Info · Reglamento europeo de baterías</a></li>
+            <li><a href="https://www.energias-renovables.com/almacenamiento/pasaporte-digital-para-las-bater-as-nueva-20250920/" rel="noopener">Energías Renovables · Pasaporte digital desde 2027</a></li>
+            <li><a href="https://www.repsol.es/particulares/asesoramiento-consumo/pasaporte-bateria-coche-electrico/" rel="noopener">Repsol · Pasaporte de batería</a></li>
+            <li><a href="https://evkx.net/es/dictionary/battery-passport" rel="noopener">EVKX · Pasaporte y segunda vida</a></li>
+            <li><a href="https://www.cuatrecasas.com/es/spain/publico/art/reglamento-union-europea-pilas-baterias" rel="noopener">Cuatrecasas · Reglamento UE de pilas y baterías</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>Las cifras de objetivos son estimaciones para el primer año. Los contadores y fichas marcados como demostración usan datos ficticios.</p>
+        <p>Estación SegundaVida · 2026</p>
+      </div>
+    </div>
+    <p class="site-footer__word" aria-hidden="true">Segunda<span>Vida</span></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T21:00:00+02:00",
+  "title": "Design System: Estación SegundaVida",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Noche de planta", "canonical": "oklch(15.5% 0.005 173.5)", "tonalRamp": ["#090c0b", "#212524", "#3d413f", "#5b5f5d", "#7d8180", "#a1a6a4", "#c7ccca", "#ebf0ee"] },
+      "paper-2": { "role": "neutral", "displayName": "Noche de escenario", "canonical": "#0e1311" },
+      "paper-3": { "role": "neutral", "displayName": "Rejilla", "canonical": "#25302b" },
+      "white": { "role": "neutral", "displayName": "Panel", "canonical": "oklch(20.5% 0.012 167.2)", "tonalRamp": ["#070d0a", "#1f2623", "#3a423e", "#57605c", "#7a837f", "#9ea7a3", "#c4cdc9", "#e7f1ed"] },
+      "white-2": { "role": "neutral", "displayName": "Panel alto", "canonical": "#18211d" },
+      "graphite": { "role": "neutral", "displayName": "Grafito", "canonical": "#060807" },
+      "graphite-3": { "role": "neutral", "displayName": "Grafito hover", "canonical": "#1c2521" },
+      "ink": { "role": "neutral", "displayName": "Tinta", "canonical": "oklch(95.7% 0.007 145.5)", "tonalRamp": ["#090c09", "#222522", "#3e413e", "#5b5f5b", "#7e817e", "#a2a6a2", "#c8ccc8", "#ecf0ec"] },
+      "ink-2": { "role": "neutral", "displayName": "Tinta media", "canonical": "#b3bdb7" },
+      "ink-3": { "role": "neutral", "displayName": "Tinta baja", "canonical": "#8b968f" },
+      "on-dark-2": { "role": "neutral", "displayName": "Pie", "canonical": "#a9b3ad" },
+      "line": { "role": "neutral", "displayName": "Regla", "canonical": "rgba(238, 242, 238, 0.09)" },
+      "line-strong": { "role": "neutral", "displayName": "Regla marcada", "canonical": "rgba(238, 242, 238, 0.18)" },
+      "accent": { "role": "primary", "displayName": "Verde eléctrico", "canonical": "oklch(79.3% 0.180 154.0)", "tonalRamp": ["#001004", "#002d14", "#014d28", "#06703d", "#209858", "#08c46e", "#52ec93", "#c6ffd7"] },
+      "accent-hover": { "role": "primary", "displayName": "Verde encendido", "canonical": "#6be8a3" },
+      "accent-ink": { "role": "primary", "displayName": "Verde lectura", "canonical": "#5fe39b" },
+      "accent-soft": { "role": "primary", "displayName": "Velo verde", "canonical": "rgba(61, 220, 132, 0.12)" },
+      "on-accent": { "role": "primary", "displayName": "Tinta de cierre", "canonical": "#03140a" },
+      "amber": { "role": "secondary", "displayName": "Ámbar de seguridad", "canonical": "oklch(78.7% 0.147 73.0)", "tonalRamp": ["#150800", "#341f01", "#573805", "#7e540d", "#ac720d", "#db941b", "#fcbd69", "#ffebd3"] },
+      "amber-ink": { "role": "secondary", "displayName": "Ámbar lectura", "canonical": "#f6bd68" },
+      "amber-soft": { "role": "secondary", "displayName": "Velo ámbar", "canonical": "rgba(242, 169, 59, 0.12)" },
+      "red": { "role": "tertiary", "displayName": "Rojo de daño", "canonical": "oklch(68.7% 0.203 27.8)", "tonalRamp": ["#210000", "#4b0103", "#7b080a", "#af1314", "#df3b33", "#fe7366", "#ffb5ab", "#fee9e6"] },
+      "red-ink": { "role": "tertiary", "displayName": "Rojo lectura", "canonical": "#ff877d" },
+      "red-soft": { "role": "tertiary", "displayName": "Velo rojo", "canonical": "rgba(255, 90, 78, 0.12)" },
+      "hv-orange": { "role": "tertiary", "displayName": "Naranja alta tensión (solo 3D)", "canonical": "oklch(70.1% 0.200 43.7)", "tonalRamp": ["#1c0300", "#401501", "#6a2906", "#983f0f", "#cf5511", "#ff7634", "#fcb99d", "#feeae1"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Solo el titular del hero de portada, máximo 15ch." },
+      "headline": { "displayName": "Headline", "purpose": "h1 de páginas interiores, máximo 16ch." },
+      "headline-section": { "displayName": "Headline de sección", "purpose": "h2 de sección; el cierre lo sube a 5rem." },
+      "title": { "displayName": "Title", "purpose": "h3 de fichas y pasos." },
+      "title-sm": { "displayName": "Title pequeño", "purpose": "h4 y resúmenes de acordeón." },
+      "numeral": { "displayName": "Numeral", "purpose": "Cifras grandes del contador de demostración." },
+      "lead": { "displayName": "Lead", "purpose": "Entradillas en Tinta media, máximo 56ch." },
+      "body": { "displayName": "Body", "purpose": "Texto corrido, máximo 66ch." },
+      "label": { "displayName": "Label", "purpose": "Botones, píldoras, navegación, cabeceras de tabla; sin mayúsculas." },
+      "data": { "displayName": "Data", "purpose": "JetBrains Mono: HUD, porcentajes, teclas, códigos de zona; nunca titulares." }
+    },
+    "shadows": [
+      { "name": "sh-2", "value": "0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.6)", "purpose": "Elevación media: fichas sobre el escenario en móvil." },
+      { "name": "sh-3", "value": "0 2px 8px rgba(0, 0, 0, 0.45), 0 32px 64px -20px rgba(0, 0, 0, 0.75)", "purpose": "Elevación alta: tarjetas del menú, paleta, fichas de paso, tarjeta del pasaporte." },
+      { "name": "focus", "value": "0 0 0 2px #0a0d0c, 0 0 0 4px #3ddc84", "purpose": "Anillo de foco doble en todo elemento interactivo." },
+      { "name": "field-focus", "value": "0 0 0 3px rgba(61, 220, 132, 0.12)", "purpose": "Foco de campos, junto al borde verde." },
+      { "name": "glass", "value": "background: rgba(18, 25, 22, 0.78); backdrop-filter: blur(8px–16px)", "purpose": "Vidrio oscuro para lo que flota sobre el 3D: velo de barra, grupo de enlaces, anotaciones, HUD, etiqueta de estado." },
+      { "name": "scrim", "value": "background: rgba(3, 5, 4, 0.62); backdrop-filter: blur(6px)", "purpose": "Velo de página con el menú abierto (paleta: 0.6 y 4px)." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Curva por defecto de estados, menú, paleta e indicador." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Transiciones simétricas." },
+      { "name": "d-1", "value": "160ms", "purpose": "Pulsado (escala 0.97), hover de filas." },
+      { "name": "d-2", "value": "200ms", "purpose": "Color y borde en hover." },
+      { "name": "d-3", "value": "320ms", "purpose": "Indicador deslizante, velo de barra, flecha de botón." },
+      { "name": "d-4", "value": "640ms", "purpose": "Aparición de contenido al entrar en vista, escalonada 70 ms." },
+      { "name": "menu-stagger", "value": "220ms + 45ms por tarjeta", "purpose": "Entrada de las tarjetas apiladas del menú." },
+      { "name": "camera-scroll", "value": "13 paradas de cámara interpoladas con el scroll", "purpose": "Recorrido de la estación 3D; desactivado con movimiento reducido." }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "26rem" },
+      { "name": "sm", "value": "30rem" },
+      { "name": "md", "value": "40rem" },
+      { "name": "md-2", "value": "48rem" },
+      { "name": "lg", "value": "60rem" },
+      { "name": "xl", "value": "64rem" },
+      { "name": "nav", "value": "88rem" }
+    ],
+    "three": {
+      "renderer": "WebGL2, ACESFilmic, exposición 1.0, sRGB, sombras PCFSoft, clearColor #0a0d0c, pixelRatio máx 1.75 (1.5 en equipo modesto)",
+      "post": "EffectComposer: RenderPass (MSAA x4, HalfFloat) → GTAO (radio 0.6, blend 0.85; off en equipo modesto) → UnrealBloom (fuerza 0.45–0.55, radio 0.4, umbral 2.4) → OutputPass",
+      "environment": "RoomEnvironment vía PMREM",
+      "lightsStation": "Hemisférica 0xdfeee6/0x0b0f0d 0.32; sol 0xfff1de 2.9; relleno 0x9fd9bd 0.5; niebla #0a0d0c 38–95 m",
+      "lightsHero": "Clave 0xffffff 2.6; contraluz 0x3ddc84 1.8; foco cálido 0xffb27a 6; hemisférica 0.25",
+      "materials": "Físicos con rugosidad procedural (aluminio cepillado, manchas de hormigón y pintura); emisivos solo en LED verde (7), LED rojo (6) y luz cálida (3.2); rótulos y pantallas en canvas sin mapeo tonal",
+      "routes": "Continua verde = segunda vida; discontinua ámbar = cuarentena y reparación; punteada roja = reciclaje",
+      "fallback": "Renders fijos assets/img/hero-pack.jpg y estacion.jpg; plano 2D SVG en portada"
+    }
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal (Pedir cita). Píldora verde con texto oscuro y flecha que avanza.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Pedir cita <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 3.125rem; padding: 0 1.5rem; background: var(--c-accent, #3ddc84); color: var(--c-on-accent, #03140a); border: 1px solid var(--c-accent, #3ddc84); border-radius: 999px; font-family: 'Host Grotesk', system-ui, sans-serif; font-size: 1.0625rem; font-weight: 500; line-height: 1; text-decoration: none; transition: background-color 200ms cubic-bezier(0.23,1,0.32,1), border-color 200ms cubic-bezier(0.23,1,0.32,1), transform 160ms cubic-bezier(0.23,1,0.32,1); } .ds-btn svg { width: 1.125rem; height: 1.125rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: transform 320ms cubic-bezier(0.23,1,0.32,1); } .ds-btn:hover { background: #6be8a3; border-color: #6be8a3; } .ds-btn:hover svg { transform: translateX(3px); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: none; box-shadow: 0 0 0 2px #0a0d0c, 0 0 0 4px #3ddc84; }"
+    },
+    {
+      "name": "Botón fantasma",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Acción secundaria junto al principal (Recorrer la estación).",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Recorrer la estación</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; min-height: 3.125rem; padding: 0 1.5rem; background: transparent; color: #eef2ee; border: 1px solid rgba(238,242,238,0.18); border-radius: 999px; font-family: 'Host Grotesk', system-ui, sans-serif; font-size: 1.0625rem; font-weight: 500; line-height: 1; text-decoration: none; transition: background-color 200ms cubic-bezier(0.23,1,0.32,1), border-color 200ms cubic-bezier(0.23,1,0.32,1), transform 160ms; } .ds-btn-ghost:hover { border-color: #b3bdb7; background: rgba(238,242,238,0.05); } .ds-btn-ghost:active { transform: scale(0.97); } .ds-btn-ghost:focus-visible { outline: none; box-shadow: 0 0 0 2px #0a0d0c, 0 0 0 4px #3ddc84; }"
+    },
+    {
+      "name": "Píldoras de barra",
+      "kind": "nav",
+      "refersTo": "pill",
+      "description": "Barra de lectura en forma de batería, píldora verde de cita y píldora Menú.",
+      "html": "<div class=\"ds-bar\"><span class=\"ds-charge\"><span class=\"ds-charge__body\"><span class=\"ds-charge__fill\"></span></span><span class=\"ds-charge__tip\"></span>40 %</span><a class=\"ds-pill ds-pill--accent\" href=\"#\">Pedir cita<i class=\"ds-dot\"></i></a><button class=\"ds-pill\" type=\"button\">Menú<span class=\"ds-dots\"><i></i><i></i></span></button></div>",
+      "css": ".ds-bar { display: flex; gap: 0.5rem; align-items: center; padding: 1rem; background: #0a0d0c; } .ds-pill, .ds-charge { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0 1.05rem; background: #18211d; color: #eef2ee; border: 1px solid rgba(238,242,238,0.09); border-radius: 999px; font-family: 'Host Grotesk', system-ui, sans-serif; font-size: 0.9375rem; font-weight: 500; line-height: 1; text-decoration: none; cursor: pointer; transition: background-color 200ms cubic-bezier(0.23,1,0.32,1), border-color 200ms, transform 160ms; } .ds-pill:hover { background: #1c2521; border-color: rgba(238,242,238,0.18); } .ds-pill:active { transform: scale(0.97); } .ds-pill:focus-visible { outline: none; box-shadow: 0 0 0 2px #0a0d0c, 0 0 0 4px #3ddc84; } .ds-pill--accent { background: #3ddc84; color: #03140a; border-color: #3ddc84; } .ds-pill--accent:hover { background: #6be8a3; border-color: #6be8a3; } .ds-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; } .ds-dots { display: inline-grid; grid-template-columns: repeat(2, 4px); gap: 3px; } .ds-dots i { width: 4px; height: 4px; border-radius: 50%; background: currentColor; } .ds-charge { gap: 0.55rem; padding: 0 0.85rem; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-weight: 400; color: #b3bdb7; cursor: default; } .ds-charge__body { display: block; width: 2.5rem; height: 0.95rem; padding: 2px; border: 1.5px solid #8b968f; border-radius: 4px; } .ds-charge__fill { display: block; width: 40%; height: 100%; background: #3ddc84; border-radius: 1px; } .ds-charge__tip { width: 2px; height: 0.4rem; margin-left: -0.45rem; background: #8b968f; border-radius: 0 2px 2px 0; }"
+    },
+    {
+      "name": "Etiquetas de estado y Demostración",
+      "kind": "chip",
+      "refersTo": "tag-ok",
+      "description": "Estado de salud con punto de color; el chip Demostración acompaña a todo dato ficticio.",
+      "html": "<div class=\"ds-tags\"><span class=\"ds-tag ds-tag--ok\">Sana · 86 %</span><span class=\"ds-tag ds-tag--weak\">Débil · 72 %</span><span class=\"ds-tag ds-tag--bad\">Dañada</span><span class=\"ds-tag ds-tag--demo\">Demostración</span></div>",
+      "css": ".ds-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem; background: #0a0d0c; } .ds-tag { display: inline-flex; align-items: center; gap: 0.4em; padding: 0.25em 0.7em; font-family: 'Host Grotesk', system-ui, sans-serif; font-size: 0.8125rem; font-weight: 600; line-height: 1.3; border-radius: 999px; background: #18211d; color: #b3bdb7; border: 1px solid rgba(238,242,238,0.09); white-space: nowrap; } .ds-tag::before { content: ''; width: 0.55em; height: 0.55em; border-radius: 50%; background: currentColor; } .ds-tag--ok { background: rgba(61,220,132,0.12); color: #5fe39b; border-color: rgba(61,220,132,0.3); } .ds-tag--weak { background: rgba(242,169,59,0.12); color: #f6bd68; border-color: rgba(242,169,59,0.3); } .ds-tag--bad { background: rgba(255,90,78,0.12); color: #ff877d; border-color: rgba(255,90,78,0.3); } .ds-tag--demo { background: #eef2ee; color: #0a0d0c; border-color: #eef2ee; } .ds-tag--demo::before { background: #3ddc84; }"
+    },
+    {
+      "name": "Campo de texto",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo del formulario de cita: panel oscuro, borde de 1 px, foco verde.",
+      "html": "<label class=\"ds-field\"><span>Correo electrónico</span><input class=\"ds-input\" type=\"email\" placeholder=\"nombre@correo.es\"></label>",
+      "css": ".ds-field { display: grid; gap: 0.5rem; padding: 1rem; background: #0a0d0c; color: #eef2ee; font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-field > span { font-size: 0.9375rem; font-weight: 600; } .ds-input { width: 100%; min-height: 3rem; padding: 0.75rem 1rem; background: #121916; color: #eef2ee; border: 1px solid rgba(238,242,238,0.18); border-radius: 10px; font: inherit; font-size: 1.0625rem; caret-color: #5fe39b; transition: border-color 200ms cubic-bezier(0.23,1,0.32,1), box-shadow 200ms; } .ds-input::placeholder { color: #8b968f; } .ds-input:hover { border-color: #8b968f; } .ds-input:focus-visible { outline: none; border-color: #3ddc84; box-shadow: 0 0 0 3px rgba(61,220,132,0.12); } .ds-input[aria-invalid='true'] { border-color: #ff877d; }"
+    },
+    {
+      "name": "Grupo de enlaces con indicador",
+      "kind": "nav",
+      "refersTo": "pill",
+      "description": "Navegación en línea de escritorio ancho: píldora de vidrio, indicador que se desliza y punto verde en la página actual.",
+      "html": "<nav class=\"ds-links\"><ul><li><a href=\"#\">El proceso</a></li><li><a href=\"#\" aria-current=\"page\">Cómo funciona</a></li><li><a href=\"#\">La estación</a></li><li><a href=\"#\">Pasaporte</a></li></ul></nav>",
+      "css": ".ds-links { padding: 1rem; background: #0a0d0c; font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-links ul { display: inline-flex; gap: 2px; margin: 0; padding: 4px; list-style: none; background: rgba(18,25,22,0.78); border: 1px solid rgba(238,242,238,0.09); border-radius: 999px; backdrop-filter: blur(14px); } .ds-links a { position: relative; display: block; padding: 0.6rem 0.95rem; border-radius: 999px; font-size: 0.9375rem; color: #b3bdb7; text-decoration: none; transition: color 200ms cubic-bezier(0.23,1,0.32,1), background-color 320ms cubic-bezier(0.23,1,0.32,1); } .ds-links a:hover { color: #eef2ee; background: #1c2521; } .ds-links a:focus-visible { outline: none; box-shadow: 0 0 0 2px #0a0d0c, 0 0 0 4px #3ddc84; } .ds-links a[aria-current='page'] { color: #eef2ee; } .ds-links a[aria-current='page']::after { content: ''; position: absolute; left: 50%; bottom: 0.3rem; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #3ddc84; }"
+    },
+    {
+      "name": "Menú de tarjetas apiladas",
+      "kind": "card",
+      "refersTo": "menu-card",
+      "description": "Índice numerado con teclas 1–8, búsqueda con Ctrl K y nota de propuesta académica.",
+      "html": "<div class=\"ds-menu\"><div class=\"ds-card\"><p class=\"ds-card__head\"><span>Páginas</span><span>teclas 1–8</span></p><ol class=\"ds-list\"><li><a href=\"#\" aria-current=\"page\"><kbd>1</kbd><span>Inicio</span></a></li><li><a href=\"#\"><kbd>2</kbd><span>El proceso en 3D</span></a></li><li><a href=\"#\"><kbd>3</kbd><span>Cómo funciona</span></a></li></ol></div><div class=\"ds-card\"><button class=\"ds-search\" type=\"button\"><span>Buscar en la web</span><kbd>Ctrl</kbd><kbd>K</kbd></button></div><div class=\"ds-card ds-card--note\"><strong>Propuesta académica</strong>La estación aún no existe.</div></div>",
+      "css": ".ds-menu { display: grid; gap: 6px; width: 23rem; padding: 1rem; background: #0a0d0c; color: #eef2ee; font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-card { background: #121916; border: 1px solid rgba(238,242,238,0.09); border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 32px 64px -20px rgba(0,0,0,0.75); } .ds-card__head { display: flex; justify-content: space-between; margin: 0; padding: 0.9rem 1.1rem 0.4rem; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; color: #8b968f; } .ds-list { list-style: none; margin: 0; padding: 0.25rem 0.4rem 0.5rem; } .ds-list a { display: flex; align-items: center; gap: 0.9rem; padding: 0.62rem 0.7rem; border-radius: 10px; font-size: 1.0625rem; color: #eef2ee; text-decoration: none; transition: background-color 160ms cubic-bezier(0.23,1,0.32,1); } .ds-list a span { flex: 1; } .ds-list a:hover, .ds-list a:focus-visible { outline: none; background: #18211d; } .ds-list a[aria-current='page']::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; } .ds-menu kbd { display: inline-grid; place-items: center; min-width: 1.5rem; height: 1.5rem; padding: 0 0.35rem; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; color: #b3bdb7; background: #0a0d0c; border: 1px solid rgba(238,242,238,0.18); border-bottom-width: 2px; border-radius: 6px; } .ds-search { display: flex; align-items: center; gap: 0.7rem; width: 100%; padding: 0.9rem 1.1rem; background: none; border: 0; color: #b3bdb7; font: inherit; font-size: 0.9375rem; text-align: left; cursor: pointer; } .ds-search span { flex: 1; } .ds-search:hover { color: #eef2ee; } .ds-card--note { padding: 0.9rem 1.1rem; font-size: 0.8125rem; color: #8b968f; } .ds-card--note strong { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.2rem; color: #eef2ee; font-weight: 500; } .ds-card--note strong::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #f2a93b; box-shadow: 0 0 0 3px rgba(242,169,59,0.12); }"
+    },
+    {
+      "name": "HUD y etiqueta de la estación 3D",
+      "kind": "custom",
+      "refersTo": "panel-stage",
+      "description": "Escenario 3D en panel de 24 px con cruces de 1 px en las esquinas, HUD de paso en vidrio y etiqueta de estado que sigue a la batería.",
+      "html": "<div class=\"ds-stage\"><i class=\"ds-x ds-x--tl\"></i><i class=\"ds-x ds-x--tr\"></i><i class=\"ds-x ds-x--bl\"></i><i class=\"ds-x ds-x--br\"></i><span class=\"ds-battag\" data-state=\"quar\"><i></i>En cuarentena</span><div class=\"ds-hud\"><span class=\"ds-hud__n\">04 / 12</span><span>Cuarentena</span><span class=\"ds-hud__bar\"><i></i></span></div></div>",
+      "css": ".ds-stage { position: relative; height: 18rem; background: #0e1311; border: 1px solid rgba(238,242,238,0.09); border-radius: 24px; overflow: hidden; font-family: 'Host Grotesk', system-ui, sans-serif; color: #eef2ee; } .ds-x { position: absolute; width: 14px; height: 14px; } .ds-x::before, .ds-x::after { content: ''; position: absolute; background: #8b968f; } .ds-x::before { left: 6px; top: 0; width: 1px; height: 14px; } .ds-x::after { top: 6px; left: 0; width: 14px; height: 1px; } .ds-x--tl { top: 14px; left: 14px; } .ds-x--tr { top: 14px; right: 14px; } .ds-x--bl { bottom: 14px; left: 14px; } .ds-x--br { bottom: 14px; right: 14px; } .ds-battag { position: absolute; left: 40%; top: 40%; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.75rem 0.4rem 0.55rem; font-size: 0.8125rem; background: rgba(16,22,19,0.88); border: 1px solid rgba(238,242,238,0.18); border-radius: 999px; } .ds-battag i { width: 8px; height: 8px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 3px rgba(61,220,132,0.12); } .ds-battag[data-state='quar'] i { background: #f2a93b; box-shadow: 0 0 0 3px rgba(242,169,59,0.12); } .ds-hud { position: absolute; right: 1.5rem; bottom: 1.5rem; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0.5rem 1rem; min-width: 16rem; padding: 0.85rem 1.1rem; background: rgba(16,22,19,0.82); border: 1px solid rgba(238,242,238,0.09); border-radius: 16px; backdrop-filter: blur(12px); font-size: 0.9375rem; } .ds-hud__n { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; color: #5fe39b; } .ds-hud__bar { grid-column: 1 / -1; height: 2px; background: #25302b; border-radius: 2px; overflow: hidden; } .ds-hud__bar i { display: block; width: 33%; height: 100%; background: #3ddc84; }"
+    },
+    {
+      "name": "Marcas de procedencia y rutas",
+      "kind": "custom",
+      "refersTo": "panel",
+      "description": "Leyenda: cuadrado relleno = documento del proyecto, contorno = práctica del sector; trazos de ruta por destino.",
+      "html": "<ul class=\"ds-legend\"><li><i class=\"ds-mark ds-mark--doc\"></i>Documento del proyecto</li><li><i class=\"ds-mark ds-mark--sector\"></i>Práctica del sector</li><li><i class=\"ds-line\"></i>Segunda vida</li><li><i class=\"ds-line ds-line--dash\"></i>Reparación</li><li><i class=\"ds-line ds-line--dot\"></i>Reciclaje</li></ul>",
+      "css": ".ds-legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 1rem; list-style: none; background: #0a0d0c; font-family: 'Host Grotesk', system-ui, sans-serif; font-size: 0.8125rem; color: #b3bdb7; } .ds-legend li { display: flex; align-items: center; gap: 0.5rem; } .ds-mark { width: 0.7rem; height: 0.7rem; border-radius: 2px; flex: none; } .ds-mark--doc { background: #eef2ee; } .ds-mark--sector { border: 1.5px solid #b3bdb7; } .ds-line { width: 1.6rem; flex: none; border-top: 3px solid #3ddc84; } .ds-line--dash { border-top-style: dashed; border-top-color: #f2a93b; } .ds-line--dot { border-top-style: dotted; border-top-color: #ff5a4e; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La planta de noche",
+    "overview": "Una nave de barrio vista de noche, con las luces de trabajo encendidas: fondo casi negro con un matiz verde, paneles un punto más claros, texto claro y un único verde eléctrico que marca la acción, la ruta de la batería y el estado sano. Es el canon de la categoría cleantech, elegido por el usuario, ejecutado con el listón de un estudio 3D (Lusion): la pieza central no es una foto con velo sino la estación construida en Three.js en tiempo real, que la cámara recorre con el scroll siguiendo a una batería desde la furgoneta hasta su destino.\n\nLa densidad es baja y la escala alta. Los titulares son grandes, ligeros y de interletraje cerrado; los datos, el HUD, las teclas y los códigos van en monoespaciada pequeña. Todo lo interactivo es píldora, todo lo que contiene es panel redondeado, y las reglas de 1 px llevan cruces de registro en sus extremos, como un plano de montaje. El ámbar y el rojo existen solo para seguridad y daño; nunca decoran.\n\nLa honestidad es visible: cada afirmación lleva su procedencia (cuadrado relleno = documento del proyecto, cuadrado en contorno = práctica del sector), los datos ficticios llevan el chip «Demostración» y cada imagen o modelo lleva «Imagen ilustrativa» o «Modelo 3D ilustrativo». El plano en papel claro del mundo anterior está descartado.",
+    "keyCharacteristics": [
+      "Fondo noche de planta y capas tonales en vez de sombras para separar planos.",
+      "Un solo acento: verde eléctrico; ámbar y rojo reservados a seguridad y daño.",
+      "Host Grotesk ligera a gran tamaño; JetBrains Mono solo para datos, HUD, teclas y códigos.",
+      "Píldoras para acciones, paneles de 16–24 px, cruces sobre reglas de 1 px.",
+      "Firma 3D en tiempo real (estación y pack) con postproceso cinematográfico y renders fijos como respaldo.",
+      "Marcas de procedencia y de demostración siempre presentes."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "El verde eléctrico es el único acento. Si algo es verde, es acción, ruta o estado sano; nunca un adorno.", "section": "colors" },
+      { "name": "The Safety Color Rule", "body": "Ámbar y rojo solo aparecen para seguridad, cuarentena, alta tensión, daño y error, en la interfaz y en el 3D. Un ámbar decorativo apaga la señal cuando hace falta.", "section": "colors" },
+      { "name": "The Dark Text On Green Rule", "body": "Todo texto sobre verde es Tinta de cierre (on-accent). El blanco sobre verde eléctrico no alcanza contraste.", "section": "colors" },
+      { "name": "The Light At Scale Rule", "body": "Cuanto más grande el texto, más ligero (300–400) y más cerrado el interletraje. Nada de negritas en titulares.", "section": "typography" },
+      { "name": "The Mono Is Data Rule", "body": "JetBrains Mono solo para cifras, HUD, teclas y códigos. Nunca para titulares, párrafos ni etiquetas de sección decorativas.", "section": "typography" },
+      { "name": "The Tonal Layer Rule", "body": "En la interfaz, la profundidad es tono y borde de 1 px; la sombra solo para lo que flota sobre el contenido.", "section": "elevation" },
+      { "name": "The Only Emitters Glow Rule", "body": "El bloom tiene umbral alto: brillan LED, pantallas y rutas. Si brilla una superficie pintada, la luz está mal.", "section": "elevation" },
+      { "name": "The Normative Color Rule", "body": "En el 3D, el color de las piezas sigue al objeto real (cableado HV naranja, etiqueta clase 9, chalecos y cascos de seguridad); el verde de marca solo entra como luz, LED, ruta y rótulo.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do usar el Verde eléctrico solo para acción, ruta activa y estado sano, con texto Tinta de cierre encima.",
+      "Do separar planos con capas tonales (paper, paper-2, white, white-2) y bordes de 1 px; sombra solo en lo que flota.",
+      "Do componer titulares en Host Grotesk 300–400 con interletraje entre -0.025em y -0.05em.",
+      "Do poner cifras, HUD, teclas y códigos en JetBrains Mono con cifras tabulares.",
+      "Do dar a cada acción forma de píldora y a cada contenedor 16 o 24 px de radio.",
+      "Do marcar la procedencia: cuadrado relleno para documento del proyecto, cuadrado en contorno para práctica del sector.",
+      "Do acompañar cualquier dato ficticio con el chip «Demostración» y cada imagen o modelo con «Imagen ilustrativa» o «Modelo 3D ilustrativo».",
+      "Do enmarcar el 3D en paneles redondeados con cruces de 1 px en las esquinas y dar un render fijo o el plano 2D como respaldo.",
+      "Do mantener el bloom con umbral alto y los materiales físicos con rugosidad procedural; el verde de marca entra en el 3D como luz, LED y ruta."
+    ],
+    "donts": [
+      "Don't usar ámbar o rojo para decorar, destacar o variar: son seguridad y daño.",
+      "Don't volver al plano técnico en papel claro, a Geist ni al verde #2c6a4d del mundo descartado.",
+      "Don't poner un hero de foto con velo; el hero es el pack en 3D o su render.",
+      "Don't usar la monoespaciada para titulares, párrafos o etiquetas de sección.",
+      "Don't poner texto blanco sobre el verde eléctrico.",
+      "Don't usar sombras duras sin desenfoque ni bloques planos desplazados.",
+      "Don't usar botones rectangulares ni paneles de esquina viva.",
+      "Don't mostrar 3D, scroll suave ni fijado con `prefers-reduced-motion: reduce`."
+    ]
+  }
+}

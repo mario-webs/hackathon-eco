@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El proyecto · Estación SegundaVida</title>
+  <meta name="description" content="Grupos de interés, financiación, riesgos, preguntas frecuentes y fuentes del proyecto.">
+  <meta name="theme-color" content="#0a0d0c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    document.documentElement.classList.add("js");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("motion");
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/proyecto.css">
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/scroll.js"></script>
+  <script defer src="js/pages/proyecto.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header" data-header>
+    <div class="site-header__bar">
+      <a class="brand" href="index.html" aria-label="Estación SegundaVida, inicio"><svg class="brand__mark" viewBox="0 0 38 22" aria-hidden="true" focusable="false"><rect x="1" y="1" width="32" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="34" y="7" width="3" height="8" rx="1" fill="currentColor"/><rect x="4.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="11.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="18.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="25.5" y="4.5" width="4.5" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity=".6"/></svg><span class="brand__name"><small>Estación</small>SegundaVida</span></a>
+      <nav class="site-links" aria-label="Secciones">
+        <ul>
+          <li><a href="index.html#proceso">El proceso</a></li>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="la-estacion.html">La estación</a></li>
+          <li><a href="pasaporte.html">Pasaporte</a></li>
+          <li><a href="impacto.html">Impacto</a></li>
+          <li><a href="proyecto.html" aria-current="page">Proyecto</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__end">
+        <span class="charge" title="Progreso de lectura" aria-hidden="true"><span class="charge__body"><span class="charge__fill"></span></span><span class="charge__tip"></span><span class="charge__n" data-charge-n>0 %</span></span>
+        <a class="pill pill--accent" href="cita.html"><span class="pill__long">Pedir cita</span><span class="pill__short">Cita</span><i class="pill__dot" aria-hidden="true"></i></a>
+        <button class="pill menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menú<span class="pill__dots" aria-hidden="true"><i></i><i></i></span></button>
+      </div>
+    </div>
+    <nav class="site-menu" id="site-menu" aria-label="Principal">
+      <div class="menu-card" style="--i:0">
+        <p class="menu-card__head"><span>Páginas</span><span>teclas 1–8</span></p>
+        <ol class="menu-list">
+          <li><a href="index.html"><kbd>1</kbd><span>Inicio</span></a></li>
+          <li><a href="index.html#proceso"><kbd>2</kbd><span>El proceso en 3D</span></a></li>
+          <li><a href="como-funciona.html"><kbd>3</kbd><span>Cómo funciona</span></a></li>
+          <li><a href="la-estacion.html"><kbd>4</kbd><span>La estación</span></a></li>
+          <li><a href="pasaporte.html"><kbd>5</kbd><span>Pasaporte de batería</span></a></li>
+          <li><a href="impacto.html"><kbd>6</kbd><span>Impacto</span></a></li>
+          <li><a href="proyecto.html" aria-current="page"><kbd>7</kbd><span>El proyecto</span></a></li>
+          <li><a href="cita.html"><kbd>8</kbd><span>Pedir cita</span></a></li>
+        </ol>
+      </div>
+      <div class="menu-card menu-card--search" style="--i:1">
+        <button class="menu-search" type="button" data-palette-open><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><span>Buscar en la web</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+      </div>
+      <div class="menu-card menu-card--note" style="--i:2">
+        <strong>Propuesta académica</strong>
+        JOYFE Centro Profesional · La estación aún no existe.
+      </div>
+    </nav>
+  </header>
+  <dialog class="palette" id="palette" aria-label="Buscar en la web">
+    <form method="dialog" class="palette__box">
+      <div class="palette__field"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><input type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Buscar páginas y secciones" placeholder="Buscar páginas y secciones…" autocomplete="off" spellcheck="false" data-palette-input><kbd>Esc</kbd></div>
+      <ul class="palette__list" id="palette-list" role="listbox" aria-label="Resultados" data-palette-list></ul>
+      <p class="palette__foot" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> moverse</span><span><kbd>↵</kbd> abrir</span><span><kbd>Esc</kbd> cerrar</span></p>
+    </form>
+  </dialog>
+
+  <main id="main" tabindex="-1">
+    <header class="page-hero">
+      <div class="container page-hero__grid">
+        <div>
+          <h1>El proyecto, por dentro</h1>
+          <p class="lead">Quién participa, cómo se financia, qué puede salir mal y cómo se resolvería. La estación funciona porque a casi todos los implicados les conviene.</p>
+        </div>
+        <nav class="toc" aria-label="En esta página">
+          <ul>
+            <li><a href="#grupos">Grupos de interés</a></li>
+            <li><a href="#financiacion">Financiación</a></li>
+            <li><a href="#riesgos">Riesgos</a></li>
+            <li><a href="#preguntas">Preguntas</a></li>
+            <li><a href="#fuentes">Fuentes</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="section" id="grupos" aria-labelledby="grupos-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="grupos-title">Grupos de interés</h2>
+          <p class="lead">Qué aporta y qué gana cada uno.</p>
+        </div>
+
+        <div class="filter" data-filter hidden>
+          <label for="filtro-grupos" class="filter__label">Filtrar grupos</label>
+          <div class="filter__row">
+            <input class="input filter__input" id="filtro-grupos" type="search" placeholder="Escribe, por ejemplo: taller, energía, FP…" autocomplete="off" aria-describedby="filtro-estado">
+            <p class="filter__status" id="filtro-estado" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table table--stack stake-table" data-filter-table>
+            <caption class="visually-hidden">Grupos de interés: qué aporta y qué gana cada uno</caption>
+            <thead><tr><th scope="col">Grupo de interés</th><th scope="col">Qué aporta</th><th scope="col">Qué gana</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Ciudadanos con coche, moto, bici o patinete eléctrico</th><td data-label="Qué aporta">Traen las baterías</td><td data-label="Qué gana">Un sitio cercano y seguro donde dejarlas y saber qué pasa con ellas</td></tr>
+              <tr><th scope="row">Talleres y concesionarios</th><td data-label="Qué aporta">Envían las baterías que retiran</td><td data-label="Qué gana">Se quitan un residuo peligroso sin tener que gestionarlo ellos</td></tr>
+              <tr><th scope="row">Fabricantes de vehículos y baterías</th><td data-label="Qué aporta">Datos del pasaporte y acuerdos de recogida</td><td data-label="Qué gana">Cumplir sus obligaciones de recogida y reciclaje</td></tr>
+              <tr><th scope="row">Empresas de reparto con bicis y patinetes</th><td data-label="Qué aporta">Flota con muchas baterías</td><td data-label="Qué gana">Reparaciones más baratas que comprar baterías nuevas</td></tr>
+              <tr><th scope="row">Comunidades de vecinos, comercios y colegios</th><td data-label="Qué aporta">Compran o alquilan armarios de segunda vida</td><td data-label="Qué gana">Almacenamiento de energía más barato que uno nuevo</td></tr>
+              <tr><th scope="row">Ayuntamiento</th><td data-label="Qué aporta">Suelo, permisos, posibles ayudas</td><td data-label="Qué gana">Menos residuos peligrosos y empleo local</td></tr>
+              <tr><th scope="row">Plantas de reciclaje</th><td data-label="Qué aporta">Reciben las baterías que no sirven</td><td data-label="Qué gana">Material clasificado y bien preparado</td></tr>
+              <tr><th scope="row">Trabajadores de la estación</th><td data-label="Qué aporta">Su trabajo</td><td data-label="Qué gana">Empleo cualificado y formación en un sector con futuro</td></tr>
+              <tr><th scope="row">Centros de FP</th><td data-label="Qué aporta">Alumnos en prácticas</td><td data-label="Qué gana">Formación real en una tecnología nueva</td></tr>
+              <tr><th scope="row">Vecinos de la zona</th><td data-label="Qué aporta">Pueden preocuparse por el riesgo de incendio</td><td data-label="Qué gana">Seguridad garantizada e información transparente</td></tr>
+            </tbody>
+          </table>
+          <p class="filter__empty" data-filter-empty hidden>Ningún grupo coincide con la búsqueda.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="financiacion" aria-labelledby="fin-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="fin-title">Cómo se financia</h2>
+          <p class="lead">La estación gana dinero sobre todo dando segundas vidas a las baterías. La recogida para talleres y concesionarios también se cobra.</p>
+        </div>
+
+        <div class="money">
+          <div class="money__col" data-reveal>
+            <h3>Ingresos</h3>
+            <ol class="money__list">
+              <li class="money__main">Venta o alquiler de armarios de segunda vida a comunidades de vecinos, comercios y colegios. <span class="tag tag--ok">Fuente principal</span></li>
+              <li>Reparación de baterías de bicis, patinetes y motos, sobre todo para empresas de reparto.</li>
+              <li>Servicio de recogida para talleres y concesionarios, con cuota por batería o por contrato.</li>
+              <li>Acuerdos con fabricantes que necesitan cumplir sus obligaciones de recogida.</li>
+              <li>Venta del material clasificado a las plantas de reciclaje.</li>
+              <li>Ayudas públicas para economía circular y empleo verde, sobre todo al arrancar.</li>
+            </ol>
+          </div>
+          <div class="money__col" data-reveal style="--i:1">
+            <h3>Gastos principales</h3>
+            <ul class="money__list">
+              <li>Alquiler de la nave y adaptación de seguridad.</li>
+              <li>Equipos de diagnóstico y herramientas de alta tensión.</li>
+              <li>Sueldos y formación del personal.</li>
+              <li>Seguros, permisos y licencia de gestor de residuos.</li>
+              <li>Transporte homologado de baterías hacia reciclaje.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="money__notes">
+          <p class="notice" data-reveal>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 22V7M12 7H8a2.5 2.5 0 1 1 0-5c3 0 4 5 4 5zm0 0h4a2.5 2.5 0 1 0 0-5c-3 0-4 5-4 5z"/></svg>
+            <span><strong>Gratis para el ciudadano</strong>Así se anima a la gente a traer sus baterías en lugar de tirarlas.</span>
+          </p>
+          <p class="notice" data-reveal style="--i:1">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+            <span><strong>Sin cifras concretas</strong>Dependen de la ciudad y del mercado. Se pueden estimar como ejercicio aparte.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="riesgos" aria-labelledby="riesgos-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="riesgos-title">Riesgos y soluciones</h2>
+          <p class="lead">Reconocer los puntos débiles da seriedad al proyecto. Estos son los cinco principales.</p>
+        </div>
+        <div class="table-wrap" data-reveal>
+          <table class="table table--stack risk-table">
+            <caption class="visually-hidden">Riesgos, por qué preocupan y solución propuesta</caption>
+            <thead><tr><th scope="col">Riesgo</th><th scope="col">Por qué preocupa</th><th scope="col">Solución</th></tr></thead>
+            <tbody>
+              <tr class="risk--fire"><th scope="row">Incendio de una batería</th><td data-label="Por qué preocupa">El litio dañado puede arder y es difícil de apagar</td><td data-label="Solución">Zona de cuarentena, detección de temperatura, extinción específica y personal formado</td></tr>
+              <tr><th scope="row">Al principio llegan pocas baterías</th><td data-label="Por qué preocupa">La ola de baterías gastadas todavía está empezando</td><td data-label="Solución">Empezar por bicis y patinetes, que se gastan antes, y firmar acuerdos con talleres y empresas de reparto</td></tr>
+              <tr><th scope="row">Desconfianza en las baterías de segunda vida</th><td data-label="Por qué preocupa">El cliente teme que fallen</td><td data-label="Solución">Informe de diagnóstico, garantía y pasaporte nuevo con los datos del estado</td></tr>
+              <tr><th scope="row">Baterías antiguas sin pasaporte</th><td data-label="Por qué preocupa">El pasaporte solo es obligatorio desde 2027</td><td data-label="Solución">Diagnóstico propio en el laboratorio para las baterías anteriores</td></tr>
+              <tr><th scope="row">Rechazo de los vecinos</th><td data-label="Por qué preocupa">Miedo a tener baterías almacenadas cerca</td><td data-label="Solución">Ubicación en polígono, normas de seguridad públicas y jornadas de puertas abiertas</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="limit" aria-labelledby="limite-title" data-reveal>
+          <h3 id="limite-title">Límite del proyecto</h3>
+          <p>Es una propuesta: no se ha probado en la realidad y las cifras de los objetivos son estimaciones. El siguiente paso sería hablar con un taller o un punto limpio para validar cuántas baterías llegan hoy.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="preguntas" aria-labelledby="faq-title">
+      <div class="container faq">
+        <div class="stack">
+          <h2 id="faq-title">Preguntas frecuentes</h2>
+          <p class="lead">Dudas que suelen aparecer al presentar la idea.</p>
+        </div>
+        <div class="accordion">
+          <details>
+            <summary>¿Esto ya existe?<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <div class="accordion__body"><p>A nivel industrial sí, entre fabricantes. Lo nuevo es hacerlo cercano, para ciudadanos y pequeños talleres, y aprovechar el pasaporte de 2027.</p></div>
+          </details>
+          <details>
+            <summary>¿No es peligroso?<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <div class="accordion__body"><p>Sí. Por eso la seguridad es el primer apartado del diseño: cuarentena, detección y personal formado.</p></div>
+          </details>
+          <details>
+            <summary>¿De dónde sale el dinero?<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <div class="accordion__body"><p>Sobre todo de vender segundas vidas y reparaciones. La recogida para talleres y concesionarios también aporta.</p></div>
+          </details>
+          <details>
+            <summary>¿Por qué no reciclarlas directamente?<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <div class="accordion__body"><p>Porque reciclar gasta energía y desperdicia la vida que le queda a la batería. Reutilizar va antes en las 4R.</p></div>
+          </details>
+          <details>
+            <summary>¿Cómo sabréis si funciona?<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <div class="accordion__body"><p>Con los indicadores: el porcentaje de baterías con segunda vida, los incidentes de seguridad y la cobertura de costes. Están en la página de <a href="impacto.html">impacto</a>.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fuentes" aria-labelledby="fuentes-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="fuentes-title">Fuentes</h2>
+        </div>
+        <ul class="sources">
+          <li><span>Apuntes de clase</span>JOYFE Centro Profesional: Sostenibilidad aplicada al sistema productivo (PDF de clase)</li>
+          <li><span>Smartgrids Info</span><a href="https://www.smartgridsinfo.es/2023/07/12/consejo-europeo-aprueba-reglamento-sostenibilidad-economia-circular-baterias" rel="noopener">Reglamento europeo de baterías: objetivos de recogida y recuperación de litio</a></li>
+          <li><span>Energías Renovables</span><a href="https://www.energias-renovables.com/almacenamiento/pasaporte-digital-para-las-bater-as-nueva-20250920/" rel="noopener">Pasaporte digital de baterías obligatorio desde 2027</a></li>
+          <li><span>Repsol</span><a href="https://www.repsol.es/particulares/asesoramiento-consumo/pasaporte-bateria-coche-electrico/" rel="noopener">Pasaporte de batería para coche eléctrico</a></li>
+          <li><span>EVKX</span><a href="https://evkx.net/es/dictionary/battery-passport" rel="noopener">Pasaporte de batería: definición y segunda vida</a></li>
+          <li><span>Cuatrecasas</span><a href="https://www.cuatrecasas.com/es/spain/publico/art/reglamento-union-europea-pilas-baterias" rel="noopener">Nuevo Reglamento de la UE para pilas y baterías</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="brand" href="index.html" aria-label="Estación SegundaVida, inicio"><svg class="brand__mark" viewBox="0 0 38 22" aria-hidden="true" focusable="false"><rect x="1" y="1" width="32" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="34" y="7" width="3" height="8" rx="1" fill="currentColor"/><rect x="4.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="11.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="18.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="25.5" y="4.5" width="4.5" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity=".6"/></svg><span class="brand__name"><small>Estación</small>SegundaVida</span></a>
+          <p class="site-footer__note">Proyecto académico de JOYFE Centro Profesional, módulo de Sostenibilidad aplicada al sistema productivo. Es una propuesta: no se ha probado en la realidad.</p>
+        </div>
+        <nav aria-label="Páginas del sitio">
+          <h2>Páginas</h2>
+          <ul class="list">
+            <li><a href="como-funciona.html">Cómo funciona</a></li>
+            <li><a href="la-estacion.html">La estación</a></li>
+            <li><a href="pasaporte.html">Pasaporte de batería</a></li>
+            <li><a href="impacto.html">Impacto</a></li>
+            <li><a href="proyecto.html">El proyecto</a></li>
+            <li><a href="cita.html">Pedir cita</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Fuentes</h2>
+          <ul class="list">
+            <li><a href="https://www.smartgridsinfo.es/2023/07/12/consejo-europeo-aprueba-reglamento-sostenibilidad-economia-circular-baterias" rel="noopener">Smartgrids Info · Reglamento europeo de baterías</a></li>
+            <li><a href="https://www.energias-renovables.com/almacenamiento/pasaporte-digital-para-las-bater-as-nueva-20250920/" rel="noopener">Energías Renovables · Pasaporte digital desde 2027</a></li>
+            <li><a href="https://www.repsol.es/particulares/asesoramiento-consumo/pasaporte-bateria-coche-electrico/" rel="noopener">Repsol · Pasaporte de batería</a></li>
+            <li><a href="https://evkx.net/es/dictionary/battery-passport" rel="noopener">EVKX · Pasaporte y segunda vida</a></li>
+            <li><a href="https://www.cuatrecasas.com/es/spain/publico/art/reglamento-union-europea-pilas-baterias" rel="noopener">Cuatrecasas · Reglamento UE de pilas y baterías</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>Las cifras de objetivos son estimaciones para el primer año. Los contadores y fichas marcados como demostración usan datos ficticios.</p>
+        <p>Estación SegundaVida · 2026</p>
+      </div>
+    </div>
+    <p class="site-footer__word" aria-hidden="true">Segunda<span>Vida</span></p>
+  </footer>
+</body>
+</html>

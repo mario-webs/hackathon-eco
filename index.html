@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estación SegundaVida · Segunda vida para baterías</title>
+  <meta name="description" content="Estación de barrio que diagnostica baterías de coches, motos, bicis y patinetes eléctricos y decide su destino: reutilizar, reparar o reciclar.">
+  <meta name="theme-color" content="#0a0d0c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    document.documentElement.classList.add("js");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("motion");
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/index.css">
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/scroll.js"></script>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+  <script type="module" src="js/3d/hero.js"></script>
+  <script type="module" src="js/3d/station.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header" data-header>
+    <div class="site-header__bar">
+      <a class="brand" href="index.html" aria-label="Estación SegundaVida, inicio"><svg class="brand__mark" viewBox="0 0 38 22" aria-hidden="true" focusable="false"><rect x="1" y="1" width="32" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="34" y="7" width="3" height="8" rx="1" fill="currentColor"/><rect x="4.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="11.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="18.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="25.5" y="4.5" width="4.5" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity=".6"/></svg><span class="brand__name"><small>Estación</small>SegundaVida</span></a>
+      <nav class="site-links" aria-label="Secciones">
+        <ul>
+          <li><a href="index.html#proceso">El proceso</a></li>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="la-estacion.html">La estación</a></li>
+          <li><a href="pasaporte.html">Pasaporte</a></li>
+          <li><a href="impacto.html">Impacto</a></li>
+          <li><a href="proyecto.html">Proyecto</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__end">
+        <span class="charge" title="Progreso de lectura" aria-hidden="true"><span class="charge__body"><span class="charge__fill"></span></span><span class="charge__tip"></span><span class="charge__n" data-charge-n>0 %</span></span>
+        <a class="pill pill--accent" href="cita.html"><span class="pill__long">Pedir cita</span><span class="pill__short">Cita</span><i class="pill__dot" aria-hidden="true"></i></a>
+        <button class="pill menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menú<span class="pill__dots" aria-hidden="true"><i></i><i></i></span></button>
+      </div>
+    </div>
+    <nav class="site-menu" id="site-menu" aria-label="Principal">
+      <div class="menu-card" style="--i:0">
+        <p class="menu-card__head"><span>Páginas</span><span>teclas 1–8</span></p>
+        <ol class="menu-list">
+          <li><a href="index.html" aria-current="page"><kbd>1</kbd><span>Inicio</span></a></li>
+          <li><a href="index.html#proceso"><kbd>2</kbd><span>El proceso en 3D</span></a></li>
+          <li><a href="como-funciona.html"><kbd>3</kbd><span>Cómo funciona</span></a></li>
+          <li><a href="la-estacion.html"><kbd>4</kbd><span>La estación</span></a></li>
+          <li><a href="pasaporte.html"><kbd>5</kbd><span>Pasaporte de batería</span></a></li>
+          <li><a href="impacto.html"><kbd>6</kbd><span>Impacto</span></a></li>
+          <li><a href="proyecto.html"><kbd>7</kbd><span>El proyecto</span></a></li>
+          <li><a href="cita.html"><kbd>8</kbd><span>Pedir cita</span></a></li>
+        </ol>
+      </div>
+      <div class="menu-card menu-card--search" style="--i:1">
+        <button class="menu-search" type="button" data-palette-open><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><span>Buscar en la web</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+      </div>
+      <div class="menu-card menu-card--note" style="--i:2">
+        <strong>Propuesta académica</strong>
+        JOYFE Centro Profesional · La estación aún no existe.
+      </div>
+    </nav>
+  </header>
+  <dialog class="palette" id="palette" aria-label="Buscar en la web">
+    <form method="dialog" class="palette__box">
+      <div class="palette__field"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><input type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Buscar páginas y secciones" placeholder="Buscar páginas y secciones…" autocomplete="off" spellcheck="false" data-palette-input><kbd>Esc</kbd></div>
+      <ul class="palette__list" id="palette-list" role="listbox" aria-label="Resultados" data-palette-list></ul>
+      <p class="palette__foot" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> moverse</span><span><kbd>↵</kbd> abrir</span><span><kbd>Esc</kbd> cerrar</span></p>
+    </form>
+  </dialog>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__panel" data-hero-3d>
+        <img class="hero__img" src="assets/img/hero-pack.jpg" alt="Pack de batería de tracción abierto: módulos, pletinas de cobre y cableado naranja de alta tensión" width="1503" height="830" fetchpriority="high">
+        <span class="callout callout--left" data-callout="0.87 0.09 -0.3" aria-hidden="true"><i></i>Conector de alta tensión</span>
+        <span class="callout" data-callout="-0.36 0.17 -0.39" aria-hidden="true"><i></i>Módulo</span>
+        <span class="callout callout--left" data-callout="0.72 0.09 0.2" aria-hidden="true"><i></i>Sistema de gestión (BMS)</span>
+        <div class="hero__copy">
+          <h1 id="hero-title">Una batería que ya no vale para mover un coche todavía puede guardar energía durante años.</h1>
+          <div class="hero__side">
+            <p class="lead">Estación SegundaVida es un punto de barrio donde se deja la batería gastada de un coche, una moto, una bici o un patinete. Se lee su pasaporte digital, se mide su estado de salud y se decide su destino: reutilizar, reparar o reciclar.</p>
+            <div class="btn-row">
+              <a class="btn btn--charge" href="cita.html">Pedir cita
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--ghost" href="#proceso">Recorrer la estación</a>
+            </div>
+          </div>
+        </div>
+        <p class="hero__caption"><span>Pack de batería de tracción · modelo 3D ilustrativo</span></p>
+      </div>
+      <div class="rule-marks" aria-hidden="true"><i>+</i><i>+</i><span>Baja para recorrer la estación</span><i>+</i><i>+</i></div>
+      <p class="hero__note container">Propuesta académica de JOYFE Centro Profesional. La estación aún no existe.</p>
+    </section>
+    <section class="section why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="why__head">
+          <h2 id="why-title">Por qué hará falta</h2>
+          <p class="lead">Cada vez hay más vehículos eléctricos y sus baterías no duran para siempre. Dentro de unos años habrá una ola de baterías gastadas y hoy casi no hay sitios cercanos donde dejarlas ni donde aprovecharlas.</p>
+        </div>
+        <ol class="why__list">
+          <li data-reveal>
+            <h3>Pierden capacidad, pero no mueren</h3>
+            <p>Cuando ya no dan autonomía suficiente para un coche, todavía pueden almacenar mucha energía. Reciclarlas directamente desperdicia esa vida útil.</p>
+          </li>
+          <li data-reveal style="--i:1">
+            <h3>Son peligrosas si se gestionan mal</h3>
+            <p>Una batería de litio dañada puede calentarse e incendiarse. No puede ir a la basura ni a cualquier contenedor.</p>
+          </li>
+          <li data-reveal style="--i:2">
+            <h3>Llevan materiales escasos</h3>
+            <p>Litio, cobalto, níquel y cobre. Conviene mantenerlos en uso el mayor tiempo posible.</p>
+          </li>
+          <li data-reveal style="--i:3">
+            <h3>Europa ya obliga a cambiar</h3>
+            <p>Desde el 18 de febrero de 2027, las baterías de coche eléctrico y de vehículo ligero de más de 2&nbsp;kWh necesitan un pasaporte digital con código QR. <a href="pasaporte.html">Ver el reglamento</a>.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- La estación en 3D: el escenario queda fijo y la cámara la recorre con el scroll -->
+    <section class="station" id="proceso" aria-labelledby="proceso-title">
+      <div class="container station__head">
+        <h2 id="proceso-title">El proceso, paso a paso</h2>
+        <div class="station__intro">
+          <p class="lead">Así recorre la estación una batería, desde que llega en furgoneta hasta que sale por uno de sus tres destinos. Baja para seguirla: cada parada explica qué se hace, quién lo hace y adónde va después.</p>
+          <ul class="legend" aria-label="Leyenda">
+            <li><i class="legend__mark legend__mark--doc" aria-hidden="true"></i>Acción descrita en el proyecto</li>
+            <li><i class="legend__mark legend__mark--sector" aria-hidden="true"></i>Práctica habitual del sector</li>
+            <li><i class="legend__line" aria-hidden="true"></i>Ruta principal y reutilizar</li>
+            <li><i class="legend__line legend__line--dash" aria-hidden="true"></i>Cuarentena y reparar</li>
+            <li><i class="legend__line legend__line--dot" aria-hidden="true"></i>Reciclar</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="station__body" data-station>
+        <div class="station__track">
+          <div class="station__stage">
+            <figure class="station__fallback">
+              <svg class="plan" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="plan-t plan-d" data-map><title id="plan-t">Plano de la Estación SegundaVida</title><desc id="plan-d">Planta esquemática de una nave con siete zonas: recepción, cuarentena, laboratorio de diagnóstico, taller de reparación, taller de segunda vida, almacén de salida y zona de demostración, unidas por un pasillo central. Esquema orientativo, sin escala.</desc><defs><pattern id="hatch-fire" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" class="hatch-fire"/></pattern><pattern id="hatch-un" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="6" class="hatch-un"/></pattern><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" class="grid"/></pattern><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="arr"/></marker></defs><rect x="0" y="0" width="1600" height="1000" fill="url(#grid)"/><rect class="road" x="40" y="880" width="1540" height="100"/><line class="road-mark" x1="60" y1="930" x2="1560" y2="930"/><text class="lbl-ext" x="60" y="905">Vial de acceso · polígono</text><rect class="corridor" x="160" y="430" width="1280" height="120"/><text class="lbl-corr" x="176" y="538">Pasillo de circulación</text><g class="room room--cuarentena" data-zone="cuarentena"><rect class="room__floor" x="160" y="120" width="260" height="310"/><text class="room__code" x="176" y="146">Z2</text><text class="room__name" x="176" y="168">Cuarentena</text></g><g class="room room--laboratorio" data-zone="laboratorio"><rect class="room__floor" x="420" y="120" width="380" height="310"/><text class="room__code" x="436" y="146">Z3</text><text class="room__name" x="436" y="168">Laboratorio de diagnóstico</text></g><g class="room room--reparacion" data-zone="reparacion"><rect class="room__floor" x="800" y="120" width="300" height="310"/><text class="room__code" x="816" y="146">Z4</text><text class="room__name" x="816" y="168">Taller de reparación</text></g><g class="room room--segunda-vida" data-zone="segunda-vida"><rect class="room__floor" x="1100" y="120" width="340" height="310"/><text class="room__code" x="1116" y="146">Z5</text><text class="room__name" x="1116" y="168">Taller de segunda vida</text></g><g class="room room--recepcion" data-zone="recepcion"><rect class="room__floor" x="160" y="550" width="400" height="290"/><text class="room__code" x="176" y="576">Z1</text><text class="room__name" x="176" y="598">Recepción</text></g><g class="room room--demo" data-zone="demo"><rect class="room__floor" x="560" y="550" width="320" height="290"/><text class="room__code" x="576" y="576">Z7</text><text class="room__name" x="576" y="598">Zona de demostración</text></g><g class="room room--almacen" data-zone="almacen"><rect class="room__floor" x="880" y="550" width="560" height="290"/><text class="room__code" x="896" y="576">Z6</text><text class="room__name" x="896" y="598">Almacén de salida</text></g><g class="walls"><rect class="wall-out" x="160" y="120" width="1280" height="720"/><line class="wall-in" x1="420" y1="120" x2="420" y2="430"/><line class="wall-in" x1="800" y1="120" x2="800" y2="430"/><line class="wall-in" x1="1100" y1="120" x2="1100" y2="430"/><line class="wall-in" x1="560" y1="550" x2="560" y2="840"/><line class="wall-in" x1="880" y1="550" x2="880" y2="840"/><line class="wall-in" x1="160" y1="430" x2="1440" y2="430"/><line class="wall-in" x1="160" y1="550" x2="1440" y2="550"/></g><rect class="fire-band" x="408" y="120" width="12" height="310" fill="url(#hatch-fire)"/><rect class="fire-band" x="160" y="418" width="260" height="12" fill="url(#hatch-fire)"/><text class="lbl-note lbl-fire" x="176" y="410">Muro resistente al fuego</text><rect class="gap" x="260" y="833" width="120" height="14"/><line class="roller" x1="260" y1="840" x2="380" y2="840"/><rect class="gap" x="470" y="543" width="70" height="14"/><path class="door" d="M470 550 L470 480 A70 70 0 0 1 540 550"/><rect class="gap" x="300" y="423" width="70" height="14"/><path class="door" d="M300 430 L300 500 A70 70 0 0 0 370 430"/><rect class="gap" x="560" y="423" width="70" height="14"/><path class="door" d="M560 430 L560 500 A70 70 0 0 0 630 430"/><rect class="gap" x="900" y="423" width="70" height="14"/><path class="door" d="M900 430 L900 500 A70 70 0 0 0 970 430"/><rect class="gap" x="1200" y="423" width="70" height="14"/><path class="door" d="M1200 430 L1200 500 A70 70 0 0 0 1270 430"/><rect class="gap" x="690" y="543" width="70" height="14"/><path class="door" d="M690 550 L690 480 A70 70 0 0 1 760 550"/><rect class="gap" x="980" y="543" width="70" height="14"/><path class="door" d="M980 550 L980 480 A70 70 0 0 1 1050 550"/><rect class="gap" x="1200" y="833" width="160" height="14"/><line class="roller" x1="1200" y1="840" x2="1360" y2="840"/><text class="lbl-ext" x="392" y="868">Acceso clientes</text><text class="lbl-ext" x="1372" y="868">Muelle de carga</text><g class="equip"><rect x="190" y="618" width="150" height="34" rx="2"/><rect x="300" y="624" width="22" height="22" rx="2" class="eq-key"/><rect x="370" y="640" width="140" height="80" rx="2"/><circle cx="488" cy="660" r="9"/><circle cx="488" cy="660" r="3" class="eq-key"/><rect x="190" y="740" width="70" height="44" rx="2"/><line x1="190" y1="762" x2="260" y2="762"/><rect x="190" y="190" width="56" height="56" rx="2"/><path d="M190 190L246 246M246 190L190 246" class="eq-thin"/><rect x="190" y="270" width="56" height="56" rx="2"/><path d="M190 270L246 326M246 270L190 326" class="eq-thin"/><rect x="260" y="190" width="56" height="56" rx="2"/><path d="M260 190L316 246M316 190L260 246" class="eq-thin"/><rect x="260" y="270" width="56" height="56" rx="2"/><path d="M260 270L316 326M316 270L260 326" class="eq-thin"/><rect x="330" y="190" width="56" height="56" rx="2"/><path d="M330 190L386 246M386 190L330 246" class="eq-thin"/><rect x="330" y="270" width="56" height="56" rx="2"/><path d="M330 270L386 326M386 270L330 326" class="eq-thin"/><rect x="450" y="196" width="46" height="44" rx="2"/><line x1="456" y1="208" x2="490" y2="208" class="eq-thin"/><line x1="456" y1="218" x2="490" y2="218" class="eq-thin"/><rect x="504" y="196" width="46" height="44" rx="2"/><line x1="510" y1="208" x2="544" y2="208" class="eq-thin"/><line x1="510" y1="218" x2="544" y2="218" class="eq-thin"/><rect x="558" y="196" width="46" height="44" rx="2"/><line x1="564" y1="208" x2="598" y2="208" class="eq-thin"/><line x1="564" y1="218" x2="598" y2="218" class="eq-thin"/><rect x="612" y="196" width="46" height="44" rx="2"/><line x1="618" y1="208" x2="652" y2="208" class="eq-thin"/><line x1="618" y1="218" x2="652" y2="218" class="eq-thin"/><rect x="666" y="196" width="46" height="44" rx="2"/><line x1="672" y1="208" x2="706" y2="208" class="eq-thin"/><line x1="672" y1="218" x2="706" y2="218" class="eq-thin"/><rect x="720" y="196" width="46" height="44" rx="2"/><line x1="726" y1="208" x2="760" y2="208" class="eq-thin"/><line x1="726" y1="218" x2="760" y2="218" class="eq-thin"/><rect x="470" y="290" width="290" height="60" rx="2"/><rect x="490" y="309" width="34" height="22" rx="2" class="eq-key"/><rect x="542" y="309" width="34" height="22" rx="2" class="eq-key"/><rect x="594" y="309" width="34" height="22" rx="2" class="eq-key"/><rect x="646" y="309" width="34" height="22" rx="2" class="eq-key"/><rect x="698" y="309" width="34" height="22" rx="2" class="eq-key"/><rect x="830" y="196" width="240" height="56" rx="2"/><rect x="840" y="204" width="60" height="40" rx="2" class="eq-thin"/><rect x="830" y="300" width="160" height="56" rx="2"/><rect x="1012" y="290" width="60" height="46" rx="2"/><line x1="1012" y1="305" x2="1072" y2="305" class="eq-thin"/><line x1="1012" y1="320" x2="1072" y2="320" class="eq-thin"/><rect x="1130" y="192" width="58" height="74" rx="2"/><line x1="1138" y1="206" x2="1180" y2="206" class="eq-thin"/><line x1="1138" y1="220" x2="1180" y2="220" class="eq-thin"/><rect x="1202" y="192" width="58" height="74" rx="2"/><line x1="1210" y1="206" x2="1252" y2="206" class="eq-thin"/><line x1="1210" y1="220" x2="1252" y2="220" class="eq-thin"/><rect x="1274" y="192" width="58" height="74" rx="2"/><line x1="1282" y1="206" x2="1324" y2="206" class="eq-thin"/><line x1="1282" y1="220" x2="1324" y2="220" class="eq-thin"/><rect x="1346" y="192" width="58" height="74" rx="2"/><line x1="1354" y1="206" x2="1396" y2="206" class="eq-thin"/><line x1="1354" y1="220" x2="1396" y2="220" class="eq-thin"/><rect x="1130" y="318" width="200" height="50" rx="2"/><rect x="910" y="616" width="56" height="56" rx="2"/><path d="M918 624h40M918 644h40M918 664h40" class="eq-thin"/><rect x="910" y="686" width="56" height="56" rx="2"/><path d="M918 694h40M918 714h40M918 734h40" class="eq-thin"/><rect x="980" y="616" width="56" height="56" rx="2"/><path d="M988 624h40M988 644h40M988 664h40" class="eq-thin"/><rect x="980" y="686" width="56" height="56" rx="2"/><path d="M988 694h40M988 714h40M988 734h40" class="eq-thin"/><rect x="1050" y="616" width="56" height="56" rx="2"/><path d="M1058 624h40M1058 644h40M1058 664h40" class="eq-thin"/><rect x="1050" y="686" width="56" height="56" rx="2"/><path d="M1058 694h40M1058 714h40M1058 734h40" class="eq-thin"/><rect x="1240" y="620" width="48" height="70" rx="2" fill="url(#hatch-un)" class="un"/><rect x="1302" y="620" width="48" height="70" rx="2" fill="url(#hatch-un)" class="un"/><rect x="1364" y="620" width="48" height="70" rx="2" fill="url(#hatch-un)" class="un"/><path d="M1130 720 H1230" class="dim" marker-start="url(#arr)" marker-end="url(#arr)"/><rect x="600" y="600" width="60" height="90" rx="2" class="eq-key-fill"/><rect x="680" y="610" width="36" height="40" rx="2"/><path d="M660 640 H680" class="eq-thin"/><rect x="600" y="760" width="66" height="22" rx="2"/><rect x="682" y="760" width="66" height="22" rx="2"/><rect x="764" y="760" width="66" height="22" rx="2"/></g><text class="lbl-eq" x="190" y="672">Mostrador · lector QR</text><text class="lbl-eq" x="370" y="738">Mesa de inspección</text><text class="lbl-eq" x="190" y="802">Carro</text><text class="lbl-eq" x="190" y="372">Contenedores ignífugos</text><text class="lbl-eq" x="450" y="260">Equipos de carga y descarga</text><text class="lbl-eq" x="470" y="372">Banco de medida</text><text class="lbl-eq" x="830" y="274">Bancos de reparación</text><text class="lbl-eq" x="1012" y="352">Repuestos</text><text class="lbl-eq" x="1130" y="288">Armarios en montaje</text><text class="lbl-eq" x="1130" y="390">Ensayo de armario</text><text class="lbl-eq" x="910" y="764">Listas para entregar</text><text class="lbl-eq" x="1236" y="612">Contenedores homologados</text><text class="lbl-eq" x="1134" y="742">Distancia mínima</text><text class="lbl-eq" x="600" y="712">Armario de segunda vida</text><text class="lbl-eq" x="600" y="806">Visitas y colegios</text><text class="lbl-eq" x="732" y="742">Placas en cubierta</text><g class="pv"><rect x="732" y="600" width="30" height="44"/><rect x="732" y="650" width="30" height="44"/><rect x="766" y="600" width="30" height="44"/><rect x="766" y="650" width="30" height="44"/><rect x="800" y="600" width="30" height="44"/><rect x="800" y="650" width="30" height="44"/><rect x="834" y="600" width="30" height="44"/><rect x="834" y="650" width="30" height="44"/></g><g class="sensor"><circle cx="396" cy="150" r="8"/><circle cx="396" cy="150" r="2.5"/></g><g class="sensor"><circle cx="396" cy="400" r="8"/><circle cx="396" cy="400" r="2.5"/></g><g class="sensor"><circle cx="780" cy="400" r="8"/><circle cx="780" cy="400" r="2.5"/></g><g class="sensor"><circle cx="1420" cy="580" r="8"/><circle cx="1420" cy="580" r="2.5"/></g><g class="sensor"><circle cx="1420" cy="820" r="8"/><circle cx="1420" cy="820" r="2.5"/></g><g class="van"><rect x="1210" y="890" width="140" height="62" rx="8"/><rect x="1318" y="896" width="26" height="50" rx="4" class="eq-thin"/></g><text class="lbl-ext" x="1210" y="972">Transporte homologado</text><path class="route route--out" d="M1360 921 H1560" marker-end="url(#arr)" data-route="9 10"/><text class="lbl-ext" x="1560" y="908" text-anchor="end">A planta de reciclaje autorizada</text><path class="route route--main" d="M320 960 V700 H440 V690" data-route="1 2 3"/><path class="route route--main" d="M440 690 V490 H610 V330" data-route="5"/><path class="route route--quar" d="M440 690 V505 H340 V300" data-route="4"/><path class="route route--quar" d="M340 300 V475 H610" data-route="4"/><path class="route route--dest" d="M610 490 H800" data-route="6"/><path class="route route--dest" d="M800 490 H1240 V300" data-route="7"/><path class="route route--dest" d="M800 490 H950 V300" data-route="8"/><path class="route route--dest" d="M800 490 H1020 V560 V650 H1260" data-route="9"/><path class="route route--dest" d="M1240 490 H1306 V585" data-route="7 10"/><path class="route route--dest" d="M1306 690 V890" data-route="9 10"/><path class="route route--main" d="M320 680 H262" data-route="11"/><path class="route route--dest" d="M1100 490 H720 V600" data-route="12"/><g class="decision"><rect x="784" y="474" width="32" height="32" transform="rotate(45 800 490)"/></g><text class="lbl-eq" x="800" y="530" text-anchor="middle">Decisión</text><g class="titleblock"><rect x="1460" y="120" width="120" height="120"/><path d="M1520 140 L1532 180 L1520 172 L1508 180 Z" class="north"/><text x="1520" y="200" text-anchor="middle" class="lbl-eq">N</text><text x="1520" y="226" text-anchor="middle" class="lbl-note">Sin escala</text></g><text class="lbl-note" x="160" y="104">Estación SegundaVida · planta esquemática · orientativa</text><g class="token" data-token transform="translate(320 960)"><circle class="token__halo" r="26"/><rect x="-16" y="-10" width="30" height="20" rx="3"/><rect x="14" y="-4" width="4" height="8" rx="1"/><rect x="-12" y="-6" width="9" height="12" rx="1" class="token__cell"/><rect x="-1" y="-6" width="9" height="12" rx="1" class="token__cell"/></g></svg>
+            </figure>
+            <div class="station__tag" data-bat-tag aria-hidden="true"><i></i><span data-bat-status></span></div>
+            <div class="station__hud" aria-hidden="true">
+              <span class="station__hud-n" data-hud-n>00 / 12</span>
+              <span class="station__hud-name" data-hud-name>La estación</span>
+              <span class="station__hud-bar"><i data-hud-bar></i></span>
+            </div>
+            <span class="station__corner station__corner--tl" aria-hidden="true"></span>
+            <span class="station__corner station__corner--tr" aria-hidden="true"></span>
+            <span class="station__corner station__corner--bl" aria-hidden="true"></span>
+            <span class="station__corner station__corner--br" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <ol class="station__steps">
+          <li class="pstep" id="paso-00" data-status="" data-name="La estación">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">00</span><h3>La estación de un vistazo</h3></header>
+              <p class="pcard__lead">Una nave del tamaño de un taller mecánico, en un polígono o junto a un punto limpio, con acceso fácil en coche y furgoneta. Siete zonas unidas por un pasillo: la batería avanza siempre hacia la salida.</p>
+              <dl class="pcard__meta">
+                <div><dt>Personal</dt><dd>3 personas</dd></div>
+                <div><dt>Plazo total</dt><dd>Menos de 7 días</dd></div>
+              </dl>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-01" data-status="Llega a la estación" data-zone="recepcion" data-name="Llegada">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">01</span><h3>Llega la batería</h3></header>
+              <p class="pcard__lead">La trae un particular, un taller o una empresa de reparto. Lo normal es pedir cita por la web.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Cita previa desde la web, indicando el tipo de batería y si está dañada.</li>
+                <li class="is-doc">Antes de ir, se puede escanear el QR del pasaporte para conocer el destino probable.</li>
+                <li class="is-sector">Una batería dañada no se trae por cuenta propia: viaja en embalaje y transporte homologados.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Quién</dt><dd>Cliente · atención al público</dd></div>
+                <div><dt>Sigue en</dt><dd>Recepción</dd></div>
+              </dl>
+              <figure class="pcard__img"><img src="assets/img/entrega.jpg" alt="Una persona saca la batería de una bici eléctrica" loading="lazy" width="1400" height="933"><figcaption>Imagen ilustrativa</figcaption></figure>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-02" data-status="Expediente abierto" data-zone="recepcion" data-name="Recepción">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">02</span><h3>Recepción</h3></header>
+              <p class="pcard__lead">Se identifica la batería y se abre su expediente.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Escaneo del QR del pasaporte: qué batería es, su historial y cómo se desmonta.</li>
+                <li class="is-doc">Registro de los datos del cliente.</li>
+                <li class="is-doc">Si es anterior a 2027 y no tiene pasaporte, se registra a mano.</li>
+                <li class="is-sector">Etiqueta con un código interno que la acompaña hasta que sale.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Fotos del estado en que llega.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Quién</dt><dd>Atención al público</dd></div>
+                <div><dt>Sigue en</dt><dd>Mesa de inspección</dd></div>
+              </dl>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-03" data-status="En inspección" data-zone="recepcion" data-name="Inspección de seguridad">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">03</span><h3>Inspección de seguridad</h3></header>
+              <p class="pcard__lead">Antes de moverla por la nave se comprueba que es seguro hacerlo.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Revisión visual rápida: golpes, hinchazón o calor.</li>
+                <li class="is-sector">Medición de la tensión en bornes y de la temperatura con cámara térmica.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Búsqueda de fugas de electrolito u olores extraños.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+              </ul>
+              <div class="pcard__fork">
+                <p><span class="fork fork--bad">Golpeada, hinchada o caliente</span> Va a cuarentena.</p>
+                <p><span class="fork fork--ok">Sin daños</span> Pasa al laboratorio.</p>
+              </div>
+              <dl class="pcard__meta">
+                <div><dt>Quién</dt><dd>Técnico/a en baterías y alta tensión</dd></div>
+              </dl>
+            </article>
+          </li>
+
+          <li class="pstep pstep--quar" id="paso-04" data-status="En cuarentena" data-zone="cuarentena" data-state="quar" data-name="Cuarentena">
+            <article class="pcard pcard--safety">
+              <header class="pcard__head"><span class="pcard__n data">04</span><h3>Cuarentena</h3></header>
+              <p class="pcard__lead">Las baterías dañadas se aíslan antes de tocarlas, hasta que es seguro manipularlas.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Aislamiento en contenedores ignífugos.</li>
+                <li class="is-doc">Detección de temperatura y de humo, y extinción adecuada para baterías de litio.</li>
+                <li class="is-sector">Vigilancia continua de la temperatura hasta que se estabiliza.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Muros resistentes al fuego entre la cuarentena y el resto de la nave.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Si no se puede estabilizar o reparar con seguridad, se prepara directamente para reciclaje.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Quién</dt><dd>Técnico/a en baterías y alta tensión</dd></div>
+                <div><dt>Sigue en</dt><dd>Laboratorio o reciclaje</dd></div>
+              </dl>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-05" data-status="Midiendo su estado de salud" data-zone="laboratorio" data-name="Diagnóstico">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">05</span><h3>Diagnóstico</h3></header>
+              <p class="pcard__lead">Se mide cuánta vida le queda.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Ciclo de carga y descarga para medir la capacidad que conserva frente a cuando era nueva: su estado de salud (SoH).</li>
+                <li class="is-doc">Comprobación de las celdas que fallan.</li>
+                <li class="is-sector">Lectura del sistema de gestión de la batería (BMS) y de su registro de errores, si es accesible.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Medición de la resistencia interna y de la tensión de cada módulo para detectar desequilibrios.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Prueba de aislamiento eléctrico antes de trabajar en alta tensión.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Quién</dt><dd>Técnico/a en baterías y alta tensión</dd></div>
+                <div><dt>Resultado</dt><dd>Estado de salud y celdas con fallo</dd></div>
+              </dl>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-06" data-status="Destino según su estado de salud" data-name="Decisión">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">06</span><h3>Decisión del destino</h3></header>
+              <p class="pcard__lead">El estado de salud se compara con unos umbrales que la estación fija y explica al cliente. El orden es siempre el mismo: primero reutilizar, después reparar y solo al final reciclar.</p>
+              <ul class="pcard__dest">
+                <li><span class="fork fork--ok">Reutilizar</span> Conserva buena parte de su capacidad y está sana.</li>
+                <li><span class="fork fork--weak">Reparar</span> Solo fallan algunas celdas o módulos.</li>
+                <li><span class="fork fork--bad">Reciclar</span> Está dañada o casi sin capacidad.</li>
+              </ul>
+              <p class="pcard__note">El documento del proyecto no fija los valores de los umbrales.</p>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-07" data-status="Destino: reutilizar" data-zone="segunda-vida" data-state="ok" data-name="Reutilizar">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">07</span><h3>Reutilizar: segunda vida</h3></header>
+              <p class="pcard__lead">Si está sana, deja de mover un vehículo y pasa a guardar energía en un sitio fijo.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Montaje en armarios de almacenamiento de energía.</li>
+                <li class="is-doc">Pasaporte nuevo vinculado al anterior, como exige el reglamento.</li>
+                <li class="is-sector">Se agrupan en un mismo armario módulos de capacidad parecida.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Integración con su sistema de gestión, protecciones eléctricas y ventilación.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Ensayo del armario completo antes de entregarlo.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Usos</dt><dd>Energía solar de un edificio, farolas o puntos de carga, respaldo de un comercio si se va la luz</dd></div>
+              </dl>
+              <figure class="pcard__img"><img src="assets/img/armarios.jpg" alt="Pasillo con filas de armarios eléctricos" loading="lazy" width="1400" height="933"><figcaption>Imagen ilustrativa</figcaption></figure>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-08" data-status="Destino: reparar" data-zone="reparacion" data-state="weak" data-name="Reparar">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">08</span><h3>Reparar</h3></header>
+              <p class="pcard__lead">Si solo fallan algunas celdas o módulos, se cambian y la batería vuelve a un vehículo.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Sustitución de las celdas o los módulos dañados.</li>
+                <li class="is-sector">Las piezas nuevas se emparejan con las que quedan por tensión y capacidad.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-sector">Equilibrado y prueba final de carga y descarga.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Usos</dt><dd>Bicis y patinetes de reparto, coches de segunda mano</dd></div>
+              </dl>
+              <figure class="pcard__img"><img src="assets/img/taller.jpg" alt="Interior de un taller con bancos de trabajo y herramientas" loading="lazy" width="1400" height="933"><figcaption>Imagen ilustrativa</figcaption></figure>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-09" data-status="Destino: reciclar" data-zone="almacen" data-state="bad" data-name="Reciclar">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">09</span><h3>Reciclar</h3></header>
+              <p class="pcard__lead">Si está dañada o casi sin capacidad, se prepara para una planta autorizada.</p>
+              <ul class="pcard__actions">
+                <li class="is-sector">Descarga controlada hasta un nivel seguro y aislamiento de los bornes.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-doc">Embalaje homologado para mercancías peligrosas.</li>
+                <li class="is-sector">Etiquetado como mercancía peligrosa de clase 9 (baterías de litio) según el ADR.<span class="visually-hidden"> (Práctica habitual del sector.)</span></li>
+                <li class="is-doc">La estación tiene autorización como gestor de residuos.</li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Recupera</dt><dd>Litio, cobalto, níquel y cobre</dd></div>
+              </dl>
+              <figure class="pcard__img"><img src="assets/img/celdas.jpg" alt="Celdas cilíndricas de litio dentro de un pack de batería" loading="lazy" width="1400" height="2100"><figcaption>Imagen ilustrativa</figcaption></figure>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-10" data-status="Sale en transporte homologado" data-zone="almacen" data-name="Almacén y transporte">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">10</span><h3>Almacén de salida y transporte</h3></header>
+              <p class="pcard__lead">Todo lo que sale espera aquí, separado por destino.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Baterías listas para entregar y contenedores homologados para reciclaje.</li>
+                <li class="is-doc">Almacenamiento separado, con distancias mínimas entre baterías.</li>
+                <li class="is-doc">Transporte solo en embalajes homologados hasta la planta de reciclaje autorizada.</li>
+                <li class="is-doc">En la planta, el litio, el cobalto, el níquel y el cobre vuelven a fabricar baterías nuevas.</li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Quién</dt><dd>Ayudante de taller · transporte homologado</dd></div>
+              </dl>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-11" data-status="Informe enviado" data-zone="recepcion" data-name="Informe">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">11</span><h3>Informe al cliente</h3></header>
+              <p class="pcard__lead">El cliente sabe qué ha pasado con su batería.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Informe con lo que se ha hecho y el destino elegido.</li>
+                <li class="is-doc">Se puede consultar también desde la web.</li>
+                <li class="is-doc">Todo el proceso tarda menos de una semana.</li>
+              </ul>
+              <dl class="pcard__meta">
+                <div><dt>Quién</dt><dd>Atención al público y gestión</dd></div>
+                <div><dt>Para el ciudadano</dt><dd>Gratis</dd></div>
+              </dl>
+            </article>
+          </li>
+
+          <li class="pstep" id="paso-12" data-status="" data-zone="demo" data-state="ok" data-name="Zona de demostración">
+            <article class="pcard">
+              <header class="pcard__head"><span class="pcard__n data">12</span><h3>Zona de demostración</h3></header>
+              <p class="pcard__lead">La propia estación funciona con una batería de segunda vida.</p>
+              <ul class="pcard__actions">
+                <li class="is-doc">Un armario de segunda vida conectado a placas solares alimenta la estación.</li>
+                <li class="is-doc">Sirve para enseñar la idea a visitantes y colegios.</li>
+              </ul>
+              <figure class="pcard__img"><img src="assets/img/solar.jpg" alt="Placas solares bajo un cielo azul" loading="lazy" width="1400" height="933"><figcaption>Imagen ilustrativa</figcaption></figure>
+              <a class="link-arrow" href="la-estacion.html">Ver la estación por zonas
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Pasaporte -->
+    <section class="section section--alt passport-teaser" aria-labelledby="pasaporte-title">
+      <div class="container passport-teaser__grid">
+        <div class="stack" data-reveal>
+          <h2 id="pasaporte-title">El DNI digital de cada batería</h2>
+          <p class="lead">Al escanear el QR del pasaporte se ve qué batería es, su historial, su estado y cómo se desmonta, se repara, se reutiliza o se recicla.</p>
+          <p class="muted">La estación lee esos datos al recibirla. Si la batería es anterior a 2027 y no tiene pasaporte, se registra a mano y se diagnostica en el laboratorio.</p>
+          <div class="btn-row">
+            <a class="btn btn--ink" href="pasaporte.html#simulador">Probar el simulador
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <figure class="plate passport-card" data-reveal style="--i:1">
+          <figcaption class="plate__head"><span>Pasaporte de batería</span><span class="tag tag--demo">Ficha ficticia</span></figcaption>
+          <div class="plate__body passport-card__body">
+            <svg class="qr" viewBox="0 0 29 29" role="img" aria-label="Código QR de ejemplo, no funcional">
+              <path fill="currentColor" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM22 0h7v7h-7zm1 1v5h5V1zm1 1h3v3h-3zM0 22h7v7H0zm1 1v5h5v-5zm1 1h3v3H2zM9 0h1v2H9zm2 1h2v1h-2zm3 0h1v3h-1zm2-1h2v1h-2zm1 2h1v2h-1zm2 0h1v1h-1zM9 3h2v1H9zm3 1h1v2h-1zm-3 2h1v1H9zm2 0h1v1h-1zm5 0h3v1h-3zM0 9h2v1H0zm3 0h3v1H3zm5 0h4v1H8zm6 0h1v2h-1zm3 0h2v1h-2zm4 0h3v1h-3zm4 0h3v2h-3zM1 11h1v2H1zm3 0h2v1H4zm4 0h1v3H8zm3 0h2v1h-2zm6 0h1v1h-1zm3 0h3v1h-3zm-17 2h2v1H3zm8 0h3v2h-3zm5 0h2v1h-2zm4 0h1v3h-1zm3 0h2v1h-2zm-23 2h2v1H0zm4 0h3v1H4zm11 0h1v2h-1zm3 1h2v1h-2zm6-1h4v1h-4zM2 17h1v2H2zm3 0h3v1H5zm5 0h4v1h-4zm6 1h2v2h-2zm4-1h1v1h-1zm3 1h3v1h-3zM9 19h1v3H9zm3 1h3v1h-3zm8 0h2v2h-2zm4 1h3v1h-3zM11 22h1v2h-1zm3 0h2v1h-2zm4 0h1v3h-1zm2 2h3v1h-3zm4 1h1v3h-1zm2-1h2v2h-2zM9 25h2v1H9zm4 0h3v1h-3zm-3 2h1v2h-1zm3 0h2v2h-2zm5 0h4v1h-4zm4 1h1v1h-1z"/>
+            </svg>
+            <dl class="spec">
+              <div><dt>Tipo</dt><dd>Moto eléctrica</dd></div>
+              <div><dt>Química</dt><dd class="data">NMC</dd></div>
+              <div><dt>Capacidad nominal</dt><dd class="data">4 kWh</dd></div>
+              <div><dt>Estado de salud</dt><dd><span class="tag tag--weak">Débil · 72 %</span></dd></div>
+              <div><dt>Destino probable</dt><dd>Reparar</dd></div>
+            </dl>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Contador público: un solo panel de lectura, marcado como demostración -->
+    <section class="section counter" aria-labelledby="contador-title">
+      <div class="container">
+        <div class="counter__head" data-reveal>
+          <h2 id="contador-title">Contador público</h2>
+          <p class="lead">Así se vería el contador que publicaría la web cuando la estación funcione: lo que se ha reutilizado y lo que se ha recuperado, acumulado.</p>
+        </div>
+        <div class="readout" data-reveal>
+          <p class="readout__bar">
+            <span class="tag tag--demo">Demostración</span>
+            <span>Cifras ficticias. La estación aún no funciona y no hay datos reales.</span>
+          </p>
+          <dl class="readout__grid">
+            <div class="readout__cell">
+              <dt>Capacidad reutilizada</dt>
+              <dd class="readout__value"><span data-count="12480">12.480</span><span class="readout__unit">kWh</span></dd>
+              <dd class="readout__note">Energía que las baterías de segunda vida pueden guardar en armarios fijos.</dd>
+            </div>
+            <div class="readout__cell">
+              <dt>Materiales recuperados</dt>
+              <dd class="readout__value"><span data-count="3960">3960</span><span class="readout__unit">kg</span></dd>
+              <dd class="readout__note">Material clasificado que se envía a plantas de reciclaje autorizadas.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cierre -->
+    <section class="section closing" aria-labelledby="cierre-title">
+      <div class="container">
+       <div class="closing__panel" data-reveal>
+        <h2 id="cierre-title">¿Tienes una batería gastada en casa o en el taller?</h2>
+        <div class="stack">
+          <p class="lead">Para el ciudadano el servicio es gratuito. Pide cita, cuéntanos qué batería tienes y si está dañada, y te decimos cómo traerla con seguridad.</p>
+          <div class="btn-row">
+            <a class="btn btn--charge" href="cita.html">Pedir cita
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--ghost" href="cita.html#aceptadas">Baterías aceptadas</a>
+          </div>
+        </div>
+       </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="brand" href="index.html" aria-label="Estación SegundaVida, inicio"><svg class="brand__mark" viewBox="0 0 38 22" aria-hidden="true" focusable="false"><rect x="1" y="1" width="32" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="34" y="7" width="3" height="8" rx="1" fill="currentColor"/><rect x="4.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="11.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="18.5" y="4.5" width="5.5" height="13" rx="1" fill="currentColor"/><rect x="25.5" y="4.5" width="4.5" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity=".6"/></svg><span class="brand__name"><small>Estación</small>SegundaVida</span></a>
+          <p class="site-footer__note">Proyecto académico de JOYFE Centro Profesional, módulo de Sostenibilidad aplicada al sistema productivo. Es una propuesta: no se ha probado en la realidad.</p>
+        </div>
+        <nav aria-label="Páginas del sitio">
+          <h2>Páginas</h2>
+          <ul class="list">
+            <li><a href="como-funciona.html">Cómo funciona</a></li>
+            <li><a href="la-estacion.html">La estación</a></li>
+            <li><a href="pasaporte.html">Pasaporte de batería</a></li>
+            <li><a href="impacto.html">Impacto</a></li>
+            <li><a href="proyecto.html">El proyecto</a></li>
+            <li><a href="cita.html">Pedir cita</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Fuentes</h2>
+          <ul class="list">
+            <li><a href="https://www.smartgridsinfo.es/2023/07/12/consejo-europeo-aprueba-reglamento-sostenibilidad-economia-circular-baterias" rel="noopener">Smartgrids Info · Reglamento europeo de baterías</a></li>
+            <li><a href="https://www.energias-renovables.com/almacenamiento/pasaporte-digital-para-las-bater-as-nueva-20250920/" rel="noopener">Energías Renovables · Pasaporte digital desde 2027</a></li>
+            <li><a href="https://www.repsol.es/particulares/asesoramiento-consumo/pasaporte-bateria-coche-electrico/" rel="noopener">Repsol · Pasaporte de batería</a></li>
+            <li><a href="https://evkx.net/es/dictionary/battery-passport" rel="noopener">EVKX · Pasaporte y segunda vida</a></li>
+            <li><a href="https://www.cuatrecasas.com/es/spain/publico/art/reglamento-union-europea-pilas-baterias" rel="noopener">Cuatrecasas · Reglamento UE de pilas y baterías</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>Las cifras de objetivos son estimaciones para el primer año. Los contadores y fichas marcados como demostración usan datos ficticios.</p>
+        <p>Estación SegundaVida · 2026</p>
+      </div>
+    </div>
+    <p class="site-footer__word" aria-hidden="true">Segunda<span>Vida</span></p>
+  </footer>
+</body>
+</html>

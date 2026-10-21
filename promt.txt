@@ -1,0 +1,311 @@
+Actúa como un Diseñador UX/UI Senior y Arquitecto Frontend. Necesito que me generes el código completo (organizado para una estructura de carpetas index.html, styles.css y script.js) para construir la página web del proyecto ReMadTech | Circuito Verde de Reciclaje Tecnológico.   La meta principal es máxima usabilidad visual y facilidad de uso para el usuario final (User Experience impecable). La web debe sentirse moderna, ágil, accesible y muy fluida, inspirada en la elegancia visual y usabilidad de sitios como btodigital.es y ateraenergy.com. Para lograrlo, no escatimes en la complejidad técnica del código (usa CSS GRID, Flexbox avanzado, variables personalizadas, animaciones con Intersection Observer API, diseño responsive fluido y accesibilidad WAI-ARIA).1. Guía de Estilo Visual y UI/UX (Colores Pastel & Usabilidad)Paleta de Colores Pastel Modernos:Verde Pastel Principal (Sostenibilidad / Economía Circular): #a8e6cf o #81c784Azul/Cian Soft (Tecnología y Datos): #a0c4ff o #b3e5fcNeutros Cálidos (Fondos y Tarjetas): #f8f9fa, #ffffff, #f0f4f8Texto y Contraste Alto (Lectura fácil): #2d3748Efectos y Microinteracciones:Glassmorphism sutil en la barra de navegación fija (sticky header).Transiciones suaves de 0.3s en botones, enlaces y tarjetas (hover effects con elevación de sombra).Sensación de fluidez con smooth scrolling en la navegación.Navegación Intuitiva: Jerarquía clara, tipografía Sans-Serif moderna (Google Fonts: Inter o Montserrat), botones CTA (Call-To-Action) visibles y un indicador de progreso de lectura superior.2. Arquitectura de Contenidos (Estructura de la Web)Header & Navegación:Logo interactivo de ReMadTech.   Menú de navegación accesible (Inicio, El Proyecto, 4R, Circuito, Impacto, Equipo).Menú tipo "hamburguesa" completamente funcional y animado para dispositivos móviles.Hero Section (Impacto Visual Inmediato):Título: ReMadTech | Circuito Verde de Reciclaje Tecnológico.   Lema / Subtítulo: "No reparamos ordenadores; reparamos el futuro de los jóvenes de Madrid".   Botones CTA: "Explorar el Circuito" (scroll a la sección) y "Ver Prototipo Demo".   Badge visual: "Colegio JOYFE · Empleo Verde Madrid".   Sección: Resumen y Modelo de Triple Impacto (Las 3 P):Diseño de 3 tarjetas limpias e interactivas:Beneficio (Profit): Venta de equipos reacondicionados y servicios informáticos a PYMES.   Personas: Aprendizaje práctico e inserción laboral para jóvenes en riesgo de exclusión.   Planeta: Priorización de la reutilización tecnológica y derivación autorizada de RAEE.   Sección: Las 4 R de la Economía Circular:Grid visual interactivas con iconos representativos:Reducir: Reducción de la generación de residuos electrónicos.   Reparar: Diagnóstico y reparación de hardware/software mediante aprendizaje técnico.   Reutilizar: Segunda vida en entidades sociales y empresas.   Reciclar: Derivación de irrecuperables a gestores RAEE autorizados.   Sección: El Circuito Operativo (Línea de Tiempo Interactiva de 6 Pasos):Diseña una línea de tiempo paso a paso (horizontal o vertical fluida) que sea sumamente clara visualmente:Captación y Aceptación de Equipos   Registro y Triaje   Protección y Borrado Seguro de Datos   Diagnóstico, Reparación y Pruebas (Con QR e identificación)   Destino del Equipo (Venta o Donación)   Trazabilidad y Rendición de Cuentas   Sección: Impacto y Objetivos de Desarrollo Sostenible (ODS):Bloques destacados para ODS 8 (Trabajo decente y crecimiento económico) y ODS 12 (Producción y consumo responsables) con sus indicadores clave en diseño de tarjetas.   Footer (Pie de página elegante):Información institucional completa: Centro Educativo Colegio JOYFE.   Equipo: Lucía Cabadas Mera, Jorge González Pascual, Marcos Merino Camino, Marcos Urbano Fresneda.   Profesora responsable: Mª Teresa Martínez.   Ubicación & Área: Empleo verde | Madrid.   3. Especificaciones Técnicas del CódigoHTML5: Semántica estricta (<header>, <nav>, <main>, <section>, <article>, <footer>). Semántica ARIA para lectores de pantalla.CSS3: Usa variables CSS (:root) para controlar fácilmente la paleta pastel, la tipografía y las sombras. Usa display: grid y flexbox para garantizar que sea 100% Responsive (móvil, tablet y escritorio). Añade @keyframes para animaciones sutiles.JavaScript (Vanilla JS):Menú desplegable móvil.Uso de IntersectionObserver para activar animaciones de aparición (fade-in / slide-up) a medida que el usuario hace scroll, garantizando máxima fluidez.Efecto de desplazamiento suave (smooth scroll) para la navegación.Por favor, proporciona el código completo, separado bloque a bloque para los tres archivos (index.html, styles.css, script.js), listo para guardar dentro de una misma carpeta y ejecutar directamente en el navegador.
+ReMadTech | Circuito Verde de Reciclaje Tecnológico 
+Lema: "No reparamos ordenadores; reparamos el futuro de los jóvenes de Madrid"
+Centro Educativo: Colegio JOYFE 
+Equipo: Lucía Cabadas Mera, Jorge González Pascual, Marcos Merino Camino, Marcos Urbano Fresneda
+Profesor/a responsable: Mª Teresa Martínez
+Área: Empleo verde | Ciudad: Madrid
+1. Resumen Ejecutivo
+ReMadTech es una propuesta de emprendimiento sostenible que conecta la economía circular con la creación de oportunidades de formación y empleo verde para jóvenes, especialmente para quienes encuentran barreras de acceso al mercado laboral. El proyecto plantea prolongar la vida útil de equipos informáticos mediante su registro, diagnóstico, reparación y preparación para la reutilización, y facilitar que los dispositivos funcionales lleguen a empresas, centros educativos y entidades sociales que puedan necesitarlos.
+La propuesta combina tres elementos: actividad económica, a través de la posible venta de equipos reacondicionados y de servicios informáticos; impacto social, mediante itinerarios de aprendizaje práctico vinculados a competencias técnicas; e impacto ambiental, al priorizar la reutilización de equipos aptos y derivar los que no puedan recuperarse a los canales autorizados que correspondan.
+Una plataforma digital de trazabilidad serviría para registrar el recorrido de cada equipo, desde su recepción hasta su destino. La primera versión se centrará en funciones acotadas: ficha de dispositivo, actualización de estado, historial, identificación mediante QR y un árbol básico de apoyo al diagnóstico. La inteligencia artificial se contempla como una posible ayuda para consultar procedimientos, siempre bajo supervisión humana; no es un requisito para demostrar el valor inicial del proyecto.
+ReMadTech no presenta como demostrada su viabilidad económica ni presupone que ya existan acuerdos, instalaciones o puestos de trabajo. Propone validarlos mediante una prueba piloto que mida los equipos recuperables, el tiempo de trabajo, los costes, los ingresos, la demanda y los resultados formativos. El objetivo es comprobar si puede construirse un circuito legal, seguro y económicamente sostenible que convierta la reutilización tecnológica en una vía práctica de aprendizaje y acceso al empleo verde.
+
+
+
+2. Fase 1 · Investiga (El Problema en Datos)
+2.1. Residuos de aparatos eléctricos y electrónicos (RAEE)
+Según ECOLEC, durante 2025 se gestionaron en España 88.960 toneladas de residuos de aparatos eléctricos y electrónicos. En la distribución territorial publicada por la entidad, la Comunidad de Madrid registró 12.775 toneladas gestionadas y la Comunitat Valenciana, 13.458 toneladas.
+Estas cifras describen los residuos gestionados por ECOLEC según su publicación; no deben presentarse como el total de RAEE generado en cada territorio. El dato permite contextualizar la relevancia de la gestión de residuos electrónicos, pero no determina por sí solo cuántos equipos podrían reutilizarse ni cuántos podrían llegar a ReMadTech.
+Fuente: ECOLEC, «Ecolec gestiona 88.960 toneladas de residuos de aparatos eléctricos y electrónicos durante 2025».
+https://ecolec.es/notas-de-prensa/ecolec-gestiona-88-960-toneladas-de-residuos-de-aparatos-electricos-y-electronicos-durante-2025/ 
+2.2. Desempleo juvenil y empleo verde
+La tasa de paro de las personas menores de 25 años en la Comunidad de Madrid se situó en el 19,8 % en el segundo trimestre de 2026, según la información publicada por la Comunidad de Madrid a partir de la Encuesta de Población Activa. En el mismo periodo, la tasa general de paro regional fue del 7,6 %.
+El dato no demuestra que todos los jóvenes desempleados necesiten el mismo tipo de apoyo ni que una formación breve garantice un empleo. Sí ofrece un contexto para explorar iniciativas que desarrollen competencias técnicas aplicables a actividades de reparación, mantenimiento y reutilización de equipos.
+ReMadTech plantea vincular la formación práctica a tareas concretas del circuito: recepción e inventario, diagnóstico básico, pruebas funcionales, reparación bajo supervisión, documentación de procesos y preparación de equipos para su reutilización. La inserción laboral se considerará un resultado que debe medirse, no una consecuencia garantizada del proyecto.
+Fuentes:
+Comunidad de Madrid, «La Comunidad de Madrid alcanza la cifra de ocupados más alta de la serie histórica con 3.631.300 personas», 28 de julio de 2026.
+https://www.comunidad.madrid/noticias/2026/07/28/comunidad-madrid-alcanza-cifra-ocupados-alta-serie-historica-3631300-personas 
+Instituto Nacional de Estadística (INE), Encuesta de Población Activa, segundo trimestre de 2026.
+https://www.ine.es/dyngs/Prensa/es/EPA2T26.htm 
+
+
+2.3. Acceso a la tecnología y vulnerabilidad social
+La estadística de equipamiento y uso de las tecnologías de la información y la comunicación en los hogares de la Comunidad de Madrid de 2025 señala que el 89,9 % de las viviendas encuestadas disponía de algún tipo de ordenador. El dato incluye distintos tipos de dispositivos y no se limita a hogares con menores o en situación de vulnerabilidad.
+Como contexto social complementario, el informe de la Fundación FOESSA sobre exclusión y desarrollo social en la Comunidad de Madrid estima que en 2024 el 19,6 % de la población madrileña —más de 1,3 millones de personas— se encontraba en situación de exclusión social. Esta medida abarca distintas dimensiones de la vida y no mide directamente la falta de ordenadores.
+Por tanto, estas fuentes justifican estudiar la relación entre acceso digital y vulnerabilidad, pero no bastan para cuantificar la demanda específica de equipos reacondicionados. ReMadTech deberá comprobar esa necesidad hablando con centros educativos y entidades sociales, identificando criterios transparentes para seleccionar destinatarios y evitando duplicar datos personales innecesarios.
+Fuentes:
+Comunidad de Madrid, *Equipamiento y uso de tecnologías de la información y comunicación en los hogares de la Comunidad de Madrid. TIC-H 2025*, apartado 2, página 2.
+https://web.comunidad.madrid/iestadis/fijas/estructu/sociales/descarga/tich25cu.pdf 
+Fundación FOESSA, *Informe sobre exclusión y desarrollo social en la Comunidad de Madrid*, resumen ejecutivo, página impresa 25.
+https://www.foessa.es/main-files/uploads/sites/16/2025/11/Madrid_Informe-sobre-exclusion-y-desarrollo-social_2025_web.pdf 
+
+
+2.4. Validación pendiente con usuarios y colaboradores
+La propuesta todavía debe contrastarse con quienes podrían aportar equipos, formar a participantes, recibir dispositivos o contratar servicios. No se incluyen testimonios de entrevistas porque no se dispone aquí de entrevistas verificadas.
+Antes de iniciar el piloto se propone realizar conversaciones estructuradas con:
+Empresas u organizaciones que renueven equipos informáticos.
+Centros de Formación Profesional o profesionales técnicos que puedan orientar la formación.
+Entidades sociales y centros educativos que puedan identificar necesidades de acceso a dispositivos.
+Gestores autorizados de RAEE que puedan explicar los requisitos y costes de gestión.
+Pymes potencialmente interesadas en equipos reacondicionados o servicios informáticos.
+Las preguntas clave serán: qué equipos pueden aportar, en qué estado, con qué condiciones de transferencia; qué competencias formativas serían útiles; qué dispositivos necesitan los destinatarios; qué servicios pagarían los clientes y qué requisitos legales y operativos deben cumplirse.
+
+3. Fase 2 · Crea: solución y circuito de ReMadTech
+3.1. Propuesta de valor
+ReMadTech propone convertir equipos informáticos en desuso en oportunidades de aprendizaje técnico, reutilización y acceso a tecnología, explorando un modelo de negocio que genere ingresos propios y pueda sostener parte de su actividad.
+Su elemento diferencial no es afirmar que ya ha creado empleo o evitado emisiones, sino diseñar y evaluar un circuito en el que las tareas técnicas tengan valor económico y formativo, y cuyos resultados puedan comprobarse mediante registros.
+3.2. El circuito operativo
+Paso 1. Captación y aceptación de equipos
+Se buscarán acuerdos con empresas e instituciones que renueven equipos informáticos. Antes de aceptar un lote, se registrarán el tipo y número de dispositivos, su estado aparente, las condiciones de entrega y la documentación disponible. No se asumirá que todo equipo recibido puede reutilizarse ni que cualquier punto de recogida puede transferir residuos para reparación.
+La clasificación jurídica de los equipos y las condiciones de recepción, transporte, preparación para la reutilización y gestión de RAEE deberán revisarse antes del piloto. Cuando sea necesario, estas operaciones se realizarán mediante entidades y gestores autorizados, dentro del marco que corresponda.
+Paso 2. Registro y triaje
+Cada equipo admitido recibirá un identificador interno y una ficha con los datos técnicos necesarios. Se registrarán su estado inicial, los accesorios recibidos y la decisión de triaje: diagnóstico adicional, posible reparación, reutilización directa si procede o derivación a la vía de gestión correspondiente.
+Paso 3. Protección y borrado de datos
+Antes de que un dispositivo vuelva a circular, se definirá un procedimiento de borrado seguro adecuado al tipo de soporte y al estado del equipo. El procedimiento deberá ejecutarlo o supervisarlo personal competente y dejar constancia de las operaciones y comprobaciones realizadas. El registro del proceso no demuestra por sí solo que el borrado haya sido correcto; deberán definirse controles adecuados.
+Las responsabilidades de la entidad que entrega el equipo y de quienes lo reciben o tratan deberán acordarse previamente. No se afirmará que el RGPD “certifica” a los participantes ni se ofrecerá una certificación de borrado salvo que exista una base técnica y organizativa que la respalde.
+Paso 4. Diagnóstico, reparación y pruebas
+Los equipos con posibilidades de recuperación se someterán a diagnóstico. Las reparaciones se realizarán únicamente cuando existan competencias, herramientas, repuestos y condiciones de seguridad suficientes. Cada equipo reparado deberá superar una lista de comprobaciones funcionales antes de ofrecerse para venta o donación.
+Una herramienta digital podrá sugerir comprobaciones a partir de síntomas habituales. Si se incorpora inteligencia artificial, sus recomendaciones serán orientativas y estarán sujetas a revisión humana. La primera versión puede funcionar con un árbol de decisión sencillo sin IA.
+Paso 5. Destino del equipo
+Los dispositivos que superen las comprobaciones podrán destinarse a la venta o a la donación según criterios transparentes y acuerdos previos. Las donaciones se asignarán mediante entidades colaboradoras que puedan identificar necesidades. Las ventas se dirigirán a clientes que acepten las condiciones, el estado del equipo, la garantía y el soporte que realmente pueda ofrecer el proyecto.
+Los equipos y componentes que no puedan reutilizarse se derivarán a operadores autorizados cuando así corresponda, conservando los justificantes disponibles.
+Paso 6. Trazabilidad y rendición de cuentas
+La plataforma registrará las etapas del equipo y su destino. Un código QR podrá mostrar información no sensible sobre el recorrido del dispositivo. No se publicarán datos personales, información confidencial de la empresa donante ni datos que identifiquen a las personas receptoras.
+Solo se informará de equipos recuperados, residuos derivados o impacto ambiental cuando existan registros que lo respalden. Las estimaciones de CO₂ evitado no se calcularán mediante una cifra fija por equipo sin una metodología apropiada.
+3.3. Empleo verde: eje social y operativo
+El empleo verde debe formar parte del funcionamiento del proyecto, no quedarse en una declaración de impacto. ReMadTech propone desarrollar un itinerario práctico en el que los participantes puedan adquirir competencias relacionadas con la prolongación de la vida útil de los equipos y la prevención de residuos.
+Las actividades formativas que podrían explorarse incluyen:
+Inventario, identificación y clasificación inicial de equipos.
+Diagnóstico básico de hardware y aplicación de listas de comprobación.
+Mantenimiento y reparación de equipos bajo supervisión.
+Pruebas de funcionamiento y documentación de resultados.
+Procedimientos de protección de datos y registro de operaciones.
+Economía circular, reutilización y gestión responsable de residuos.
+Competencias transversales: trabajo en equipo, seguridad, comunicación y puntualidad.
+La participación en el proyecto no equivale automáticamente a una titulación oficial ni garantiza un contrato. La duración, el perfil de entrada, la supervisión, las acreditaciones y la posible colaboración con centros formativos deberán definirse con profesionales y entidades competentes. La duración inicial de 120 horas se considera una hipótesis de trabajo que deberá justificarse y validarse antes de anunciarse como programa cerrado.
+El impacto laboral se medirá por separado: personas participantes, personas que completan la formación, prácticas o experiencias realizadas, entrevistas u oportunidades laborales facilitadas y, cuando pueda verificarse con consentimiento y seguimiento adecuado, inserciones laborales o continuidad formativa. Se distinguirán las actividades de formación de los empleos remunerados creados directamente por el proyecto.
+3.4. Modelo de ingresos y salida al mercado
+ReMadTech contempla tres líneas de ingresos potenciales, que deberán contrastarse durante el piloto:
+Venta de equipos reacondicionados. Venta de ordenadores y otros dispositivos funcionales a pymes y organizaciones que busquen equipos adecuados a sus necesidades y presupuesto. Antes de ofrecerlos se definirán las especificaciones, el estado, las pruebas realizadas, las condiciones de venta y el soporte que se pueda prestar.
+Servicios informáticos a pymes. Diagnóstico, mantenimiento y reparación de equipos, siempre dentro de las competencias técnicas disponibles y con condiciones de servicio claras.
+Valorización de componentes y materiales. Posibles ingresos complementarios a través de operadores autorizados. No se presupone que esta línea sea rentable; sus condiciones y costes deben consultarse con operadores antes de incorporarla al cálculo financiero.
+Los clientes potenciales iniciales serían pymes y organizaciones que necesiten equipos o servicios informáticos. La demanda no se considerará validada hasta mantener conversaciones con clientes potenciales y, si es posible, obtener solicitudes, presupuestos aceptados o ventas reales. En paralelo, los centros educativos y entidades sociales serían posibles canales para identificar destinatarios de donaciones, no clientes comerciales por defecto.
+3.5. Viabilidad económica y sostenibilidad financiera
+El objetivo económico es comprobar si los ingresos propios pueden cubrir una parte suficiente de los costes recurrentes y qué condiciones serían necesarias para sostener la actividad. No se afirma que el proyecto sea ya autosuficiente ni que pueda prescindir de ayudas desde el inicio.
+Costes que deberán registrarse
+Herramientas, equipos de protección y acondicionamiento del espacio.
+Repuestos, consumibles, licencias y herramientas de software, si proceden.
+Transporte y almacenamiento.
+Gestión de equipos no reutilizables.
+Personal técnico y supervisión, incluyendo el coste real del tiempo de trabajo.
+Formación, seguros, administración y otros costes necesarios para operar legalmente.
+Ingresos que deberán registrarse
+Importe de cada venta de equipos.
+Ingresos por servicios informáticos efectivamente prestados.
+Ingresos por valorización de materiales, si existen.
+Aportaciones o subvenciones, separadas de los ingresos ordinarios de la actividad.
+Validación del modelo
+En el piloto se calcularán, siempre que se disponga de datos suficientes:
+Coste medio por equipo recibido y diagnosticado.
+Porcentaje de equipos aptos para reutilización.
+Coste y tiempo medio de reparación.
+Precio de venta y margen por equipo vendido.
+Ingresos y costes por cada servicio prestado.
+Costes de gestión de los equipos no reutilizables.
+Diferencia entre ingresos propios y gastos operativos.
+Con esos datos se podrá estimar el punto de equilibrio y determinar el volumen de actividad necesario. Si los resultados muestran que una línea no es viable, se revisará o descartará en lugar de mantenerla por conveniencia narrativa.
+Ayudas, alianzas y reinversión
+Las subvenciones, donaciones y aportaciones de colaboradores podrán facilitar el inicio, la formación o la adquisición de herramientas, siempre que se obtengan y se cumplan sus condiciones. Se registrarán por separado y no se utilizarán para aparentar que la actividad comercial es autosuficiente.
+Si la forma jurídica elegida y las condiciones de financiación lo permiten, los excedentes podrán destinarse a mejorar la formación, recuperar más equipos o facilitar dispositivos a destinatarios identificados. La reinversión se describirá conforme a la estructura jurídica y contable que finalmente adopte el proyecto.
+4. Fase 3 · Implementa: prototipo tecnológico
+4.1. Objetivo del MVP
+El prototipo mínimo viable debe demostrar que ReMadTech puede registrar un equipo y documentar su recorrido. Para mantener un alcance realista, la primera versión priorizará el seguimiento y la evidencia de trabajo; la IA avanzada y las funciones complejas quedan fuera del núcleo inicial.
+Funciones prioritarias
+Ficha del dispositivo: identificador, categoría, estado inicial y datos técnicos estrictamente necesarios.
+Seguimiento de estados: recibido, pendiente de diagnóstico, en diagnóstico, pendiente de borrado, en reparación, comprobado y destinado a venta, donación o gestión autorizada, según corresponda.
+Historial de actuaciones: fecha, operación, resultado y persona responsable o rol, según el diseño y las necesidades de protección de datos.
+Identificador QR: acceso a la ficha no confidencial del dispositivo.
+Lista de comprobación técnica: pruebas mínimas para registrar si el equipo funciona y qué incidencias persisten.
+Registro económico básico: coste de repuestos, tiempo empleado, coste estimado y, si se vende, precio e ingreso. Los costes deberán definirse de forma consistente para no presentar estimaciones como contabilidad auditada.
+4.2. Diagnóstico asistido
+Como función adicional, se propone un árbol de decisión para un conjunto limitado de fallos frecuentes que el equipo pueda documentar y comprobar. La persona técnica introduciría los síntomas y el sistema mostraría comprobaciones sugeridas. Las recomendaciones no sustituirán el criterio técnico ni se aplicarán sin supervisión.
+La incorporación de IA se considerará una mejora posterior si existe una necesidad concreta, una fuente fiable de procedimientos y capacidad para revisar las respuestas. Para la demostración inicial, un árbol de decisión transparente puede ser más fácil de validar y explicar.
+4.3. Demostración y criterios de prueba
+La demo debería seguir un solo equipo de principio a fin: alta, asignación de QR, cambio de estado, registro de una comprobación, cálculo básico de costes y anotación de su destino. Si se emplean datos ficticios, se identificarán expresamente como datos de demostración.
+La validación del MVP comprobará:
+Que no se dupliquen identificadores.
+Que los cambios de estado queden registrados.
+Que el QR conduzca a la ficha correcta.
+Que el historial permita reconstruir las operaciones realizadas.
+Que los datos visibles no incluyan información personal o confidencial innecesaria.
+Que los costes se calculen con criterios claros y se puedan revisar.
+Estado del prototipo: las funciones anteriores describen el alcance propuesto. Solo se presentarán como implementadas aquellas que el equipo pueda mostrar funcionando. El enlace a una demo, diseño navegable o repositorio se incorporará cuando exista una versión accesible; no se incluye un enlace ficticio.
+5. Plan de acción: primeros 12 meses
+El calendario es una propuesta inicial y depende de la disponibilidad de equipo, espacio, recursos, supervisión técnica y colaboraciones. Las fases podrán ajustarse si los requisitos legales o los resultados de validación lo exigen.
+
+
+
+
+Fase A. Validación, acuerdos y preparación (meses 1–3)
+Entrevistar a posibles empresas donantes, clientes, centros formativos, entidades sociales y gestores autorizados.
+Identificar qué tipos de equipos se pueden recibir y bajo qué condiciones.
+Consultar los requisitos aplicables a la recepción, transporte, preparación para la reutilización, protección de datos y gestión de RAEE antes de manipular equipos.
+Definir quién supervisará el trabajo técnico, qué espacio y herramientas se necesitan y qué actividades pueden realizar los participantes.
+Diseñar el circuito y el registro mínimo de cada dispositivo.
+Preparar un presupuesto inicial y una lista de riesgos y medidas preventivas.
+Resultado esperado de la fase: decisión documentada sobre si existen condiciones suficientes para realizar un piloto seguro y acotado. Si faltan autorizaciones, supervisión o recursos esenciales, no se iniciará la manipulación de equipos hasta resolverlo.
+Fase B. Formación y prototipo mínimo (meses 4–6)
+Definir con profesionales o centros formativos los contenidos, requisitos de acceso, supervisión y evaluación del itinerario de formación.
+Revisar si una duración inicial de 120 horas es adecuada; mantenerla como propuesta hasta justificarla.
+Construir o documentar el MVP de registro, estados, QR, historial y costes.
+Elaborar listas de comprobación para un conjunto limitado de equipos y fallos.
+Establecer el procedimiento de protección y borrado de datos con revisión competente.
+Acordar cómo se comprobará el funcionamiento de los equipos y cómo se gestionarán los que no sean reutilizables.
+Resultado esperado de la fase: prototipo demostrable y procedimientos revisados antes de realizar el piloto con equipos reales.
+Fase C. Prueba piloto controlada (meses 7–9)
+Trabajar con un lote limitado de equipos, dimensionado según la capacidad real y los acuerdos obtenidos.
+Registrar cada equipo y documentar su clasificación inicial.
+Aplicar los procedimientos acordados de protección de datos y diagnóstico.
+Reparar solo los equipos para los que existan conocimientos, repuestos y condiciones seguras.
+Comprobar el funcionamiento antes de la venta o donación.
+Derivar los equipos no reutilizables a los operadores autorizados que correspondan y conservar la documentación disponible.
+Registrar las horas de trabajo, costes, ingresos, resultados técnicos y participación formativa.
+Resultado esperado de la fase: datos suficientes para valorar el funcionamiento operativo y detectar los principales costes, incidencias y necesidades de mejora.
+
+
+Fase D. Evaluación y decisión de continuidad (meses 10–12)
+Comparar los resultados con los objetivos que se hayan fijado antes del piloto.
+Analizar los costes por equipo, el margen de las ventas y los servicios, y el peso de las aportaciones externas.
+Revisar cuántos equipos se recibieron, repararon, vendieron, donaron o derivaron a gestión autorizada.
+Evaluar la participación y finalización de la formación y, cuando sea posible, hacer seguimiento de continuidad educativa o inserción laboral.
+Recoger la valoración de clientes, entidades receptoras y colaboradores.
+Elaborar un informe con resultados, limitaciones y cambios propuestos.
+Criterio de continuidad: la ampliación solo se propondrá si los resultados, los recursos, la demanda y los acuerdos permiten sostener el circuito de forma legal, segura y económicamente razonable. No se fijan cifras de equipos, empleos o ingresos antes de conocer la capacidad y los recursos disponibles.
+6. Impacto social, empleo verde y Objetivos de Desarrollo Sostenible
+El impacto principal de ReMadTech es la conexión entre la reutilización de equipos y el desarrollo de competencias que puedan facilitar el acceso de jóvenes al empleo verde. La entrega de dispositivos y la reducción de residuos son componentes importantes, pero deben contribuir a un modelo en el que las tareas técnicas estén bien definidas, supervisadas y evaluadas.
+6.1. ODS 8: Trabajo decente y crecimiento económico — prioridad principal
+Contribución prevista: ofrecer aprendizaje práctico en tareas relacionadas con reparación, mantenimiento y reutilización tecnológica, y explorar vías de transición a empleo o formación posterior.
+Indicadores:
+Número de jóvenes que inician la formación.
+Número y porcentaje que completan el itinerario.
+Horas de formación teórica y práctica impartidas.
+Número de participantes que realizan tareas prácticas supervisadas.
+Número de entrevistas, prácticas o procesos de selección facilitados por colaboradores, si los hubiera.
+Número de participantes que acceden a empleo remunerado o continúan estudios, cuando pueda verificarse.
+Número de puestos remunerados creados directamente por el proyecto, distinguiéndolos de participantes en formación.
+Número de empresas que colaboran en formación o contratación.
+
+
+No se considerará “empleo creado” la mera participación en un taller. Se distinguirán formación, prácticas, voluntariado, colaboración y empleo remunerado.
+6.2. ODS 12: Producción y consumo responsables — prioridad principal
+Contribución prevista: alargar la vida útil de equipos aptos para reutilización y documentar la gestión adecuada de los que no puedan recuperarse.
+Indicadores:
+Número de equipos recibidos y registrados.
+Número y porcentaje diagnosticados.
+Número y porcentaje reparados y comprobados.
+Número de equipos vendidos y donados, por separado.
+Kilogramos de RAEE entregados a operadores autorizados, según justificantes.
+Coste y tiempo medio de reacondicionamiento.
+Número de equipos que vuelven efectivamente a utilizarse, cuando pueda documentarse.
+6.3. ODS 4: Educación de calidad y ODS 10: Reducción de las desigualdades
+Contribución prevista: facilitar aprendizaje técnico práctico y, cuando se identifique una necesidad, mejorar el acceso a equipos funcionales mediante entidades educativas o sociales.
+Indicadores:
+Número de participantes en actividades formativas y porcentaje que las completa.
+Número de equipos donados y número de entidades receptoras.
+Número de beneficiarios finales cuando pueda conocerse sin recopilar datos excesivos.
+Porcentaje de equipos que funcionan correctamente en el momento de la entrega.
+Valoración de las entidades receptoras y, si se puede realizar seguimiento, uso efectivo de los dispositivos.
+6.4. ODS 9: Industria, innovación e infraestructura
+Contribución prevista: aplicar un procedimiento replicable de registro, diagnóstico y trazabilidad.
+Indicadores:
+Porcentaje de equipos con historial completo.
+Número de diagnósticos documentados.
+Número de incidencias detectadas y mejoras introducidas en el procedimiento.
+Porcentaje de equipos con pruebas funcionales registradas.
+6.5. ODS 13: Acción por el clima
+
+
+La reutilización puede evitar parte del impacto asociado a la fabricación de dispositivos nuevos, pero el beneficio depende de distintos factores y no se cuantificará sin una metodología apropiada.
+Indicadores:
+Número de equipos reutilizados efectivamente.
+Prolongación de la vida útil cuando pueda documentarse.
+Estimación de emisiones evitadas únicamente si se dispone de datos y metodología verificables.
+6.6. ODS 17: Alianzas para lograr los objetivos
+Contribución prevista: construir colaboraciones entre empresas, centros formativos, entidades sociales y gestores autorizados.
+Indicadores:
+Número de acuerdos formalizados.
+Número de colaboradores activos durante el piloto.
+Número de equipos aportados por cada canal.
+Número de acciones formativas o de distribución realizadas conjuntamente.
+6.7. Medición y transparencia
+Antes del piloto se definirán los indicadores que realmente pueden recogerse, quién los registra y qué evidencia los respalda. Al finalizar, el informe distinguirá entre objetivos, actividades realizadas y resultados demostrados. Los datos personales se minimizarán y solo se recopilarán cuando exista una finalidad y una base adecuada.
+No se publicarán cifras de empleo, dispositivos “salvados” o CO₂ evitado sin registros suficientes. Si un indicador no puede medirse de forma fiable, se señalará como limitación y se propondrá cómo mejorar su medición.
+7. Uso ético y responsable de la inteligencia artificial
+[PENDIENTE]
+
+En estricto cumplimiento de las bases del Hackatón Digital 2026, hemos utilizado herramientas de IA (como modelos de lenguaje conversacional) exclusivamente como apoyo en el proceso investigador y creativo (para la búsqueda de información, estructuración de ideas y análisis de normativas). No hemos introducido datos personales ni información confidencial en dichas herramientas. Todo el desarrollo conceptual, la validación en la calle, la toma de decisiones estratégicas, el modelo de negocio y el diseño del prototipo son fruto del trabajo intelectual, la creatividad y el esfuerzo colaborativo de nuestro equipo.
+8. Riesgos principales y medidas de control
+
+Riesgo
+Medida propuesta
+No conseguir suficientes equipos o clientes
+Validar la oferta y la demanda mediante entrevistas y acuerdos antes de dimensionar el piloto.
+Recibir equipos que no pueden reutilizarse
+Definir criterios de aceptación y triaje; registrar los resultados y costes de cada lote.
+Incumplir requisitos aplicables a RAEE o protección de datos
+Revisar el marco legal con entidades competentes y trabajar con operadores autorizados cuando corresponda.
+Reparaciones inseguras o de calidad insuficiente
+Limitar las tareas a las competencias disponibles, utilizar supervisión y aplicar pruebas funcionales.
+La actividad no cubre sus costes
+Medir costes completos, separar subvenciones de ingresos comerciales y ajustar o descartar líneas no rentables.
+La formación no se traduce en empleo
+Colaborar con empleadores y centros formativos, medir resultados y no prometer inserción garantizada.
+
+
+
+9. Conclusión
+ReMadTech propone un emprendimiento de economía circular en el que la reutilización tecnológica es el medio y el desarrollo de competencias para el empleo verde es una finalidad central. Su viabilidad no se dará por supuesta: deberá demostrarse con un piloto limitado, procedimientos seguros, colaboradores reales y datos económicos y sociales verificables.
+La propuesta prioriza una primera versión tecnológica sencilla, un circuito operativo comprensible y una evaluación transparente. Si el piloto demuestra que existen equipos recuperables, demanda suficiente, condiciones legales adecuadas y resultados formativos valiosos, el proyecto podrá valorar su continuidad y crecimiento. Si no se cumplen esas condiciones, los datos permitirán corregir el modelo antes de ampliarlo.
+
+
+ReMadTech no promete resolver por sí solo el desempleo juvenil ni la brecha digital; propone comprobar si un circuito local de reutilización de equipos puede crear aprendizaje técnico, oportunidades de empleo verde y acceso más asequible a la tecnología de forma sostenible.
+
+
+
+
+
+
+COSAS QUE FALTAN
+[Prioridad Alta] Terminar y quitar la palabra [PENDIENTE] del encabezado del Apartado 7 
+A. Evidencia de Validaciones/Conversiones (Apartado 2.4 del Dossier)
+Estado actual: El documento indica que las entrevistas a empresas, centros de FP, entidades sociales y gestores de RAEE son "conversaciones pendientes".
+Acción necesaria:
+Si ya habéis hablado informalmente con algún profesor, empresa local o entidad social, incluid una frase corta o anexo con ese contacto preliminar (ej.: "Contacto exploratorio realizado con el Departamento de Informática del Colegio / Empresa X").
+Si no habéis realizado ningún contacto aún, mantened la redacción actual, pero aseguraos de no presentar hipótesis como acuerdos firmados.
+Margen de mejora: Explicar visualmente el circuito operativo de 6 pasos mediante un diagrama o esquema en el documento final o en la presentación.
+B. Salida al Mercado y Factibilidad 
+Estado actual: El dossier describe con detalle la ficha del dispositivo, el historial, el código QR y el árbol de decisiones básico.
+Acción necesaria:
+Para respaldar lo afirmado, debéis incluir capturas de pantalla, un diagrama de flujo o un enlace funcional a la maqueta/demo (Figma, GitHub, Glide, etc.).
+Si la demo no está publicada en línea, adjuntad un PDF o imagen con los esquemas de pantalla como Material Complementario en el correo de entrega.
+Margen de mejora: Indicar expresamente en las diapositivas o anexos un ejemplo de margen estimado por ordenador reacondicionado (ej. Coste de entrada/repuesto vs. Precio de venta a PYME).
+C. Presentación y Venta (Comunicación) 
+Margen de mejora: Asegurar que el Resumen Ejecutivo sea muy dinámico y visual de cara al email y la posterior defensa de 6 minutos si pasáis a la final. 
+Anexos / Material visual: ¿Tenéis capturas de pantalla, esquemas en Figma/Wireframes o maquetas del diseño del MVP (Ficha con QR y árbol de decisión) para adjuntarlas al email de entrega? 
+
+
+ 
+
+
+
+
+//–_> informacion falta humanizar 👍
+1. Dónde integrar las 3 P (Personas, Planeta, Beneficio)
+Sección ideal: 1. Resumen Ejecutivo.
+Cómo insertarlo: Sustituye el segundo párrafo actual ("La propuesta combina tres elementos...") por este:
+"El modelo se fundamenta en las 3 P de la sostenibilidad (Personas, Planeta y Profit/Beneficio), buscando el triple impacto. Beneficio: a través de la posible venta de equipos reacondicionados y servicios informáticos; Personas: mediante itinerarios de aprendizaje práctico para jóvenes en riesgo de exclusión; y Planeta: al priorizar la reutilización tecnológica y derivar los equipos irreparables a canales autorizados."
+2. Dónde integrar las 4 R (Reducir, Reutilizar, Reparar, Reciclar)
+Sección ideal: 3.1. Propuesta de valor.
+Cómo insertarlo: Añade este párrafo al final de ese apartado:
+"Operativamente, ReMadTech aplica directamente las 4 R de la economía circular: Reducimos la generación de residuos electrónicos; Reparamos fallos de hardware y software mediante el aprendizaje técnico; Reutilizamos los dispositivos dándoles una segunda vida en entidades sociales o pymes; y Reciclamos los componentes irrecuperables a través de gestores de RAEE autorizados."
