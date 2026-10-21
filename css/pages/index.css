@@ -149,6 +149,19 @@
   text-align: center;
 }
 
+/* Escritorio con 3D: el panel se queda fijo mientras el pack se despieza;
+   el hueco bajo él es el recorrido de scroll de esa animación */
+@media (min-width: 48rem) {
+  .hero.is-pinned .hero__panel {
+    position: sticky;
+    top: calc(var(--header-h) + 0.25rem);
+  }
+
+  .hero.is-pinned .rule-marks {
+    margin-top: 75svh;
+  }
+}
+
 /* Regla con cruces bajo el panel */
 .rule-marks {
   display: flex;

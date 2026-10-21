@@ -76,6 +76,7 @@ function init(panel) {
   };
 
   // Encuadre según la forma del panel
+  const camBase = new THREE.Vector3();
   const resize = () => {
     const w = panel.clientWidth;
     const h = canvas.clientHeight || panel.clientHeight;
@@ -84,7 +85,8 @@ function init(panel) {
     post.setSize(w, h);
     camera.aspect = w / h;
     const wide = w / h > 1.2;
-    camera.position.set(wide ? 2.6 : 2.4, wide ? 1.95 : 2.3, wide ? 3.15 : 3.9);
+    camBase.set(wide ? 2.6 : 2.4, wide ? 1.95 : 2.3, wide ? 3.15 : 3.9);
+    camera.position.copy(camBase);
     camera.lookAt(0, 0.08, 0);
     // En escritorio el pack se desplaza a la derecha para dejar sitio al titular
     // y positivo sube el pack: deja libre la esquina inferior derecha para la entradilla
@@ -106,10 +108,17 @@ function init(panel) {
     panel.addEventListener("pointerleave", () => (ptr.tx = ptr.ty = 0));
   }
 
+  // Escritorio: el panel queda fijo (CSS .hero.is-pinned) mientras el pack se
+  // despieza del todo en los primeros 3/4 de pantalla de scroll.
+  // Móvil: sin fijar, ciclo automático de apertura.
+  const pinned = window.matchMedia("(min-width: 48rem)");
+  panel.closest(".hero")?.classList.add("is-pinned");
   let ex = 0;
   const exTarget = () => {
-    const r = panel.getBoundingClientRect();
-    return Math.min(1, Math.max(0, -r.top / (r.height * 0.75)));
+    // Móvil: el panel no se fija (taparía el texto), así que el pack se abre y
+    // se cierra solo en un ciclo lento mientras está a la vista
+    const p = pinned.matches ? window.scrollY / (window.innerHeight * 0.6) : 0.5 - 0.5 * Math.cos((performance.now() / 1000) * 0.63);
+    return Math.min(1, Math.max(0, p));
   };
 
   // ?still: encuadre fijo para generar la imagen de respaldo
@@ -128,7 +137,11 @@ function init(panel) {
     const k = 1 - Math.exp(-dt * 5);
     ptr.x += (ptr.tx - ptr.x) * k;
     ptr.y += (ptr.ty - ptr.y) * k;
-    ex += (exTarget() * 0.85 - ex) * k;
+    ex += (exTarget() - ex) * k;
+    // Al abrirse, la cámara se aleja y sube con los módulos: el pack despiezado queda entero y en su sitio
+    camera.position.copy(camBase).multiplyScalar(1 + ex * 0.5);
+    camera.position.y += ex * 0.32;
+    camera.lookAt(0, 0.08 + ex * 0.32, 0);
     if (!still) angle += dt * 0.12;
     turn.rotation.y = angle + ptr.x * 0.35;
     turn.rotation.x = ptr.y * 0.06;
