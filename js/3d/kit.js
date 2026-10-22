@@ -12,6 +12,7 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { GTAOPass } from "three/addons/postprocessing/GTAOPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
 export { THREE };
 
@@ -71,9 +72,13 @@ export function createComposer(renderer, scene, camera, { ao = !LITE, bloom = 0.
   const bloomPass = new UnrealBloomPass(new THREE.Vector2(size.x, size.y), bloom, 0.4, 2.4);
   composer.addPass(bloomPass);
   composer.addPass(new OutputPass());
-  return {
+  let W = size.x;
+  let H = size.y;
+  const api = {
     composer,
     setSize(w, h) {
+      W = w;
+      H = h;
       composer.setPixelRatio(renderer.getPixelRatio());
       composer.setSize(w, h);
       if (gtao) gtao.setSize(w * renderer.getPixelRatio(), h * renderer.getPixelRatio());
@@ -81,7 +86,22 @@ export function createComposer(renderer, scene, camera, { ao = !LITE, bloom = 0.
     render() {
       composer.render();
     },
+    // Equipo que no llega: primero fuera la oclusión ambiental, luego menos resolución.
+    // Devuelve false cuando ya no queda nada que bajar.
+    degrade() {
+      if (gtao?.enabled) {
+        gtao.enabled = false;
+        return true;
+      }
+      const pr = renderer.getPixelRatio();
+      if (pr <= 1) return false;
+      renderer.setPixelRatio(Math.max(1, pr - 0.25));
+      renderer.setSize(W, H, false);
+      api.setSize(W, H);
+      return true;
+    },
   };
+  return api;
 }
 
 export function environment(renderer, scene) {
@@ -357,6 +377,45 @@ export function hvWarning() {
   });
 }
 
+// Funde las mallas fijas que comparten material (y sombras) en una sola malla.
+// Quedan fuera las transparentes (rutas, salas, rótulos: se animan o se ordenan)
+// Las geometrías con índice y sin él se funden por separado.
+// Con { transparent: true } también funde transparentes (los trazos de una misma ruta).
+// Lo marcado con userData.dynamic (ruedas) y lo que cuelga de ello se respeta.
+export function mergeStatic(root, { transparent = false } = {}) {
+  root.updateMatrixWorld(true);
+  const inv = new THREE.Matrix4().copy(root.matrixWorld).invert();
+  const buckets = new Map();
+  const dynamic = (o) => {
+    for (let a = o; a && a !== root; a = a.parent) if (a.userData.dynamic) return true;
+    return false;
+  };
+  root.traverse((o) => {
+    if (!o.isMesh || o.isInstancedMesh || (o.material.transparent && !transparent) || dynamic(o)) return;
+    const g = o.geometry.clone();
+    for (const k of Object.keys(g.attributes)) if (k !== "position" && k !== "normal" && k !== "uv") g.deleteAttribute(k);
+    if (!g.attributes.normal || !g.attributes.uv) return;
+    g.clearGroups();
+    g.applyMatrix4(new THREE.Matrix4().multiplyMatrices(inv, o.matrixWorld));
+    // mergeGeometries no mezcla geometrías con y sin índice: van en grupos distintos
+    const key = `${o.material.uuid}|${o.castShadow}|${o.receiveShadow}|${!!g.index}`;
+    if (!buckets.has(key)) buckets.set(key, { material: o.material, cast: o.castShadow, receive: o.receiveShadow, geos: [], meshes: [] });
+    buckets.get(key).geos.push(g);
+    buckets.get(key).meshes.push(o);
+  });
+  buckets.forEach((b) => {
+    const merged = b.meshes.length > 1 ? mergeGeometries(b.geos, false) : null;
+    b.geos.forEach((g) => g.dispose());
+    // Si no se pudo fundir, las piezas originales se quedan tal cual
+    if (!merged) return;
+    b.meshes.forEach((o) => o.parent.remove(o));
+    const m = new THREE.Mesh(merged, b.material);
+    m.castShadow = b.cast;
+    m.receiveShadow = b.receive;
+    root.add(m);
+  });
+}
+
 // ---------- Pack de batería de tracción ----------
 // Bandeja de aluminio con nervios y bridas, 8 módulos (2 × 4) con placas
 // finales, pletinas de cobre en serie, arnés de medida, caja de conexiones
@@ -538,6 +597,22 @@ export function batteryPack({ lid = true, cells = true } = {}) {
     }
   };
 
+  // Menos piezas que dibujar: cada cubierta, la tapa y las pletinas se funden por dentro,
+  // y la bandeja funde lo fijo sin tocar lo que se mueve en el despiece
+  modules.forEach((m) => {
+    mergeStatic(m.cover);
+    m.g.userData.dynamic = true;
+  });
+  mergeStatic(bars);
+  bars.userData.dynamic = true;
+  if (lidGroup) {
+    mergeStatic(lidGroup);
+    lidGroup.userData.dynamic = true;
+  }
+  led.userData.dynamic = true;
+  if (badCell) badCell.userData.dynamic = true;
+  mergeStatic(tray);
+
   const STATE = { ok: COLORS.accent, weak: COLORS.amber, quar: COLORS.amber, bad: COLORS.red, "": COLORS.accent };
   const setState = (st) => {
     const c = STATE[st] ?? COLORS.accent;
@@ -547,6 +622,20 @@ export function batteryPack({ lid = true, cells = true } = {}) {
 
   setExplode(0);
   return { group: g, setExplode, setState, hvMain };
+}
+
+// Vigila el tiempo entre fotogramas dibujados y baja calidad si no llega a ~40 fps
+export function frameGovernor(post) {
+  let ema = 1 / 60;
+  let n = 0;
+  let done = false;
+  return (dt) => {
+    if (done || dt <= 0) return;
+    ema += (dt - ema) * 0.08;
+    if (++n < 45) return;
+    n = 0;
+    if (ema > 1 / 40) done = !post.degrade();
+  };
 }
 
 // Visibilidad de un elemento: solo se dibuja mientras está en pantalla

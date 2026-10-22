@@ -102,11 +102,9 @@
   font-size: 0.75rem;
   color: var(--c-ink);
   white-space: nowrap;
-  background: rgba(18, 25, 22, 0.78);
+  background: rgba(18, 25, 22, 0.92);
   border: 1px solid var(--c-line-strong);
   border-radius: var(--r-pill);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   pointer-events: none;
 }
 
@@ -430,9 +428,7 @@ html:not(.has-3d) .station__steps {
 .has-3d .pcard {
   pointer-events: auto;
   width: min(29rem, 100%);
-  background: rgba(16, 22, 19, 0.86);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  background: rgba(16, 22, 19, 0.95);
   box-shadow: var(--sh-3);
   opacity: 0.3;
   transform: translateY(12px);
@@ -521,11 +517,9 @@ html:not(.has-3d) .station__steps {
   gap: var(--s-2) var(--s-4);
   min-width: 16rem;
   padding: 0.85rem 1.1rem;
-  background: rgba(16, 22, 19, 0.82);
+  background: rgba(16, 22, 19, 0.94);
   border: 1px solid var(--c-line);
   border-radius: var(--r-md);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   font-size: var(--fs-sm);
 }
 

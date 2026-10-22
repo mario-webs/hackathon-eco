@@ -7,7 +7,7 @@
 import {
   THREE, canRender, createRenderer, createComposer, environment, mat, box, cyl, mesh, cable,
   floorLabel, screen, drawCycler, class9Label, hvWarning, canvasTexture, batteryPack,
-  whenVisible, fontsReady, COLORS, FONT, MONO,
+  whenVisible, fontsReady, frameGovernor, mergeStatic, COLORS, FONT, MONO,
 } from "./kit.js";
 import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 
@@ -89,6 +89,9 @@ async function init(wrap) {
 
   const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 200);
   const post = createComposer(renderer, scene, camera, { bloom: 0.5 });
+  const govern = frameGovernor(post);
+  // Las sombras solo se recalculan cuando algo se mueve
+  renderer.shadowMap.autoUpdate = false;
 
   // ---------- Luz ----------
   scene.add(new THREE.HemisphereLight(0xdfeee6, 0x0b0f0d, 0.32));
@@ -108,25 +111,35 @@ async function init(wrap) {
   scene.add(world);
   const add = (...o) => world.add(...o);
 
+  // Se construye por tramos y se cede el hilo entre ellos: la página no se congela
+  const breathe = () => new Promise((r) => setTimeout(r));
   buildGround(add);
   buildBuilding(add);
   const zoneFx = buildZones(add);
+  await breathe();
   buildReception(add);
   buildQuarantine(add);
   buildLab(add);
+  await breathe();
   buildRepair(add);
   buildSecondLife(add);
   buildStore(add);
+  await breathe();
   buildDemo(add);
   buildCarport(add);
   buildSurroundings(add);
   buildDecisionMark(add);
   const routes = buildRoutes(add);
+  // Todo lo anterior es fijo: se funde por material en pocas mallas (menos llamadas de dibujo)
+  mergeStatic(world);
+  await breathe();
 
   // Vehículos
   const van = buildVan();
+  mergeStatic(van.group);
   add(van.group);
   const truck = buildTruck();
+  mergeStatic(truck.group);
   add(truck.group);
 
   // Carro con la batería
@@ -141,6 +154,7 @@ async function init(wrap) {
   handle.position.set(-0.88, 0.95, 0);
   handle.rotation.y = Math.PI / 2;
   cart.add(handle);
+  mergeStatic(cart);
   const pack = batteryPack({ lid: true });
   pack.group.position.y = 0.805;
   cart.add(pack.group);
@@ -262,6 +276,8 @@ async function init(wrap) {
     const target = readF();
     const k = first ? 1 : 1 - Math.exp(-dt * 4.2);
     first = false;
+    const prevF = cur.f;
+    const prevPtr = ptr.x + ptr.y;
     cur.f += (target - cur.f) * k;
     const f = cur.f;
     const i = Math.min(Math.floor(f), total);
@@ -319,6 +335,8 @@ async function init(wrap) {
       // La ruta activa pasa del umbral del brillo: se ve como pintura luminosa
       r.mat.color.copy(r.base).multiplyScalar(1 + r.v * 2.8);
     });
+    const fading = zoneFx.some((z) => Math.abs(z.target - z.v) > 1e-3) || routes.some((r) => Math.abs(r.target - r.v) > 1e-3);
+    const moved = Math.abs(cur.f - prevF) > 1e-5 || Math.abs(ptr.x + ptr.y - prevPtr) > 1e-4;
 
     // HUD
     if (hudBar) hudBar.style.transform = `scaleX(${(f / total).toFixed(4)})`;
@@ -330,22 +348,32 @@ async function init(wrap) {
       tag.style.opacity = show ? "1" : "0";
       tag.style.transform = `translate(${((proj.x + 1) / 2) * W}px, ${((1 - proj.y) / 2) * H}px)`;
     }
+    if (moved) renderer.shadowMap.needsUpdate = true;
+    return moved || fading;
   };
 
   // ---------- Bucle ----------
   let raf = 0;
   let last = performance.now();
+  let lastDraw = 0;
   let running = false;
+  let force = true;
   const frame = (now) => {
     raf = requestAnimationFrame(frame);
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
-    update(dt);
+    // Escena quieta: no se repinta (el bucle sigue, pero casi no cuesta)
+    if (!update(dt) && !force) return;
+    force = false;
     post.render();
+    if (lastDraw) govern((now - lastDraw) / 1000);
+    lastDraw = now;
   };
   const start = () => {
     if (running) return;
     running = true;
+    force = true;
+    lastDraw = 0;
     last = performance.now();
     raf = requestAnimationFrame(frame);
   };
@@ -366,12 +394,16 @@ async function init(wrap) {
   measure();
   resize();
   update(0);
+  renderer.shadowMap.needsUpdate = true;
+  // Shaders compilados en segundo plano antes del primer fotograma
+  if (renderer.compileAsync) await renderer.compileAsync(scene, camera);
   post.render();
   wrap.classList.add("is-ready");
 
   new ResizeObserver(() => {
     measure();
     resize();
+    force = true;
   }).observe(stage);
   // Si cambia la altura de lo que hay por encima (fuentes, imágenes), las paradas se vuelven a medir
   new ResizeObserver(measure).observe(document.body);
@@ -893,6 +925,7 @@ function buildRoutes(add) {
     arrow.rotation.z = -Math.atan2(end[1] - pre[1], end[0] - pre[0]);
     arrow.position.set(end[0], y + 0.001, end[1]);
     g.add(arrow);
+    mergeStatic(g, { transparent: true });
     add(g);
     return { steps: r.steps, mat: m, base: m.color.clone(), v: 0, target: 0 };
   });
@@ -1063,6 +1096,7 @@ function buildVan() {
   const wheels = [];
   for (const x of ARCH) for (const z of [-0.84, 0.84]) {
     const w = wheel(0.37, 0.24);
+    w.userData.dynamic = true;
     w.position.set(x, 0.37, z);
     wheels.push(w);
     g.add(w);
@@ -1164,6 +1198,7 @@ function buildTruck() {
   const wheels = [];
   for (const x of [-2.7, -1.75, 2.45]) for (const z of [-1.0, 1.0]) {
     const w = wheel(0.46, 0.3);
+    w.userData.dynamic = true;
     w.position.set(x, 0.46, z);
     wheels.push(w);
     g.add(w);
@@ -1179,6 +1214,22 @@ function buildTruck() {
   };
 }
 
-// Arranque al final: los datos de arriba ya están definidos
+// Arranque al final: los datos de arriba ya están definidos.
+// La maquetación 3D (.has-3d) se fija ya, para que la página no salte; la escena
+// pesada se construye cuando la sección se acerca y el navegador está libre.
 const wrap = document.querySelector("[data-station]");
-if (wrap && canRender()) init(wrap);
+if (wrap && canRender()) {
+  document.documentElement.classList.add("has-3d");
+  // Si la escena falla al construirse, vuelve el plano 2D con la lista
+  const go = () => init(wrap).catch(() => document.documentElement.classList.remove("has-3d"));
+  const near = new IntersectionObserver(
+    (entries) => {
+      if (!entries[0].isIntersecting) return;
+      near.disconnect();
+      if ("requestIdleCallback" in window) requestIdleCallback(go, { timeout: 1200 });
+      else setTimeout(go, 200);
+    },
+    { rootMargin: "150% 0px" }
+  );
+  near.observe(wrap);
+}

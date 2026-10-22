@@ -2,7 +2,7 @@
 // se despieza al bajar. Sin WebGL o con "reducir movimiento" se queda la
 // imagen fija del mismo pack que ya está en el HTML.
 
-import { THREE, canRender, createRenderer, createComposer, environment, batteryPack, whenVisible, COLORS } from "./kit.js";
+import { THREE, canRender, createRenderer, createComposer, environment, batteryPack, whenVisible, frameGovernor, COLORS } from "./kit.js";
 
 const panel = document.querySelector("[data-hero-3d]");
 if (panel && canRender()) init(panel);
@@ -22,7 +22,9 @@ function init(panel) {
   environment(renderer, scene);
 
   const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 50);
-  const post = createComposer(renderer, scene, camera, { bloom: 0.45 });
+  // Escena pequeña: la sombra ya da el contacto, sin oclusión ambiental
+  const post = createComposer(renderer, scene, camera, { ao: false, bloom: 0.45 });
+  const govern = frameGovernor(post);
 
   // Luz de estudio: clave suave desde arriba a la izquierda, contra verde,
   // un acento cálido que hace leer el naranja de alta tensión
@@ -147,6 +149,7 @@ function init(panel) {
     turn.rotation.x = ptr.y * 0.06;
     pack.setExplode(ex);
     draw();
+    govern(dt);
   };
 
   whenVisible(panel, (on) => {
