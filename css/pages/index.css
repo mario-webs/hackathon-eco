@@ -414,15 +414,41 @@ html:not(.has-3d) .station__steps {
 }
 
 .has-3d .pstep {
-  min-height: 125svh;
-  display: flex;
-  align-items: center;
-  padding: var(--s-8) calc(var(--gutter) * 2 + 0.25rem);
+  /* Una franja de scroll por toma: transporte + una por acción de la ficha */
+  min-height: calc(var(--shots, 1) * 62svh + 30svh);
+  padding: var(--s-6) calc(var(--gutter) * 2 + 0.25rem);
   pointer-events: none;
 }
 
-.has-3d .pstep:first-child {
-  min-height: 100svh;
+/* La ficha se queda quieta mientras la cámara recorre su taller */
+.has-3d .pstep > .pcard {
+  position: sticky;
+  top: calc(var(--header-h) + 1.75rem);
+}
+
+/* Acción que se está viendo: resaltada; el resto, en segundo plano */
+.has-3d .pstep.is-on .pcard__actions > li,
+.has-3d .pstep.is-on .pcard__dest > li {
+  opacity: 0.5;
+  transition: opacity var(--d-3) var(--ease-out), color var(--d-3) var(--ease-out);
+}
+
+.has-3d .pstep.is-on .pcard__actions > li.is-now,
+.has-3d .pstep.is-on .pcard__dest > li.is-now {
+  opacity: 1;
+  color: var(--c-ink);
+}
+
+.has-3d .pcard__actions > li.is-now::before {
+  box-shadow: 0 0 0 3px var(--c-accent-soft);
+}
+
+.has-3d .pcard__actions > li.is-now.is-doc::before {
+  background: var(--c-accent);
+}
+
+.has-3d .pcard__actions > li.is-now.is-sector::before {
+  border-color: var(--c-accent);
 }
 
 .has-3d .pcard {
@@ -430,7 +456,7 @@ html:not(.has-3d) .station__steps {
   width: min(29rem, 100%);
   background: rgba(16, 22, 19, 0.95);
   box-shadow: var(--sh-3);
-  opacity: 0.3;
+  opacity: 0.14;
   transform: translateY(12px);
   transition: opacity var(--d-4) var(--ease-out), transform var(--d-4) var(--ease-out);
 }
@@ -545,6 +571,39 @@ html:not(.has-3d) .station__steps {
   transform: scaleX(0);
 }
 
+/* Subtítulo del escenario: solo en móvil, donde la ficha no puede quedarse fija */
+.station__caption {
+  display: none;
+}
+
+@media (max-width: 63.99rem) {
+  .has-3d .station__caption {
+    position: absolute;
+    left: var(--s-3);
+    right: var(--s-3);
+    bottom: 3.6rem;
+    z-index: 2;
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--c-ink);
+    background: rgba(16, 22, 19, 0.94);
+    border: 1px solid var(--c-line);
+    border-radius: var(--r-sm);
+  }
+
+  .station__caption b {
+    font-weight: 500;
+    color: var(--c-accent-ink);
+  }
+
+  .station__caption span:empty {
+    display: none;
+  }
+}
+
 /* Cruces en las esquinas del escenario */
 .station__corner {
   position: absolute;
@@ -613,13 +672,14 @@ html:not(.has-3d) .station__steps {
   }
 
   .has-3d .pstep {
-    min-height: 90svh;
-    align-items: flex-start;
+    min-height: calc(var(--shots, 1) * 46svh + 20svh);
     padding: var(--s-4) var(--gutter);
   }
 
-  .has-3d .pstep:first-child {
-    min-height: 60svh;
+  /* En móvil la ficha pasa por debajo del escenario, sin quedarse fija */
+  .has-3d .pstep > .pcard {
+    position: relative;
+    top: auto;
   }
 
   .has-3d .pcard {

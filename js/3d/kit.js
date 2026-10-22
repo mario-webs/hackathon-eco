@@ -178,7 +178,7 @@ export function mat(name) {
     concrete: () => std({ color: 0x40463f, roughness: 0.9, roughnessMap: T.rough, envMapIntensity: 0.4 }),
     asphalt: () => std({ color: 0x16191a, roughness: 0.96, envMapIntensity: 0.2 }),
     sidewalk: () => std({ color: 0x2c3230, roughness: 0.92, roughnessMap: T.rough, envMapIntensity: 0.3 }),
-    wall: () => std({ color: 0x4a524d, roughness: 0.88, roughnessMap: T.rough, envMapIntensity: 0.35 }),
+    wall: () => std({ color: 0xa3aba5, roughness: 0.9, roughnessMap: T.rough, envMapIntensity: 0.3 }),
     wallTop: () => std({ color: 0xaab3ad, roughness: 0.6, envMapIntensity: 0.5 }),
     steel: () => phys({ color: 0x9aa29e, metalness: 0.9, roughness: 0.45, roughnessMap: T.brushed, envMapIntensity: 0.9 }),
     steelDark: () => phys({ color: 0x2d3431, metalness: 0.75, roughness: 0.42, roughnessMap: T.rough, envMapIntensity: 0.9 }),
@@ -205,6 +205,8 @@ export function mat(name) {
     pv: () => phys({ color: 0x0b1630, roughness: 0.12, metalness: 0.5, clearcoat: 1, envMapIntensity: 1.4 }),
     skin: () => std({ color: 0xc69c7a, roughness: 0.65, envMapIntensity: 0.4 }),
     overall: () => std({ color: 0x27322e, roughness: 0.85, envMapIntensity: 0.4 }),
+    visitor: () => std({ color: 0x2f4a6b, roughness: 0.8, envMapIntensity: 0.4 }),
+    visitor2: () => std({ color: 0x6b4a3a, roughness: 0.8, envMapIntensity: 0.4 }),
     vest: () => std({ color: 0xc8682e, roughness: 0.85, envMapIntensity: 0.3 }),
     reflect: () => phys({ color: 0xdfe5e2, metalness: 0.9, roughness: 0.2, envMapIntensity: 1.4 }),
     helmet: () => phys({ color: 0xe2e6e3, roughness: 0.3, clearcoat: 1, envMapIntensity: 0.8 }),
@@ -416,6 +418,39 @@ export function mergeStatic(root, { transparent = false } = {}) {
   });
 }
 
+// QR esquemático del pasaporte (no codifica nada)
+export function qrTexture() {
+  return canvasTexture(128, 128, (g, W) => {
+    g.fillStyle = "#f4f6f4";
+    g.fillRect(0, 0, W, W);
+    g.fillStyle = "#0a0d0c";
+    const n = 17;
+    const c = W / (n + 2);
+    for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) if ((i * 13 + j * 7 + i * j) % 5 < 2) g.fillRect(c + i * c, c + j * c, c, c);
+    for (const [x, y] of [[1, 1], [n - 6, 1], [1, n - 6]]) {
+      g.fillRect(x * c, y * c, 7 * c, 7 * c);
+      g.fillStyle = "#f4f6f4";
+      g.fillRect((x + 1) * c, (y + 1) * c, 5 * c, 5 * c);
+      g.fillStyle = "#0a0d0c";
+      g.fillRect((x + 2) * c, (y + 2) * c, 3 * c, 3 * c);
+    }
+  });
+}
+
+// Etiqueta interna con código de barras (sin datos reales)
+function labelTexture() {
+  return canvasTexture(256, 118, (g, W, H) => {
+    g.fillStyle = "#f4f6f4";
+    g.fillRect(0, 0, W, H);
+    g.fillStyle = "#3ddc84";
+    g.fillRect(0, 0, W, H * 0.18);
+    g.fillStyle = "#0a0d0c";
+    for (let x = 14; x < W - 14; x += 3) if ((x * 7) % 11 < 6) g.fillRect(x, H * 0.32, (x % 3) + 1, H * 0.42);
+    g.font = `500 ${H * 0.13}px ${MONO}`;
+    g.fillText("SV · RECEPCIÓN", 14, H * 0.92);
+  });
+}
+
 // ---------- Pack de batería de tracción ----------
 // Bandeja de aluminio con nervios y bridas, 8 módulos (2 × 4) con placas
 // finales, pletinas de cobre en serie, arnés de medida, caja de conexiones
@@ -562,12 +597,14 @@ export function batteryPack({ lid = true, cells = true } = {}) {
   const v = new THREE.Vector3();
   let explode = -1;
 
-  const setExplode = (e) => {
-    if (Math.abs(e - explode) < 1e-4) return;
+  // Elevación extra del módulo defectuoso (reparación): 0 en su sitio, 1 fuera del pack
+  let liftBad = 0;
+  const setExplode = (e, force = false) => {
+    if (!force && Math.abs(e - explode) < 1e-4) return;
     explode = e;
     const s = e * e * (3 - 2 * e);
     modules.forEach((m) => {
-      const lift = s * (0.32 + m.rz * 0.06);
+      const lift = s * (0.32 + m.rz * 0.06) + (m === modules[BAD.mod] ? liftBad * 0.55 : 0);
       m.g.position.set(m.home.x * (1 + s * 0.42), m.home.y + lift, m.home.z * (1 + s * 0.75));
       m.cover.position.y = 0.0675 + s * 0.2;
       if (cellMesh) {
@@ -620,8 +657,34 @@ export function batteryPack({ lid = true, cells = true } = {}) {
     ledMat.emissive.setHex(c);
   };
 
+  // Pegatina del pasaporte (QR) en la tapa y etiqueta interna que se pone en recepción
+  let label = null;
+  if (lidGroup) {
+    const qr = new THREE.Mesh(new THREE.PlaneGeometry(0.16, 0.16), new THREE.MeshStandardMaterial({ map: qrTexture(), roughness: 0.6 }));
+    qr.rotation.x = -Math.PI / 2;
+    qr.position.set(-0.6, 0.0115, 0.4);
+    lidGroup.add(qr);
+    label = new THREE.Mesh(new THREE.PlaneGeometry(0.26, 0.12), new THREE.MeshStandardMaterial({ map: labelTexture(), roughness: 0.6 }));
+    label.rotation.x = -Math.PI / 2;
+    label.position.set(-0.3, 0.0115, 0.42);
+    label.scale.setScalar(1e-3);
+    lidGroup.add(label);
+  }
+  const setLabel = (v) => {
+    if (label) label.scale.setScalar(Math.max(1e-3, v));
+  };
+  // Celda sustituida: deja de marcarse como fallida
+  const setFixed = (v) => {
+    if (badCell) badCell.material = mat(v ? "cell" : "cellBad");
+  };
+  const setLift = (v) => {
+    if (Math.abs(v - liftBad) < 1e-4) return;
+    liftBad = v;
+    setExplode(explode, true);
+  };
+
   setExplode(0);
-  return { group: g, setExplode, setState, hvMain };
+  return { group: g, setExplode, setState, setLabel, setFixed, setLift, hvMain };
 }
 
 // Vigila el tiempo entre fotogramas dibujados y baja calidad si no llega a ~40 fps
