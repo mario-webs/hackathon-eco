@@ -49,13 +49,58 @@
     items.forEach((el) => io.observe(el));
   }
 
-  // Si el usuario activa "reducir movimiento" con la página abierta
+  // Si el usuario activa "reducir movimiento" con la página abierta.
+  // Si lo desactiva, se recarga para que arranquen el scroll suave y las animaciones.
   reduced.addEventListener("change", (e) => {
     if (e.matches) {
       root.classList.remove("motion");
       items.forEach((el) => el.classList.add("is-in"));
+    } else {
+      location.reload();
     }
   });
+
+  // ---------- Aviso: animaciones del sistema desactivadas ----------
+  // Muchos Windows traen apagados los "Efectos de animación" sin que el usuario lo sepa.
+  // Sale en cada visita mientras sigan apagados, y se recuerda al llegar a cada parte animada.
+  if (reduced.matches) {
+    const HOW = "Windows: Configuración → Accesibilidad → Efectos visuales → <b>Efectos de animación</b>. Mac: Accesibilidad → Pantalla → desactiva «Reducir movimiento».";
+    const tip = document.createElement("div");
+    tip.className = "notice notice--demo motion-tip";
+    tip.setAttribute("role", "status");
+    const show = (title, text) => {
+      tip.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <div><strong>${title}</strong>${text} ${HOW}
+        <button type="button" class="btn btn--ghost btn--sm">Entendido</button></div>`;
+      tip.querySelector("button").addEventListener("click", () => tip.remove());
+      document.body.append(tip);
+    };
+    show(
+      "Tu sistema tiene las animaciones desactivadas",
+      "Para ver la web completa, con el recorrido animado del proceso, actívalas. La página se actualiza sola al cambiarlo."
+    );
+    // Partes que dependen de la animación: una vez por parte y visita
+    const parts = document.querySelectorAll("[data-station], [data-journey]");
+    const pio = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          pio.unobserve(entry.target);
+          show("Esta parte se ve mejor con animaciones", "Aquí hay un recorrido animado que te estás perdiendo. Actívalas en");
+        });
+      },
+      { rootMargin: "0px 0px -40% 0px" }
+    );
+    parts.forEach((el) => pio.observe(el));
+    reduced.addEventListener(
+      "change",
+      () => {
+        pio.disconnect();
+        tip.remove();
+      },
+      { once: true }
+    );
+  }
 
   // ---------- Contadores (data-count) ----------
   const counters = document.querySelectorAll("[data-count]");

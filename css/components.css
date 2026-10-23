@@ -941,6 +941,23 @@ html:not(.js) .menu-card--search {
   color: var(--c-red-ink);
 }
 
+/* Aviso flotante de animaciones del sistema (lo crea main.js) */
+.motion-tip {
+  position: fixed;
+  z-index: 60;
+  right: var(--s-4);
+  bottom: var(--s-4);
+  left: var(--s-4);
+  max-width: 30rem;
+  margin-left: auto;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.motion-tip .btn {
+  display: flex;
+  margin-top: var(--s-3);
+}
+
 /* ---------- Tablas ---------- */
 .table-wrap {
   overflow-x: auto;

@@ -581,7 +581,7 @@ async function init(wrap) {
   update(0);
   renderer.shadowMap.needsUpdate = true;
   // Shaders compilados en segundo plano antes del primer fotograma
-  if (renderer.compileAsync) await renderer.compileAsync(scene, camera);
+  await post.compile(scene, camera);
   post.render();
   wrap.classList.add("is-ready");
 

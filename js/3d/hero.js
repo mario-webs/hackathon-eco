@@ -155,16 +155,19 @@ function init(panel) {
     govern(dt);
   };
 
-  whenVisible(panel, (on) => {
-    cancelAnimationFrame(raf);
-    if (on) {
-      last = performance.now();
-      raf = requestAnimationFrame(frame);
-    }
-  });
+  // Shaders en segundo plano; mientras tanto se ve la imagen de respaldo
+  post.compile(scene, camera).then(() => {
+    whenVisible(panel, (on) => {
+      cancelAnimationFrame(raf);
+      if (on) {
+        last = performance.now();
+        raf = requestAnimationFrame(frame);
+      }
+    });
 
-  // Primer fotograma pintado: se retira la imagen de respaldo
-  turn.rotation.y = angle;
-  draw();
-  panel.classList.add("is-3d");
+    // Primer fotograma pintado: se retira la imagen de respaldo
+    turn.rotation.y = angle;
+    draw();
+    panel.classList.add("is-3d");
+  });
 }

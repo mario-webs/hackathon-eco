@@ -89,6 +89,15 @@ export function createComposer(renderer, scene, camera, { ao = !LITE, bloom = 0.
     render() {
       composer.render();
     },
+    // Compila los shaders en segundo plano para el destino real (el búfer del
+    // posproceso, lineal y sin tono): compilados para pantalla no sirven y el
+    // primer fotograma los recompilaría todos de golpe, congelando la página.
+    compile(scene, camera) {
+      renderer.setRenderTarget(composer.readBuffer);
+      const done = renderer.compileAsync(scene, camera);
+      renderer.setRenderTarget(null);
+      return done;
+    },
     // Equipo que no llega: primero fuera la oclusión ambiental, luego menos resolución.
     // Devuelve false cuando ya no queda nada que bajar.
     degrade() {
