@@ -1,6 +1,6 @@
 // Hero: el pack de batería en estudio. Gira despacio, sigue al puntero y
-// se despieza al bajar. Sin WebGL o con "reducir movimiento" se queda la
-// imagen fija del mismo pack que ya está en el HTML.
+// se despieza al bajar. Con "reducir movimiento" no gira ni se abre solo.
+// Sin WebGL se queda la imagen fija del mismo pack que ya está en el HTML.
 
 import { THREE, canRender, createRenderer, createComposer, environment, batteryPack, whenVisible, frameGovernor, COLORS } from "./kit.js";
 
@@ -115,11 +115,13 @@ function init(panel) {
   // Móvil: sin fijar, ciclo automático de apertura.
   const pinned = window.matchMedia("(min-width: 48rem)");
   panel.closest(".hero")?.classList.add("is-pinned");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   let ex = 0;
   const exTarget = () => {
     // Móvil: el panel no se fija (taparía el texto), así que el pack se abre y
-    // se cierra solo en un ciclo lento mientras está a la vista
-    const p = pinned.matches ? window.scrollY / (window.innerHeight * 0.6) : 0.5 - 0.5 * Math.cos((performance.now() / 1000) * 0.63);
+    // se cierra solo en un ciclo lento mientras está a la vista (medio abierto si se reduce el movimiento)
+    const cycle = reduced.matches ? 0.5 : 0.5 - 0.5 * Math.cos((performance.now() / 1000) * 0.63);
+    const p = pinned.matches ? window.scrollY / (window.innerHeight * 0.6) : cycle;
     return Math.min(1, Math.max(0, p));
   };
 
@@ -145,7 +147,7 @@ function init(panel) {
     camera.position.copy(camBase).multiplyScalar(1 + ex * 0.5);
     camera.position.y += ex * 0.32;
     camera.lookAt(0, 0.08 + ex * 0.32, 0);
-    if (!still) angle += dt * 0.12;
+    if (!still && !reduced.matches) angle += dt * 0.12;
     turn.rotation.y = angle + ptr.x * 0.35;
     turn.rotation.x = ptr.y * 0.06;
     pack.setExplode(ex);
@@ -165,12 +167,4 @@ function init(panel) {
   turn.rotation.y = angle;
   draw();
   panel.classList.add("is-3d");
-
-  window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", (e) => {
-    if (!e.matches) return;
-    cancelAnimationFrame(raf);
-    panel.classList.remove("is-3d");
-    canvas.remove();
-    renderer.dispose();
-  });
 }

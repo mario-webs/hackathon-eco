@@ -24,9 +24,9 @@ export const COLORS = {
   hv: 0xff6a13,
 };
 
-// WebGL disponible y movimiento permitido
+// WebGL disponible. "Reducir movimiento" no lo apaga: muchos Windows lo traen
+// activado sin saberlo; cada escena quita solo lo que se mueve por sí solo.
 export function canRender() {
-  if (!document.documentElement.classList.contains("motion")) return false;
   try {
     const c = document.createElement("canvas");
     const gl = c.getContext("webgl2");

@@ -4,7 +4,7 @@
 // la ficha, dentro del taller y a la altura de los ojos. La acción que se ve se
 // resalta en la ficha. Todo depende solo de la posición de scroll: se puede ir
 // hacia delante y hacia atrás y la escena siempre está en el mismo estado.
-// Sin WebGL o con "reducir movimiento" se queda el plano 2D y la lista.
+// Sin WebGL se queda el plano 2D y la lista.
 
 import {
   THREE, canRender, LITE, createRenderer, createComposer, environment, mat, box, cyl, mesh, cable,
@@ -594,14 +594,6 @@ async function init(wrap) {
   new ResizeObserver(measure).observe(document.body);
   window.addEventListener("load", measure, { once: true });
   whenVisible(wrap, (on) => (on ? start() : stop()), "200px");
-
-  window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", (e) => {
-    if (!e.matches) return;
-    stop();
-    document.documentElement.classList.remove("has-3d");
-    canvas.remove();
-    renderer.dispose();
-  });
 }
 
 // =====================================================================
