@@ -1272,6 +1272,12 @@ fieldset {
   max-width: 38ch;
 }
 
+.site-footer__team {
+  margin-top: var(--s-3);
+  max-width: 38ch;
+  color: var(--c-on-dark);
+}
+
 .site-footer__base {
   display: flex;
   flex-wrap: wrap;

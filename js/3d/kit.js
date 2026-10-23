@@ -29,7 +29,10 @@ export function canRender() {
   if (!document.documentElement.classList.contains("motion")) return false;
   try {
     const c = document.createElement("canvas");
-    return !!c.getContext("webgl2");
+    const gl = c.getContext("webgl2");
+    // Contexto solo de prueba: se suelta ya para no ocupar uno de los pocos que da el navegador
+    gl?.getExtension("WEBGL_lose_context")?.loseContext();
+    return !!gl;
   } catch {
     return false;
   }
