@@ -95,3 +95,12 @@
     }
   }
 })();
+
+// Vídeos de la portada: al abrir un apartado empieza su vídeo; al cerrarlo se pausa.
+document.querySelectorAll(".videos details").forEach((d) => {
+  const video = d.querySelector("video");
+  d.addEventListener("toggle", () => {
+    if (d.open) video.play().catch(() => {});
+    else video.pause();
+  });
+});

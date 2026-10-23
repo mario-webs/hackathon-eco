@@ -65,7 +65,7 @@
       const n = menuLinks.length;
       const next = i < 0 ? 0 : (i + (e.key === "ArrowDown" ? 1 : -1) + n) % n;
       menuLinks[next].focus();
-    } else if (/^[1-8]$/.test(e.key) && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    } else if (/^[1-9]$/.test(e.key) && !e.ctrlKey && !e.metaKey && !e.altKey) {
       const a = menuLinks[Number(e.key) - 1];
       if (a) {
         e.preventDefault();
@@ -122,6 +122,7 @@
     ["Cómo se financia", "El proyecto", "proyecto.html#financiacion"],
     ["Riesgos y soluciones", "El proyecto", "proyecto.html#riesgos"],
     ["Preguntas frecuentes", "El proyecto", "proyecto.html#preguntas"],
+    ["La estación en vídeo", "Portada", "index.html#videos"],
     ["Fuentes", "El proyecto", "proyecto.html#fuentes"],
     ["Pedir cita", "Página", "cita.html"],
     ["Baterías aceptadas", "Pedir cita", "cita.html#aceptadas"],

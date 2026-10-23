@@ -32,6 +32,7 @@
       <nav class="site-links" aria-label="Secciones">
         <ul>
           <li><a href="index.html#proceso">El proceso</a></li>
+          <li><a href="index.html#videos">Vídeos</a></li>
           <li><a href="como-funciona.html">Cómo funciona</a></li>
           <li><a href="la-estacion.html">La estación</a></li>
           <li><a href="pasaporte.html">Pasaporte</a></li>
@@ -47,16 +48,17 @@
     </div>
     <nav class="site-menu" id="site-menu" aria-label="Principal">
       <div class="menu-card" style="--i:0">
-        <p class="menu-card__head"><span>Páginas</span><span>teclas 1–8</span></p>
+        <p class="menu-card__head"><span>Páginas</span><span>teclas 1–9</span></p>
         <ol class="menu-list">
           <li><a href="index.html" aria-current="page"><kbd>1</kbd><span>Inicio</span></a></li>
           <li><a href="index.html#proceso"><kbd>2</kbd><span>El proceso en 3D</span></a></li>
-          <li><a href="como-funciona.html"><kbd>3</kbd><span>Cómo funciona</span></a></li>
-          <li><a href="la-estacion.html"><kbd>4</kbd><span>La estación</span></a></li>
-          <li><a href="pasaporte.html"><kbd>5</kbd><span>Pasaporte de batería</span></a></li>
-          <li><a href="impacto.html"><kbd>6</kbd><span>Impacto</span></a></li>
-          <li><a href="proyecto.html"><kbd>7</kbd><span>El proyecto</span></a></li>
-          <li><a href="cita.html"><kbd>8</kbd><span>Pedir cita</span></a></li>
+          <li><a href="index.html#videos"><kbd>3</kbd><span>Vídeos</span></a></li>
+          <li><a href="como-funciona.html"><kbd>4</kbd><span>Cómo funciona</span></a></li>
+          <li><a href="la-estacion.html"><kbd>5</kbd><span>La estación</span></a></li>
+          <li><a href="pasaporte.html"><kbd>6</kbd><span>Pasaporte de batería</span></a></li>
+          <li><a href="impacto.html"><kbd>7</kbd><span>Impacto</span></a></li>
+          <li><a href="proyecto.html"><kbd>8</kbd><span>El proyecto</span></a></li>
+          <li><a href="cita.html"><kbd>9</kbd><span>Pedir cita</span></a></li>
         </ol>
       </div>
       <div class="menu-card menu-card--search" style="--i:1">
@@ -374,6 +376,58 @@
             </article>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <!-- Vídeos -->
+    <section class="section" id="videos" aria-labelledby="videos-title">
+      <div class="container videos-wrap">
+        <div class="section-head">
+          <h2 id="videos-title">La estación en vídeo</h2>
+          <p class="lead">Cuatro vídeos cortos para que veas cómo trabajamos. Elige uno y se reproduce aquí.</p>
+        </div>
+        <div class="accordion videos">
+          <details>
+            <summary><span class="videos__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="videos__title">Qué hacemos con tu batería</span><span class="videos__time">1:08</span></summary>
+            <div class="accordion__body">
+              <p>Te enseñamos la estación por dentro: recibimos tu batería, la revisamos con seguridad y decidimos si tiene una segunda vida, si se repara o si se recicla.</p>
+              <video controls preload="none" playsinline>
+                <source src="assets/video/SegundaVida_corporativo_movil_9x16_1080x1920.mp4" type="video/mp4" media="(orientation: portrait) and (max-width: 40rem)">
+                <source src="assets/video/SegundaVida_corporativo_PC_16x9_1920x1080.mp4" type="video/mp4">
+              </video>
+            </div>
+          </details>
+          <details>
+            <summary><span class="videos__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="videos__title">«Gastada, no muerta»</span><span class="videos__time">0:16</span></summary>
+            <div class="accordion__body">
+              <p>Una batería de bici eléctrica que ya no aguanta pasa por nuestro taller y acaba guardando la energía de unas placas solares.</p>
+              <video controls preload="none" playsinline>
+                <source src="assets/video/SegundaVida_gastada_no_muerta_9x16_1080x1920.mp4" type="video/mp4" media="(orientation: portrait) and (max-width: 40rem)">
+                <source src="assets/video/SegundaVida_gastada_no_muerta_16x9_1920x1080.mp4" type="video/mp4">
+              </video>
+            </div>
+          </details>
+          <details>
+            <summary><span class="videos__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="videos__title">Para talleres y empresas de reparto</span><span class="videos__time">0:21</span></summary>
+            <div class="accordion__body">
+              <p>Recogemos las baterías de tu flota, cambiamos solo las celdas que fallan y tus bicis vuelven a salir a la calle.</p>
+              <video controls preload="none" playsinline>
+                <source src="assets/video/SegundaVida_talleres_y_reparto_9x16_1080x1920.mp4" type="video/mp4" media="(orientation: portrait) and (max-width: 40rem)">
+                <source src="assets/video/SegundaVida_talleres_y_reparto_16x9_1920x1080.mp4" type="video/mp4">
+              </video>
+            </div>
+          </details>
+          <details>
+            <summary><span class="videos__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="videos__title">Así trabajamos con seguridad</span><span class="videos__time">0:16</span></summary>
+            <div class="accordion__body">
+              <p>Revisamos cada batería con cámara térmica. Si alguna está dañada, la aislamos en un contenedor ignífugo antes de seguir.</p>
+              <video controls preload="none" playsinline>
+                <source src="assets/video/SegundaVida_seguridad_primero_9x16_1080x1920.mp4" type="video/mp4" media="(orientation: portrait) and (max-width: 40rem)">
+                <source src="assets/video/SegundaVida_seguridad_primero_16x9_1920x1080.mp4" type="video/mp4">
+              </video>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
 
